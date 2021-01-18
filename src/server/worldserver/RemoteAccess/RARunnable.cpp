@@ -60,7 +60,7 @@ void RARunnable::run()
         return;
     }
 
-    sLog->outString("Starting Trinity RA on port %d on %s", raPort, stringIp.c_str());
+    sLog->outString("在端口%d和%s上启动Trinity RA", raPort, stringIp.c_str());
 
     while (!World::IsStopped())
     {
@@ -70,6 +70,6 @@ void RARunnable::run()
     }
 
 #if defined(ENABLE_EXTRAS) && defined(ENABLE_EXTRA_LOGS)
-    sLog->outStaticDebug("Trinity RA thread exiting");
+    sLog->outStaticDebug("Trinity RA线程退出");
 #endif
 }

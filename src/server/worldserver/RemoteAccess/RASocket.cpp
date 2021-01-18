@@ -184,7 +184,7 @@ int RASocket::check_access_level(const std::string& user)
 
     if (!result)
     {
-        sLog->outRemote("User %s does not exist in database", user.c_str());
+        sLog->outRemote("数据库中不存在用户:%s", user.c_str());
         return -1;
     }
 
@@ -192,12 +192,12 @@ int RASocket::check_access_level(const std::string& user)
 
     if (fields[1].GetUInt8() < _minLevel)
     {
-        sLog->outRemote("User %s has no privilege to login", user.c_str());
+        sLog->outRemote("没有登录权限的用户:%s ", user.c_str());
         return -1;
     }
     else if (fields[2].GetInt32() != -1)
     {
-        sLog->outRemote("User %s has to be assigned on all realms (with RealmID = '-1')", user.c_str());
+        sLog->outRemote("用户%s必须分配到所有realms(RealmID = '-1')", user.c_str());
         return -1;
     }
 
@@ -223,7 +223,7 @@ int RASocket::check_password(const std::string& user, const std::string& pass)
 
     if (!result)
     {
-        sLog->outRemote("Wrong password for user: %s", user.c_str());
+        sLog->outRemote("密码错误的用户:%s", user.c_str());
         return -1;
     }
 
@@ -232,21 +232,21 @@ int RASocket::check_password(const std::string& user, const std::string& pass)
 
 int RASocket::authenticate()
 {
-    if (send(std::string("Username: ")) == -1)
+    if (send(std::string("用户名: ")) == -1)
         return -1;
 
     std::string user;
     if (recv_line(user) == -1)
         return -1;
 
-    if (send(std::string("Password: ")) == -1)
+    if (send(std::string("密码: ")) == -1)
         return -1;
 
     std::string pass;
     if (recv_line(pass) == -1)
         return -1;
 
-    sLog->outRemote("Login attempt for user: %s", user.c_str());
+    sLog->outRemote("尝试登陆的用户: %s", user.c_str());
 
     if (check_access_level(user) == -1)
         return -1;
@@ -254,7 +254,7 @@ int RASocket::authenticate()
     if (check_password(user, pass) == -1)
         return -1;
 
-    sLog->outRemote("User login: %s", user.c_str());
+    sLog->outRemote("登录用户: %s", user.c_str());
 
     return 0;
 }
@@ -287,7 +287,7 @@ int RASocket::subnegotiate()
 
     if (n >= 1024)
     {
-        sLog->outRemote("RASocket::subnegotiate: allocated buffer 1024 bytes was too small for negotiation packet, size: %u", uint32(n));
+        sLog->outRemote("RASocket::subnegotiate: 分配的缓冲区1024字节太小，不能协商报文，大小: %u", uint32(n));
         return -1;
     }
 
@@ -387,7 +387,7 @@ void RASocket::zprint(void* callbackArg, const char* szText)
     ACE_Time_Value tv = ACE_Time_Value::zero;
     if (socket->putq(mb, &tv) == -1)
     {
-        sLog->outRemote("Failed to enqueue message, queue is full or closed. Error is %s", ACE_OS::strerror(errno));
+        sLog->outRemote("未能进入队列消息，队列已满或已关闭。错误是 %s", ACE_OS::strerror(errno));
         mb->release();
     }
 }

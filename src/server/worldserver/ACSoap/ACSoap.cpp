@@ -27,7 +27,7 @@ void ACSoapRunnable::run()
         exit(-1);
     }
 
-    sLog->outString("ACSoap: bound to http://%s:%d", _host.c_str(), _port);
+    sLog->outString("ACSoap: 绑定到 http://%s:%d", _host.c_str(), _port);
 
     while (!World::IsStopped())
     {
@@ -103,7 +103,7 @@ int ns1__executeCommand(soap* soap, char* command, char** result)
     }
 
     if (!command || !*command)
-        return soap_sender_fault(soap, "Command can not be empty", "The supplied command was an empty string");
+        return soap_sender_fault(soap, "命令不能为空", "提供的命令是空字符串");
 
 #if defined(ENABLE_EXTRAS) && defined(ENABLE_EXTRA_LOGS)
     sLog->outDebug(LOG_FILTER_NETWORKIO, "ACSoap: got command '%s'", command);

@@ -193,7 +193,7 @@ AuthSocket::~AuthSocket() = default;
 // Accept the connection
 void AuthSocket::OnAccept()
 {
-    sLog->outBasic("'%s:%d' Accepting connection", socket().getRemoteAddress().c_str(), socket().getRemotePort());
+    sLog->outBasic("'%s:%d' 接受连接", socket().getRemoteAddress().c_str(), socket().getRemotePort());
 }
 
 void AuthSocket::OnClose()
@@ -223,7 +223,7 @@ void AuthSocket::OnRead()
             ++challengesInARow;
             if (challengesInARow == MAX_AUTH_LOGON_CHALLENGES_IN_A_ROW)
             {
-                sLog->outString("Got %u AUTH_LOGON_CHALLENGE in a row from '%s', possible ongoing DoS", challengesInARow, socket().getRemoteAddress().c_str());
+                sLog->outString("从'%s'获得一行%u AUTH_LOGON_CHALLENGE，可能正在执行DoS", challengesInARow, socket().getRemoteAddress().c_str());
                 socket().shutdown();
                 return;
             }
@@ -233,7 +233,7 @@ void AuthSocket::OnRead()
             challengesInARowRealmList++;
             if (challengesInARowRealmList == MAX_AUTH_GET_REALM_LIST)
             {
-                sLog->outString("Got %u REALM_LIST in a row from '%s', possible ongoing DoS", challengesInARowRealmList, socket().getRemoteAddress().c_str());
+                sLog->outString("从'%s'中获取一行中的%u REALM_LIST，可能正在进行的DoS", challengesInARowRealmList, socket().getRemoteAddress().c_str());
                 socket().shutdown();
                 return;
             }
@@ -784,7 +784,7 @@ bool AuthSocket::_HandleLogonProof()
             PreparedStatement* logstmt = LoginDatabase.GetPreparedStatement(LOGIN_INS_FALP_IP_LOGGING);
             logstmt->setString(0, _login);
             logstmt->setString(1, socket().getRemoteAddress());
-            logstmt->setString(2, "Logged on failed AccountLogin due wrong password");
+            logstmt->setString(2, "由于密码错误，登录失败");
 
             LoginDatabase.Execute(logstmt);
         }

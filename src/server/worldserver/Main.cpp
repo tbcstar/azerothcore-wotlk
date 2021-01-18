@@ -27,7 +27,7 @@
 #include "ServiceWin32.h"
 char serviceName[] = "worldserver";
 char serviceLongName[] = "AzerothCore world service";
-char serviceDescription[] = "AzerothCore World of Warcraft emulator world service";
+char serviceDescription[] = "TBCstar魔兽世界服务器";
 /*
  * -1 - not in service mode
  *  0 - stopped
@@ -46,14 +46,14 @@ uint32 realmID;                                             ///< Id of the realm
 /// Print out the usage string for this program on the console.
 void usage(const char* prog)
 {
-    printf("Usage:\n");
-    printf(" %s [<options>]\n", prog);
-    printf("    -c config_file           use config_file as configuration file\n");
+    printf("用法:\n");
+    printf(" %s [<选项>]\n", prog);
+    printf("    -c config_file           使用config_file作为配置文件\n");
 #ifdef _WIN32
-    printf("    Running as service functions:\n");
-    printf("    --service                run as service\n");
-    printf("    -s install               install service\n");
-    printf("    -s uninstall             uninstall service\n");
+    printf("    运行的服务功能:\n");
+    printf("    --service                作为服务运行\n");
+    printf("    -s install               安装服务\n");
+    printf("    -s uninstall             卸载服务\n");
 #endif
 }
 
@@ -74,7 +74,7 @@ extern int main(int argc, char** argv)
         {
             if (++c >= argc)
             {
-                printf("Runtime-Error: -c option requires an input argument");
+                printf("Runtime-Error: -c 选项需要输入参数");
                 usage(argv[0]);
                 return 1;
             }
@@ -87,7 +87,7 @@ extern int main(int argc, char** argv)
         {
             if (++c >= argc)
             {
-                printf("Runtime-Error: -s option requires an input argument");
+                printf("Runtime-Error: -s 选项需要输入参数");
                 usage(argv[0]);
                 return 1;
             }
@@ -106,7 +106,7 @@ extern int main(int argc, char** argv)
             }
             else
             {
-                printf("Runtime-Error: unsupported option %s", argv[c]);
+                printf("Runtime-Error: 不支持的选项 %s", argv[c]);
                 usage(argv[0]);
                 return 1;
             }
@@ -123,9 +123,9 @@ extern int main(int argc, char** argv)
     if (!sConfigMgr->LoadAppConfigs())
         return 1;
 
-    sLog->outString("Using configuration file %s.", configFile);
-    sLog->outString("Using SSL version: %s (library: %s)", OPENSSL_VERSION_TEXT, SSLeay_version(SSLEAY_VERSION));
-    sLog->outString("Using ACE version: %s", ACE_VERSION);
+    sLog->outString("使用配置文件 %s。", configFile);
+    sLog->outString("使用SSL版本: %s (library: %s)", OPENSSL_VERSION_TEXT, SSLeay_version(SSLEAY_VERSION));
+    sLog->outString("使用ACE版本: %s", ACE_VERSION);
 
     ///- and run the 'Master'
     /// @todo Why do we need this 'Master'? Can't all of this be in the Main as for Realmd?

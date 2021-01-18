@@ -84,7 +84,7 @@ public:
         if (!_delayTime)
             return;
 
-        sLog->outString("Starting up anti-freeze thread (%u seconds max stuck time)...", _delayTime / 1000);
+        sLog->outString("启动anti-freeze(%u 秒 最大卡住时间)...", _delayTime / 1000);
         while (!World::IsStopped())
         {
             uint32 curtime = getMSTime();
@@ -95,13 +95,13 @@ public:
             }
             else if (getMSTimeDiff(_lastChange, curtime) > _delayTime)
             {
-                sLog->outString("World Thread hangs, kicking out server!");
+                sLog->outString("World线程挂起，退出服务器");
                 ABORT();
             }
 
             acore::Thread::Sleep(1000);
         }
-        sLog->outString("Anti-freeze thread exiting without problems.");
+        sLog->outString("Anti-freeze线程退出没有问题。");
     }
 };
 
@@ -134,7 +134,7 @@ int Master::Run()
     sLog->outString("                                ╚██████╗╚██████╔╝██║  ██║███████╗");
     sLog->outString("                                 ╚═════╝ ╚═════╝ ╚═╝  ╚═╝╚══════╝\n");
 
-    sLog->outString("     AzerothCore 3.3.5a  -  www.azerothcore.org\n");
+    sLog->outString("     TBCstar  -  www.tbcstar.com\n");
 
     /// worldserver PID file creation
     std::string pidFile = sConfigMgr->GetStringDefault("PidFile", "");
@@ -223,7 +223,7 @@ int Master::Run()
             if (!currentAffinity)
                 sLog->outError("Processors marked in UseProcessors bitmask (hex) %x are not accessible for the worldserver. Accessible processors bitmask (hex): %x", affinity, appAff);
             else if (SetProcessAffinityMask(hProcess, currentAffinity))
-                sLog->outString("Using processors (bitmask, hex): %x", currentAffinity);
+                sLog->outString("使用处理器(位掩码，十六进制): %x", currentAffinity);
             else
                 sLog->outError("Can't set used processors (hex): %x", currentAffinity);
         }
@@ -232,7 +232,7 @@ int Master::Run()
     if (highPriority)
     {
         if (SetPriorityClass(hProcess, HIGH_PRIORITY_CLASS))
-            sLog->outString("worldserver process priority class set to HIGH");
+            sLog->outString("worldserver进程优先级设置为HIGH");
         else
             sLog->outError("Can't set worldserver process priority class.");
     }
@@ -254,7 +254,7 @@ int Master::Run()
         {
             CPU_ZERO(&mask);
             sched_getaffinity(0, sizeof(mask), &mask);
-            sLog->outString("Using processors (bitmask, hex): %lx", *(__cpu_mask*)(&mask));
+            sLog->outString("使用处理器(位掩码，十六进制): %lx", *(__cpu_mask*)(&mask));
         }
     }
 
@@ -263,7 +263,7 @@ int Master::Run()
         if (setpriority(PRIO_PROCESS, 0, PROCESS_HIGH_PRIORITY))
             sLog->outError("Can't set worldserver process priority class, error: %s", strerror(errno));
         else
-            sLog->outString("worldserver process priority class set to %i", getpriority(PRIO_PROCESS, 0));
+            sLog->outString("worldserver进程优先级类设置为 %i", getpriority(PRIO_PROCESS, 0));
     }
 
 #endif
@@ -300,7 +300,7 @@ int Master::Run()
     // set server online (allow connecting now)
     LoginDatabase.DirectPExecute("UPDATE realmlist SET flag = flag & ~%u, population = 0 WHERE id = '%u'", REALM_FLAG_INVALID, realmID);
 
-    sLog->outString("%s (worldserver-daemon) ready...", GitRevision::GetFullVersion());
+    sLog->outString("%s (worldserver-daemon)准备好了...", GitRevision::GetFullVersion());
 
     // when the main thread closes the singletons get unloaded
     // since worldrunnable uses them, it will crash if unloaded after master
@@ -329,7 +329,7 @@ int Master::Run()
 
     _StopDB();
 
-    sLog->outString("Halting process...");
+    sLog->outString("停止中...");
 
     if (cliThread)
     {
@@ -488,7 +488,7 @@ bool Master::_StartDB()
         sLog->outError("Realm ID must range from 1 to 255");
         return false;
     }
-    sLog->outString("Realm running as realm ID %d", realmID);
+    sLog->outString("服务器运行的realm ID %d", realmID);
 
     ///- Initialize the DB logging system
     sLog->SetRealmID(realmID);
@@ -501,7 +501,7 @@ bool Master::_StartDB()
 
     sWorld->LoadDBVersion();
 
-    sLog->outString("Using World DB: %s", sWorld->GetDBVersion());
+    sLog->outString("使用World DB: %s", sWorld->GetDBVersion());
     return true;
 }
 
