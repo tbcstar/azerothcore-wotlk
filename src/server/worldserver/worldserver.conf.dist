@@ -3330,7 +3330,7 @@ ShowBanInWorld = 0
 
 #
 #     RecordUpdateTimeDiffInterval
-#        说明:时间(毫秒)update Time diff写入日志文件。 
+#        说明:时间(毫秒)update Time diff写入日志文件。
 #        Update diff可以作为一个性能指标 < 300 良好
 #        performance. Diff > 600 性能差，可能是CPU占用率过高造成的。
 #        Default:     300000 - (Enabled, 5 minutes)
