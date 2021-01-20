@@ -2023,16 +2023,16 @@ Channel.RestrictedLfg = 1
 Channel.SilentlyGMJoin = 0
 
 #    Channel.ModerationGMLevel
-#        Min GM account security level required for executing moderator in-game commands in the channels
-#        This also bypasses password prompts on joining channels which require password
-#                 0 (in-game channel moderator privileges only)
-#        Default: 1 (enabled for moderators and above)
+#        在频道中执行主持人在游戏中的命令所需的最小GM账户级别
+#        这也可以绕过需要密码的加入频道的密码提示
+#                 0 (仅在游戏内的频道主持人特权)
+#        Default: 1 (启用对于主持人和以上)
 
 Channel.ModerationGMLevel = 1
 
 #
 #    ChatLevelReq.Channel
-#        Description: Level requirement for characters to be able to write in chat channels.
+#        描述:要求角色能够使用聊天通道的等级。
 #        Default:     1
 
 ChatLevelReq.Channel = 1
