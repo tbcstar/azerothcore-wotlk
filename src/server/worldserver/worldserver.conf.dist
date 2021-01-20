@@ -1958,7 +1958,7 @@ ChatFakeMessagePreventing = 1
 #                     3 - (检查颜色、入口和名称是否相互矛盾。为了正确工作，
 #						   请确保您已经提取了在此服务器上运行的每种语言特定客户端的区域数据库)
 
-ChatStrictLinkChecking.Severity = 0
+ChatStrictLinkChecking.Severity = 1
 
 #
 #    ChatStrictLinkChecking.Kick
