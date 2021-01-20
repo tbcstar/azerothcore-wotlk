@@ -1956,7 +1956,7 @@ ChatFakeMessagePreventing = 1
 #                     1 - (启用，检查是否只使用有效的pipe命令，防止张贴图片。)
 #                     2 - (启用后，请验证pipe命令的使用顺序是否正确)
 #                     3 - (检查颜色、入口和名称是否相互矛盾。为了正确工作，
-#						   请确保您已经提取了在此服务器上运行的每种语言特定客户端的区域数据库)
+#                          请确保您已经提取了在此服务器上运行的每种语言特定客户端的区域数据库)
 
 ChatStrictLinkChecking.Severity = 1
 
@@ -3420,7 +3420,7 @@ StrictChannelNames = 0
 # Instance.SharedNormalHeroicId
 #  描述:没有描述
 #  Default:  0 - Disable
-#      		 1 - Enable
+#            1 - Enable
 #
 
 Instance.SharedNormalHeroicId = 0
