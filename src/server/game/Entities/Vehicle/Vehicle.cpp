@@ -56,7 +56,7 @@ Vehicle::~Vehicle()
                 unit->_ExitVehicle();
             }
             else
-                sLog->outString("ZOMG! ~Vehicle(), unknown guid!");
+                sLog->outString("ZOMG! ~Vehicle(), 未知的guid!");
         }
     //ASSERT(!itr->second.IsEmpty());
 }

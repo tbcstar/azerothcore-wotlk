@@ -81,7 +81,7 @@ void CreatureTextMgr::LoadCreatureTexts()
 
     if (!result)
     {
-        sLog->outString(">> Loaded 0 ceature texts. DB table `creature_texts` is empty.");
+        sLog->outString(">> 加载 0 个生物文本. DB表 `creature_texts` 为空.");
         sLog->outString();
         return;
     }
@@ -152,7 +152,7 @@ void CreatureTextMgr::LoadCreatureTexts()
         ++textCount;
     } while (result->NextRow());
 
-    sLog->outString(">> Loaded %u creature texts for %lu creatures in %u ms", textCount, mTextMap.size(), GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载 %u 个生物文本给 %lu 个生物，耗时 %u ms", textCount, mTextMap.size(), GetMSTimeDiffToNow(oldMSTime));
     sLog->outString();
 }
 
@@ -185,7 +185,7 @@ void CreatureTextMgr::LoadCreatureTextLocales()
         ObjectMgr::AddLocaleString(Text, locale, data.Text);
     } while (result->NextRow());
 
-    sLog->outString(">> Loaded %u Creature Text Locale in %u ms", uint32(mLocaleTextMap.size()), GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载 %u 个生物文本本地语言，耗时 %u ms", uint32(mLocaleTextMap.size()), GetMSTimeDiffToNow(oldMSTime));
     sLog->outString();
 }
 

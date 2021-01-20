@@ -86,7 +86,7 @@ Guild* GuildMgr::GetGuildByLeader(uint64 guid) const
 void GuildMgr::LoadGuilds()
 {
     // 1. Load all guilds
-    sLog->outString("Loading guilds definitions...");
+    sLog->outString("加载公会definitions...");
     {
         uint32 oldMSTime = getMSTime();
 
@@ -100,7 +100,7 @@ void GuildMgr::LoadGuilds()
 
         if (!result)
         {
-            sLog->outString(">> Loaded 0 guild definitions. DB table `guild` is empty.");
+            sLog->outString(">> 加载 0 个公会 definitions. DB表 `guild` 为空.");
         }
         else
         {
@@ -121,7 +121,7 @@ void GuildMgr::LoadGuilds()
                 ++count;
             } while (result->NextRow());
 
-            sLog->outString(">> Loaded %u guild definitions in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+            sLog->outString(">> 加载 %u 个公会 definitions，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
         }
     }
 
@@ -138,7 +138,7 @@ void GuildMgr::LoadGuilds()
 
         if (!result)
         {
-            sLog->outString(">> Loaded 0 guild ranks. DB table `guild_rank` is empty.");
+            sLog->outString(">> 加载 0 个guild ranks. DB表 `guild_rank` 为空.");
         }
         else
         {
@@ -154,12 +154,12 @@ void GuildMgr::LoadGuilds()
                 ++count;
             } while (result->NextRow());
 
-            sLog->outString(">> Loaded %u guild ranks in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+            sLog->outString(">> 加载 %u 个guild ranks，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
         }
     }
 
     // 3. Load all guild members
-    sLog->outString("Loading guild members...");
+    sLog->outString("加载公会成员...");
     {
         uint32 oldMSTime = getMSTime();
 
@@ -176,7 +176,7 @@ void GuildMgr::LoadGuilds()
                              "LEFT JOIN characters c ON c.guid = gm.guid ORDER BY guildid ASC");
 
         if (!result)
-            sLog->outString(">> Loaded 0 guild members. DB table `guild_member` is empty.");
+            sLog->outString(">> 加载 0 个公会成员. DB表 `guild_member` 为空.");
         else
         {
             uint32 count = 0;
@@ -192,12 +192,12 @@ void GuildMgr::LoadGuilds()
                 ++count;
             } while (result->NextRow());
 
-            sLog->outString(">> Loaded %u guild members int %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+            sLog->outString(">> 加载 %u 个公会成员，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
         }
     }
 
     // 4. Load all guild bank tab rights
-    sLog->outString("Loading bank tab rights...");
+    sLog->outString("加载 bank tab rights...");
     {
         uint32 oldMSTime = getMSTime();
 
@@ -209,7 +209,7 @@ void GuildMgr::LoadGuilds()
 
         if (!result)
         {
-            sLog->outString(">> Loaded 0 guild bank tab rights. DB table `guild_bank_right` is empty.");
+            sLog->outString(">> 加载 0 个guild bank tab rights. DB表 `guild_bank_right` 为空.");
         }
         else
         {
@@ -225,12 +225,12 @@ void GuildMgr::LoadGuilds()
                 ++count;
             } while (result->NextRow());
 
-            sLog->outString(">> Loaded %u bank tab rights in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+            sLog->outString(">> 加载 %u 个bank tab rights ，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
         }
     }
 
     // 5. Load all event logs
-    sLog->outString("Loading guild event logs...");
+    sLog->outString("加载公会事件日志...");
     {
         uint32 oldMSTime = getMSTime();
 
@@ -241,7 +241,7 @@ void GuildMgr::LoadGuilds()
 
         if (!result)
         {
-            sLog->outString(">> Loaded 0 guild event logs. DB table `guild_eventlog` is empty.");
+            sLog->outString(">> 加载 0 个加载公会事件日志. DB表 `guild_eventlog` 为空.");
         }
         else
         {
@@ -257,12 +257,12 @@ void GuildMgr::LoadGuilds()
                 ++count;
             } while (result->NextRow());
 
-            sLog->outString(">> Loaded %u guild event logs in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+            sLog->outString(">> 加载 %u 个公会事件日志,耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
         }
     }
 
     // 6. Load all bank event logs
-    sLog->outString("Loading guild bank event logs...");
+    sLog->outString("加载公会银行事件日志...");
     {
         uint32 oldMSTime = getMSTime();
 
@@ -274,7 +274,7 @@ void GuildMgr::LoadGuilds()
 
         if (!result)
         {
-            sLog->outString(">> Loaded 0 guild bank event logs. DB table `guild_bank_eventlog` is empty.");
+            sLog->outString(">> 加载 0 个公会银行事件日志. DB表 `guild_bank_eventlog` 为空.");
         }
         else
         {
@@ -290,12 +290,12 @@ void GuildMgr::LoadGuilds()
                 ++count;
             } while (result->NextRow());
 
-            sLog->outString(">> Loaded %u guild bank event logs in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+            sLog->outString(">> 加载 %u 个公会银行事件日志，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
         }
     }
 
     // 7. Load all guild bank tabs
-    sLog->outString("Loading guild bank tabs...");
+    sLog->outString("加载公会银行tabs...");
     {
         uint32 oldMSTime = getMSTime();
 
@@ -307,7 +307,7 @@ void GuildMgr::LoadGuilds()
 
         if (!result)
         {
-            sLog->outString(">> Loaded 0 guild bank tabs. DB table `guild_bank_tab` is empty.");
+            sLog->outString(">> 加载 0 个guild bank tabs. DB表 `guild_bank_tab` 为空。");
         }
         else
         {
@@ -323,12 +323,12 @@ void GuildMgr::LoadGuilds()
                 ++count;
             } while (result->NextRow());
 
-            sLog->outString(">> Loaded %u guild bank tabs in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+            sLog->outString(">> 加载 %u 个guild bank tabs，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
         }
     }
 
     // 8. Fill all guild bank tabs
-    sLog->outString("Filling bank tabs with items...");
+    sLog->outString("填充 bank tabs with items...");
     {
         uint32 oldMSTime = getMSTime();
 
@@ -342,7 +342,7 @@ void GuildMgr::LoadGuilds()
 
         if (!result)
         {
-            sLog->outString(">> Loaded 0 guild bank tab items. DB table `guild_bank_item` or `item_instance` is empty.");
+            sLog->outString(">> 加载 0 个guild bank tab items. DB表 `guild_bank_item` or `item_instance` 为空。");
         }
         else
         {
@@ -358,12 +358,12 @@ void GuildMgr::LoadGuilds()
                 ++count;
             } while (result->NextRow());
 
-            sLog->outString(">> Loaded %u guild bank tab items in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+            sLog->outString(">> 加载 %u 个guild bank tab items，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
         }
     }
 
     // 9. Validate loaded guild data
-    sLog->outString("Validating data of loaded guilds...");
+    sLog->outString("验证已加载的公会数据...");
     {
         uint32 oldMSTime = getMSTime();
 
@@ -375,7 +375,7 @@ void GuildMgr::LoadGuilds()
                 delete guild;
         }
 
-        sLog->outString(">> Validated data of loaded guilds in %u ms", GetMSTimeDiffToNow(oldMSTime));
+        sLog->outString(">> 验证已加载的公会数据，耗时 %u ms", GetMSTimeDiffToNow(oldMSTime));
     }
 }
 

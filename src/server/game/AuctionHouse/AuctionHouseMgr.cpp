@@ -283,7 +283,7 @@ void AuctionHouseMgr::LoadAuctionItems()
 
     if (!result)
     {
-        sLog->outString(">> Loaded 0 auction items. DB table `auctionhouse` or `item_instance` is empty!");
+        sLog->outString(">> 加载0个拍卖物品。DB表 `auctionhouse`或`item_instance`为空");
         sLog->outString();
         return;
     }
@@ -315,7 +315,7 @@ void AuctionHouseMgr::LoadAuctionItems()
         ++count;
     } while (result->NextRow());
 
-    sLog->outString(">> Loaded %u auction items in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载 %u 个拍卖物品,耗时%u ms", count, GetMSTimeDiffToNow(oldMSTime));
     sLog->outString();
 }
 
@@ -328,7 +328,7 @@ void AuctionHouseMgr::LoadAuctions()
 
     if (!result)
     {
-        sLog->outString(">> Loaded 0 auctions. DB table `auctionhouse` is empty.");
+        sLog->outString(">> 加载0个拍卖。DB表`auctionhouse`为空。");
         sLog->outString();
         return;
     }
@@ -354,7 +354,7 @@ void AuctionHouseMgr::LoadAuctions()
 
     CharacterDatabase.CommitTransaction(trans);
 
-    sLog->outString(">> Loaded %u auctions in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载 %u 个拍卖,耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
     sLog->outString();
 }
 

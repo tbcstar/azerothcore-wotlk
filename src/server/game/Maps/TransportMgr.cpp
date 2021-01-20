@@ -44,7 +44,7 @@ void TransportMgr::LoadTransportTemplates()
 
     if (!result)
     {
-        sLog->outString(">> Loaded 0 transport templates. DB table `gameobject_template` has no transports!");
+        sLog->outString(">> 加载 0 个传送器模板。DB表`gameobject_template`没有传送器！");
         return;
     }
 
@@ -79,7 +79,7 @@ void TransportMgr::LoadTransportTemplates()
         ++count;
     } while (result->NextRow());
 
-    sLog->outString(">> Loaded %u transport templates in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载 %u 个传送器模板，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
 }
 
 class SplineRawInitializer
@@ -431,7 +431,7 @@ void TransportMgr::SpawnContinentTransports()
             } while (result->NextRow());
         }
 
-        sLog->outString(">> Spawned %u continent motion transports in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+        sLog->outString(">> 生成 %u 个大陆移动传送器，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
 
         if (sWorld->getBoolConfig(CONFIG_ENABLE_CONTINENT_TRANSPORT_PRELOADING))
         {
@@ -458,7 +458,7 @@ void TransportMgr::SpawnContinentTransports()
                 } while (result->NextRow());
             }
 
-            sLog->outString(">> Preloaded grids for %u continent static transports in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+            sLog->outString(">> 预加载网格给 %u 个大陆固定传送器，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
         }
     }
 }

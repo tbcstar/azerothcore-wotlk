@@ -33,7 +33,7 @@ namespace AddonMgr
         QueryResult result = CharacterDatabase.Query("SELECT name, crc FROM addons");
         if (!result)
         {
-            sLog->outString(">> Loaded 0 known addons. DB table `addons` is empty!");
+            sLog->outString(">> 加载0个已知插件。DB表`addons`为空!");
             sLog->outString();
             return;
         }
@@ -52,7 +52,7 @@ namespace AddonMgr
             ++count;
         } while (result->NextRow());
 
-        sLog->outString(">> Loaded %u known addons in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+        sLog->outString(">> 加载 %u 个已知插件,耗时%u ms", count, GetMSTimeDiffToNow(oldMSTime));
 
         oldMSTime = getMSTime();
         result = CharacterDatabase.Query("SELECT id, name, version, UNIX_TIMESTAMP(timestamp) FROM banned_addons");
@@ -80,7 +80,7 @@ namespace AddonMgr
                 ++count;
             } while (result->NextRow());
 
-            sLog->outString(">> Loaded %u banned addons in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+            sLog->outString(">> 加载 %u 个禁止插件,耗时%u ms", count, GetMSTimeDiffToNow(oldMSTime));
             sLog->outString();
         }
     }

@@ -59,7 +59,7 @@ void LoadRandomEnchantmentsTable()
             ++count;
         } while (result->NextRow());
 
-        sLog->outString(">> Loaded %u Item Enchantment definitions in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+        sLog->outString(">> 加载 %u 个物品附魔定义，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
         sLog->outString();
     }
     else

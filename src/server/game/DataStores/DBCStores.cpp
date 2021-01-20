@@ -583,7 +583,7 @@ void LoadDBCStores(const std::string& dataPath)
         exit(1);
     }
 
-    sLog->outString(">> Initialized %d data stores in %u ms", DBCFileCount, GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 初始化 %d 个数据存储，耗时 %u ms", DBCFileCount, GetMSTimeDiffToNow(oldMSTime));
     sLog->outString();
 }
 

@@ -3946,7 +3946,7 @@ bool Player::_addSpell(uint32 spellId, uint8 addSpecMask, bool temporary)
             {
                 if (spellInfo->Effects[i].Effect != SPELL_EFFECT_LEARN_SPELL)
                 {
-                    sLog->outString("TRYING TO LEARN SPELL WITH EFFECT LEARN: %u, PLAYER: %u", spellId, GetGUIDLow());
+                    sLog->outString("TRYING TO LEARN SPELL WITH EFFECT LEARN: %u, 玩家: %u", spellId, GetGUIDLow());
                     return false;
                     //ABORT();
                 }
@@ -3998,7 +3998,7 @@ bool Player::_addSpell(uint32 spellId, uint8 addSpecMask, bool temporary)
     // xinef: do not add spells with effect learn spell
     if (spellInfo->HasEffect(SPELL_EFFECT_LEARN_SPELL))
     {
-        sLog->outString("TRYING TO LEARN SPELL WITH EFFECT LEARN 2: %u, PLAYER: %u", spellId, GetGUIDLow());
+        sLog->outString("TRYING TO LEARN SPELL WITH EFFECT LEARN 2: %u, 玩家: %u", spellId, GetGUIDLow());
         m_spells.erase(spellInfo->Id); // mem leak, but should never happen
         return false;
         //ABORT();
@@ -5146,7 +5146,7 @@ void Player::DeleteOldCharacters()
  */
 void Player::DeleteOldCharacters(uint32 keepDays)
 {
-    sLog->outString("Player::DeleteOldChars: Deleting all characters which have been deleted %u days before...", keepDays);
+    sLog->outString("Player::DeleteOldChars: 删除 %u 天前删除的所有角色...", keepDays);
 
     PreparedStatement* stmt = CharacterDatabase.GetPreparedStatement(CHAR_SEL_CHAR_OLD_CHARS);
     stmt->setUInt32(0, uint32(time(nullptr) - time_t(keepDays * DAY)));

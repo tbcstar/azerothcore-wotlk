@@ -275,11 +275,11 @@ void GameEventMgr::LoadFromDB()
             }
         } while (result->NextRow());
 
-        sLog->outString(">> Loaded %u game events in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+        sLog->outString(">> 加载 %u 个游戏事件，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
         sLog->outString();
     }
 
-    sLog->outString("Loading Game Event Saves Data...");
+    sLog->outString("加载游戏事件保存数据...");
     {
         uint32 oldMSTime = getMSTime();
 
@@ -288,7 +288,7 @@ void GameEventMgr::LoadFromDB()
 
         if (!result)
         {
-            sLog->outString(">> Loaded 0 game event saves in game events. DB table `game_event_save` is empty.");
+            sLog->outString(">> 在游戏事件中加载0个游戏事件保存。DB表 `game_event_save`为空。");
             sLog->outString();
         }
         else
@@ -320,7 +320,7 @@ void GameEventMgr::LoadFromDB()
                 ++count;
             } while (result->NextRow());
 
-            sLog->outString(">> Loaded %u game event saves in game events in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+            sLog->outString(">> 加载 %u 个游戏事件保存在游戏事件中，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
             sLog->outString();
         }
     }
@@ -333,7 +333,7 @@ void GameEventMgr::LoadFromDB()
         QueryResult result = WorldDatabase.Query("SELECT eventEntry, prerequisite_event FROM game_event_prerequisite");
         if (!result)
         {
-            sLog->outString(">> Loaded 0 game event prerequisites in game events. DB table `game_event_prerequisite` is empty.");
+            sLog->outString(">> 在游戏事件中加载0个游戏事件先决条件。DB表`game_event_prerequisite`为空。");
             sLog->outString();
         }
         else
@@ -370,12 +370,12 @@ void GameEventMgr::LoadFromDB()
                 ++count;
             } while (result->NextRow());
 
-            sLog->outString(">> Loaded %u game event prerequisites in game events in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+            sLog->outString(">> 加载 %u 个游戏事件先决条件，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
             sLog->outString();
         }
     }
 
-    sLog->outString("Loading Game Event Creature Data...");
+    sLog->outString("加载游戏事件生物数据...");
     {
         uint32 oldMSTime = getMSTime();
 
@@ -385,7 +385,7 @@ void GameEventMgr::LoadFromDB()
 
         if (!result)
         {
-            sLog->outString(">> Loaded 0 creatures in game events. DB table `game_event_creature` is empty");
+            sLog->outString(">> 在游戏事件中载入0个生物。DB表 `game_event_creature`为空！");
             sLog->outString();
         }
         else
@@ -412,12 +412,12 @@ void GameEventMgr::LoadFromDB()
                 ++count;
             } while (result->NextRow());
 
-            sLog->outString(">> Loaded %u creatures in game events in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+            sLog->outString(">> 加载 %u 个生物在游戏事件中，耗时%u ms", count, GetMSTimeDiffToNow(oldMSTime));
             sLog->outString();
         }
     }
 
-    sLog->outString("Loading Game Event GO Data...");
+    sLog->outString("加载游戏事件GO数据...");
     {
         uint32 oldMSTime = getMSTime();
 
@@ -427,7 +427,7 @@ void GameEventMgr::LoadFromDB()
 
         if (!result)
         {
-            sLog->outString(">> Loaded 0 gameobjects in game events. DB table `game_event_gameobject` is empty.");
+            sLog->outString(">> 在游戏事件中加载0个游戏对象。DB表`game_event_gameobject`为空。");
             sLog->outString();
         }
         else
@@ -454,12 +454,12 @@ void GameEventMgr::LoadFromDB()
                 ++count;
             } while (result->NextRow());
 
-            sLog->outString(">> Loaded %u gameobjects in game events in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+            sLog->outString(">> 加载 %u 个游戏对象在游戏事件中，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
             sLog->outString();
         }
     }
 
-    sLog->outString("Loading Game Event Model/Equipment Change Data...");
+    sLog->outString("加载游戏事件中模型/装备变化数据...");
     {
         uint32 oldMSTime = getMSTime();
 
@@ -469,7 +469,7 @@ void GameEventMgr::LoadFromDB()
 
         if (!result)
         {
-            sLog->outString(">> Loaded 0 model/equipment changes in game events. DB table `game_event_model_equip` is empty.");
+            sLog->outString(">> 加载0个模型/装备变化在游戏事件。DB表 `game_event_model_equip`为空。");
             sLog->outString();
         }
         else
@@ -512,12 +512,12 @@ void GameEventMgr::LoadFromDB()
                 ++count;
             } while (result->NextRow());
 
-            sLog->outString(">> Loaded %u model/equipment changes in game events in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+            sLog->outString(">> 加载 %u 个模型/装备变化到游戏事件中，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
             sLog->outString();
         }
     }
 
-    sLog->outString("Loading Game Event Quest Data...");
+    sLog->outString("加载游戏事件任务数据...");
     {
         uint32 oldMSTime = getMSTime();
 
@@ -526,7 +526,7 @@ void GameEventMgr::LoadFromDB()
 
         if (!result)
         {
-            sLog->outString(">> Loaded 0 quests additions in game events. DB table `game_event_creature_quest` is empty.");
+            sLog->outString(">> 在游戏事件中加载0个任务。DB表`game_event_creature_quest`为空。");
             sLog->outString();
         }
         else
@@ -552,12 +552,12 @@ void GameEventMgr::LoadFromDB()
                 ++count;
             } while (result->NextRow());
 
-            sLog->outString(">> Loaded %u quests additions in game events in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+            sLog->outString(">> 加载 %u 个任务在游戏事件中，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
             sLog->outString();
         }
     }
 
-    sLog->outString("Loading Game Event GO Quest Data...");
+    sLog->outString("加载游戏事件GO任务数据...");
     {
         uint32 oldMSTime = getMSTime();
 
@@ -566,7 +566,7 @@ void GameEventMgr::LoadFromDB()
 
         if (!result)
         {
-            sLog->outString(">> Loaded 0 go quests additions in game events. DB table `game_event_gameobject_quest` is empty.");
+            sLog->outString(">> 在游戏事件中加载0个go任务。DB表`game_event_gameobject_quest`为空。");
             sLog->outString();
         }
         else
@@ -592,12 +592,12 @@ void GameEventMgr::LoadFromDB()
                 ++count;
             } while (result->NextRow());
 
-            sLog->outString(">> Loaded %u quests additions in game events in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+            sLog->outString(">> 加载 %u 个任务在游戏事件中，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
             sLog->outString();
         }
     }
 
-    sLog->outString("Loading Game Event Quest Condition Data...");
+    sLog->outString("加载游戏事件任务条件数据...");
     {
         uint32 oldMSTime = getMSTime();
 
@@ -606,7 +606,7 @@ void GameEventMgr::LoadFromDB()
 
         if (!result)
         {
-            sLog->outString(">> Loaded 0 quest event conditions in game events. DB table `game_event_quest_condition` is empty.");
+            sLog->outString(">> 在游戏事件中载入0个任务事件条件。DB表`game_event_quest_condition`为空。");
             sLog->outString();
         }
         else
@@ -634,12 +634,12 @@ void GameEventMgr::LoadFromDB()
                 ++count;
             } while (result->NextRow());
 
-            sLog->outString(">> Loaded %u quest event conditions in game events in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+            sLog->outString(">> 加载 %u 个任务事件条件在游戏事件中，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
             sLog->outString();
         }
     }
 
-    sLog->outString("Loading Game Event Condition Data...");
+    sLog->outString("加载游戏事件条件数据...");
     {
         uint32 oldMSTime = getMSTime();
 
@@ -648,7 +648,7 @@ void GameEventMgr::LoadFromDB()
 
         if (!result)
         {
-            sLog->outString(">> Loaded 0 conditions in game events. DB table `game_event_condition` is empty.");
+            sLog->outString(">> 在游戏事件中加载0个条件。DB表' game_event_condition '为空。");
             sLog->outString();
         }
         else
@@ -675,12 +675,12 @@ void GameEventMgr::LoadFromDB()
                 ++count;
             } while (result->NextRow());
 
-            sLog->outString(">> Loaded %u conditions in game events in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+            sLog->outString(">> 加载 %u 个条件到游戏事件，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
             sLog->outString();
         }
     }
 
-    sLog->outString("Loading Game Event Condition Save Data...");
+    sLog->outString("加载游戏事件条件保存数据...");
     {
         uint32 oldMSTime = getMSTime();
 
@@ -689,7 +689,7 @@ void GameEventMgr::LoadFromDB()
 
         if (!result)
         {
-            sLog->outString(">> Loaded 0 condition saves in game events. DB table `game_event_condition_save` is empty.");
+            sLog->outString(">> 在游戏事件中载入0条件保存。DB表`game_event_condition_save` 为空。");
             sLog->outString();
         }
         else
@@ -722,12 +722,12 @@ void GameEventMgr::LoadFromDB()
                 ++count;
             } while (result->NextRow());
 
-            sLog->outString(">> Loaded %u condition saves in game events in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+            sLog->outString(">> 加载 %u 个条件保存在游戏事件中，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
             sLog->outString();
         }
     }
 
-    sLog->outString("Loading Game Event NPCflag Data...");
+    sLog->outString("加载游戏事件NPCflag数据...");
     {
         uint32 oldMSTime = getMSTime();
 
@@ -736,7 +736,7 @@ void GameEventMgr::LoadFromDB()
 
         if (!result)
         {
-            sLog->outString(">> Loaded 0 npcflags in game events. DB table `game_event_npcflag` is empty.");
+            sLog->outString(">> 在游戏事件中加载0个npcflags。DB表 `game_event_npcflag`为空。");
             sLog->outString();
         }
         else
@@ -761,12 +761,12 @@ void GameEventMgr::LoadFromDB()
                 ++count;
             } while (result->NextRow());
 
-            sLog->outString(">> Loaded %u npcflags in game events in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+            sLog->outString(">> 加载 %u 个npcflags到游戏事件中，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
             sLog->outString();
         }
     }
 
-    sLog->outString("Loading Game Event Seasonal Quest Relations...");
+    sLog->outString("加载游戏事件季节性任务关系...");
     {
         uint32 oldMSTime = getMSTime();
 
@@ -775,7 +775,7 @@ void GameEventMgr::LoadFromDB()
 
         if (!result)
         {
-            sLog->outString(">> Loaded 0 seasonal quests additions in game events. DB table `game_event_seasonal_questrelation` is empty.");
+            sLog->outString(">> 在游戏事件中加载了0个季节性的任务。DB表`game_event_seasonal_questrelation`为空。");
             sLog->outString();
         }
         else
@@ -806,12 +806,12 @@ void GameEventMgr::LoadFromDB()
                 ++count;
             } while (result->NextRow());
 
-            sLog->outString(">> Loaded %u quests additions in game events in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+            sLog->outString(">> 加载 %u 个任务在游戏事件中，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
             sLog->outString();
         }
     }
 
-    sLog->outString("Loading Game Event Vendor Additions Data...");
+    sLog->outString("加载游戏事件供应商增加数据...");
     {
         uint32 oldMSTime = getMSTime();
 
@@ -820,7 +820,7 @@ void GameEventMgr::LoadFromDB()
 
         if (!result)
         {
-            sLog->outString(">> Loaded 0 vendor additions in game events. DB table `game_event_npc_vendor` is empty.");
+            sLog->outString(">> 在游戏事件中加载0个供应商的附加内容。DB表`game_event_npc_vendor`为空。");
             sLog->outString();
         }
         else
@@ -871,12 +871,12 @@ void GameEventMgr::LoadFromDB()
                 ++count;
             } while (result->NextRow());
 
-            sLog->outString(">> Loaded %u vendor additions in game events in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+            sLog->outString(">> 加载 %u 个供应商additions在游戏事件中，耗时  %u ms", count, GetMSTimeDiffToNow(oldMSTime));
             sLog->outString();
         }
     }
 
-    sLog->outString("Loading Game Event Battleground Data...");
+    sLog->outString("加载游戏事件战场数据...");
     {
         uint32 oldMSTime = getMSTime();
 
@@ -885,7 +885,7 @@ void GameEventMgr::LoadFromDB()
 
         if (!result)
         {
-            sLog->outString(">> Loaded 0 battleground holidays in game events. DB table `game_event_battleground_holiday` is empty.");
+            sLog->outString(">> 在游戏事件中载入0个战场假期。数据库表 `game_event_battleground_holiday`为空。");
             sLog->outString();
         }
         else
@@ -908,12 +908,12 @@ void GameEventMgr::LoadFromDB()
                 ++count;
             } while (result->NextRow());
 
-            sLog->outString(">> Loaded %u battleground holidays in game events in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+            sLog->outString(">> 加载 %u 个战场节日在游戏事件中，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
             sLog->outString();
         }
     }
 
-    sLog->outString("Loading Game Event Pool Data...");
+    sLog->outString("加载游戏事件池数据...");
     {
         uint32 oldMSTime = getMSTime();
 
@@ -923,7 +923,7 @@ void GameEventMgr::LoadFromDB()
 
         if (!result)
         {
-            sLog->outString(">> Loaded 0 pools for game events. DB table `game_event_pool` is empty.");
+            sLog->outString(">> 为游戏事件加载0个池。DB表`game_event_pool`为空。");
             sLog->outString();
         }
         else
@@ -956,7 +956,7 @@ void GameEventMgr::LoadFromDB()
                 ++count;
             } while (result->NextRow());
 
-            sLog->outString(">> Loaded %u pools for game events in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+            sLog->outString(">> 加载 %u 个pools在游戏事件中，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
             sLog->outString();
         }
     }
@@ -971,7 +971,7 @@ void GameEventMgr::LoadHolidayDates()
 
     if (!result)
     {
-        sLog->outString(">> Loaded 0 holiday dates. DB table `holiday_dates` is empty.");
+        sLog->outString(">> 加载0个节假日。DB表`holiday_dates` 为空。");
         return;
     }
 
@@ -1008,7 +1008,7 @@ void GameEventMgr::LoadHolidayDates()
         ++count;
     } while (result->NextRow());
 
-    sLog->outString(">> Loaded %u holiday dates in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载 %u 个节假日，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
 }
 
 uint32 GameEventMgr::GetNPCFlag(Creature* cr)
@@ -1082,7 +1082,7 @@ void GameEventMgr::StartArenaSeason()
     }
 
     StartEvent(eventId, true);
-    sLog->outString("Arena Season %u started...", season);
+    sLog->outString("竞技场第 %u 赛季开启...", season);
     sLog->outString();
 }
 

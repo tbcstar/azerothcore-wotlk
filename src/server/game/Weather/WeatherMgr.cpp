@@ -127,7 +127,7 @@ namespace WeatherMgr
             ++count;
         } while (result->NextRow());
 
-        sLog->outString(">> Loaded %u weather definitions in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+        sLog->outString(">> 加载 %u 个weather definitions，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
         sLog->outString();
     }
 

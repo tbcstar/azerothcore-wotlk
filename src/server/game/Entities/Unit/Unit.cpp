@@ -14668,7 +14668,7 @@ void Unit::RemoveFromWorld()
             {
                 if (HasUnitTypeMask(UNIT_MASK_MINION | UNIT_MASK_GUARDIAN))
                     owner->SetMinion((Minion*)this, false);
-                sLog->outString("Unit %u is in controlled list of %u when removed from world", GetEntry(), owner->GetEntry());
+                sLog->outString("单位 %u 在 %u 的控制列表中被移出世界", GetEntry(), owner->GetEntry());
                 //ABORT();
             }
         }
@@ -19019,19 +19019,19 @@ void Unit::OutDebugInfo() const
         sLog->outStringInLine(UI64FMTD", ", m_SummonSlot[i]);
     sLog->outString();
 
-    sLog->outStringInLine("Controlled List: ");
+    sLog->outStringInLine("控制列表: ");
     for (ControlSet::const_iterator itr = m_Controlled.begin(); itr != m_Controlled.end(); ++itr)
         sLog->outStringInLine(UI64FMTD", ", (*itr)->GetGUID());
     sLog->outString();
 
-    sLog->outStringInLine("Aura List: ");
+    sLog->outStringInLine("光环列表: ");
     for (AuraApplicationMap::const_iterator itr = m_appliedAuras.begin(); itr != m_appliedAuras.end(); ++itr)
         sLog->outStringInLine("%u, ", itr->first);
     sLog->outString();
 
     if (IsVehicle())
     {
-        sLog->outStringInLine("Passenger List: ");
+        sLog->outStringInLine("旅客名单: ");
         for (SeatMap::iterator itr = GetVehicleKit()->Seats.begin(); itr != GetVehicleKit()->Seats.end(); ++itr)
             if (Unit* passenger = ObjectAccessor::GetUnit(*GetVehicleBase(), itr->second.Passenger.Guid))
                 sLog->outStringInLine(UI64FMTD", ", passenger->GetGUID());

@@ -136,7 +136,7 @@ void ArenaTeamMgr::LoadArenaTeams()
 
     if (!result)
     {
-        sLog->outString(">> Loaded 0 arena teams. DB table `arena_team` is empty!");
+        sLog->outString(">> 加载0个竞技场队伍。DB表`arena_team`为空！");
         sLog->outString();
         return;
     }
@@ -166,7 +166,7 @@ void ArenaTeamMgr::LoadArenaTeams()
         ++count;
     } while (result->NextRow());
 
-    sLog->outString(">> Loaded %u arena teams in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载 %u 个竞技场队伍,耗时%u ms", count, GetMSTimeDiffToNow(oldMSTime));
     sLog->outString();
 }
 

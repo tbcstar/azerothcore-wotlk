@@ -87,7 +87,7 @@ void WaypointMgr::Load()
         ++count;
     } while (result->NextRow());
 
-    sLog->outString(">> Loaded %u waypoints in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载 %u 个路径点，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
     sLog->outString();
 }
 

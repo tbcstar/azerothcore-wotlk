@@ -211,7 +211,7 @@ bool validUtf8String(WorldPacket& recvData, std::string& s, std::string action, 
 {
     if (!utf8::is_valid(s.begin(), s.end()))
     {
-        sLog->outString("CalendarHandler: Player with guid %llu attempt to %s an event with invalid name or description (packet modification)", (unsigned long long)playerGUID, action.c_str());
+        sLog->outString("CalendarHandler: 使用guid %llu 的玩家试图 %s 一个名称或描述无效的事件（数据包修改）", (unsigned long long)playerGUID, action.c_str());
         recvData.rfinish();
         return false;
     }

@@ -30,7 +30,7 @@ void PetitionMgr::LoadPetitions()
     QueryResult result = CharacterDatabase.Query("SELECT ownerguid, petitionguid, name, type FROM petition");
     if (!result)
     {
-        sLog->outString(">>  Loaded 0 Petitions!");
+        sLog->outString(">>  加载 0 个Petitions!");
         sLog->outString();
         return;
     }
@@ -43,7 +43,7 @@ void PetitionMgr::LoadPetitions()
         ++count;
     } while (result->NextRow());
 
-    sLog->outString(">> Loaded %d Petitions in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载 %d 个Petitions，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
     sLog->outString();
 }
 
@@ -55,7 +55,7 @@ void PetitionMgr::LoadSignatures()
     QueryResult result = CharacterDatabase.Query("SELECT petitionguid, playerguid, player_account FROM petition_sign");
     if (!result)
     {
-        sLog->outString(">>  Loaded 0 Petition signs!");
+        sLog->outString(">>  加载 0 个Petition signs!");
         sLog->outString();
         return;
     }
@@ -68,7 +68,7 @@ void PetitionMgr::LoadSignatures()
         ++count;
     } while (result->NextRow());
 
-    sLog->outString(">> Loaded %d Petition signs in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载 %d 个Petition signs，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
     sLog->outString();
 }
 

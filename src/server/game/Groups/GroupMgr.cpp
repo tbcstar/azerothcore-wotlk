@@ -109,7 +109,7 @@ void GroupMgr::LoadGroups()
 
         if (!result)
         {
-            sLog->outString(">> Loaded 0 group definitions. DB table `groups` is empty!");
+            sLog->outString(">> 加载 0 个group definitions. DB表 `groups` 为空!");
             sLog->outString();
         }
         else
@@ -131,12 +131,12 @@ void GroupMgr::LoadGroups()
                 ++count;
             } while (result->NextRow());
 
-            sLog->outString(">> Loaded %u group definitions in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+            sLog->outString(">> 加载 %u 个group definitions，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
             sLog->outString();
         }
     }
 
-    sLog->outString("Loading Group members...");
+    sLog->outString("加载Group成员...");
     {
         uint32 oldMSTime = getMSTime();
 
@@ -149,7 +149,7 @@ void GroupMgr::LoadGroups()
         QueryResult result = CharacterDatabase.Query("SELECT guid, memberGuid, memberFlags, subgroup, roles FROM group_member ORDER BY guid");
         if (!result)
         {
-            sLog->outString(">> Loaded 0 group members. DB table `group_member` is empty!");
+            sLog->outString(">> 加载 0 个group成员. DB表 `group_member` 为空!");
             sLog->outString();
         }
         else
@@ -168,7 +168,7 @@ void GroupMgr::LoadGroups()
                 ++count;
             } while (result->NextRow());
 
-            sLog->outString(">> Loaded %u group members in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+            sLog->outString(">> 加载 %u 个group成员，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
             sLog->outString();
         }
     }

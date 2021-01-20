@@ -1266,7 +1266,7 @@ void SpellMgr::LoadSpellRanks()
 
     if (!result)
     {
-        sLog->outString(">> Loaded 0 spell rank records. DB table `spell_ranks` is empty.");
+        sLog->outString(">> 加载 0 个法术等级记录. DB表 `spell_ranks`为空。");
         sLog->outString();
         return;
     }
@@ -1361,7 +1361,7 @@ void SpellMgr::LoadSpellRanks()
         } while (true);
     } while (!finished);
 
-    sLog->outString(">> Loaded %u spell rank records in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载 %u 个法术等级记录，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
     sLog->outString();
 }
 
@@ -1377,7 +1377,7 @@ void SpellMgr::LoadSpellRequired()
 
     if (!result)
     {
-        sLog->outString(">> Loaded 0 spell required records. DB table `spell_required` is empty.");
+        sLog->outString(">> 加载 0 个spell required records. DB表 `spell_required`为空.");
         sLog->outString();
         return;
     }
@@ -1426,7 +1426,7 @@ void SpellMgr::LoadSpellRequired()
             mTalentSpellAdditionalSet.insert(spellId);
     } while (result->NextRow());
 
-    sLog->outString(">> Loaded %u spell required records in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载 %u 个spell required records，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
     sLog->outString();
 }
 
@@ -1464,7 +1464,7 @@ void SpellMgr::LoadSpellLearnSkills()
         }
     }
 
-    sLog->outString(">> Loaded %u Spell Learn Skills from DBC in %u ms", dbc_count, GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载 %u 个Spell Learn Skills from DBC，耗时 %u ms", dbc_count, GetMSTimeDiffToNow(oldMSTime));
     sLog->outString();
 }
 
@@ -1479,7 +1479,7 @@ void SpellMgr::LoadSpellTargetPositions()
 
     if (!result)
     {
-        sLog->outString(">> Loaded 0 spell target coordinates. DB table `spell_target_position` is empty.");
+        sLog->outString(">> 加载 0 个法术目标坐标. DB表 `spell_target_position`为空.");
         sLog->outString();
         return;
     }
@@ -1571,7 +1571,7 @@ void SpellMgr::LoadSpellTargetPositions()
         }
     }*/
 
-    sLog->outString(">> Loaded %u spell teleport coordinates in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载 %u 个法术传送坐标，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
     sLog->outString();
 }
 
@@ -1585,7 +1585,7 @@ void SpellMgr::LoadSpellGroups()
     QueryResult result = WorldDatabase.Query("SELECT id, spell_id, special_flag FROM spell_group");
     if (!result)
     {
-        sLog->outString(">> Loaded 0 spell group definitions. DB table `spell_group` is empty.");
+        sLog->outString(">> 加载 0 个spell group definitions. DB表 `spell_group`为空.");
         sLog->outString();
         return;
     }
@@ -1631,7 +1631,7 @@ void SpellMgr::LoadSpellGroups()
         ++count;
     } while (result->NextRow());
 
-    sLog->outString(">> Loaded %u spell group definitions in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载 %u 个spell group definitions，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
     sLog->outString();
 }
 
@@ -1645,7 +1645,7 @@ void SpellMgr::LoadSpellGroupStackRules()
     QueryResult result = WorldDatabase.Query("SELECT group_id, stack_rule FROM spell_group_stack_rules");
     if (!result)
     {
-        sLog->outString(">> Loaded 0 spell group stack rules. DB table `spell_group_stack_rules` is empty.");
+        sLog->outString(">> 加载 0 个spell group stack rules. DB表 `spell_group_stack_rules`为空.");
         sLog->outString();
         return;
     }
@@ -1682,7 +1682,7 @@ void SpellMgr::LoadSpellGroupStackRules()
         ++count;
     } while (result->NextRow());
 
-    sLog->outString(">> Loaded %u spell group stack rules in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载 %u 个spell group stack rules，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
     sLog->outString();
 }
 
@@ -1696,7 +1696,7 @@ void SpellMgr::LoadSpellProcEvents()
     QueryResult result = WorldDatabase.Query("SELECT entry, SchoolMask, SpellFamilyName, SpellFamilyMask0, SpellFamilyMask1, SpellFamilyMask2, procFlags, procEx, ppmRate, CustomChance, Cooldown FROM spell_proc_event");
     if (!result)
     {
-        sLog->outString(">> Loaded 0 spell proc event conditions. DB table `spell_proc_event` is empty.");
+        sLog->outString(">> 加载 0 个法术触发事件条件. DB表 `spell_proc_event`为空.");
         return;
     }
 
@@ -1769,7 +1769,7 @@ void SpellMgr::LoadSpellProcEvents()
         ++count;
     } while (result->NextRow());
 
-    sLog->outString(">> Loaded %u extra spell proc event conditions in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载 %u 个额外的法术触发事件条件，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
 }
 
 void SpellMgr::LoadSpellProcs()
@@ -1782,7 +1782,7 @@ void SpellMgr::LoadSpellProcs()
     QueryResult result = WorldDatabase.Query("SELECT spellId, schoolMask, spellFamilyName, spellFamilyMask0, spellFamilyMask1, spellFamilyMask2, typeMask, spellTypeMask, spellPhaseMask, hitMask, attributesMask, ratePerMinute, chance, cooldown, charges FROM spell_proc");
     if (!result)
     {
-        sLog->outString(">> Loaded 0 spell proc conditions and data. DB table `spell_proc` is empty.");
+        sLog->outString(">> 加载 0 个法术触发条件和数据. DB表 `spell_proc`为空.");
         sLog->outString();
         return;
     }
@@ -1906,7 +1906,7 @@ void SpellMgr::LoadSpellProcs()
         ++count;
     } while (result->NextRow());
 
-    sLog->outString(">> Loaded %u spell proc conditions and data in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载 %u 个法术触发条件和数据，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
     sLog->outString();
 }
 
@@ -1920,7 +1920,7 @@ void SpellMgr::LoadSpellBonusess()
     QueryResult result = WorldDatabase.Query("SELECT entry, direct_bonus, dot_bonus, ap_bonus, ap_dot_bonus FROM spell_bonus_data");
     if (!result)
     {
-        sLog->outString(">> Loaded 0 spell bonus data. DB table `spell_bonus_data` is empty.");
+        sLog->outString(">> 加载 0 个spell bonus data. DB表 `spell_bonus_data`为空.");
         sLog->outString();
         return;
     }
@@ -1947,7 +1947,7 @@ void SpellMgr::LoadSpellBonusess()
         ++count;
     } while (result->NextRow());
 
-    sLog->outString(">> Loaded %u extra spell bonus data in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载 %u 个额外的法术奖励数据，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
     sLog->outString();
 }
 
@@ -1961,7 +1961,7 @@ void SpellMgr::LoadSpellThreats()
     QueryResult result = WorldDatabase.Query("SELECT entry, flatMod, pctMod, apPctMod FROM spell_threat");
     if (!result)
     {
-        sLog->outString(">> Loaded 0 aggro generating spells. DB table `spell_threat` is empty.");
+        sLog->outString(">> 加载 0 个aggro generating spells. DB表 `spell_threat`为空.");
         sLog->outString();
         return;
     }
@@ -1988,7 +1988,7 @@ void SpellMgr::LoadSpellThreats()
         ++count;
     } while (result->NextRow());
 
-    sLog->outString(">> Loaded %u SpellThreatEntries in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载 %u 个SpellThreatEntries，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
     sLog->outString();
 }
 
@@ -2002,7 +2002,7 @@ void SpellMgr::LoadSpellMixology()
     QueryResult result = WorldDatabase.Query("SELECT entry, pctMod FROM spell_mixology");
     if (!result)
     {
-        sLog->outString(">> Loaded 0 mixology bonuses. DB table `spell_mixology` is empty.");
+        sLog->outString(">> 加载 0 个mixology bonuses. DB表 `spell_mixology`为空.");
         sLog->outString();
         return;
     }
@@ -2024,7 +2024,7 @@ void SpellMgr::LoadSpellMixology()
         ++count;
     } while (result->NextRow());
 
-    sLog->outString(">> Loaded %u Mixology bonuses in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载 %u 个混合药剂奖励，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
     sLog->outString();
 }
 
@@ -2046,7 +2046,7 @@ void SpellMgr::LoadSkillLineAbilityMap()
         ++count;
     }
 
-    sLog->outString(">> Loaded %u SkillLineAbility MultiMap Data in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载 %u 个SkillLineAbility MultiMap Data，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
     sLog->outString();
 }
 
@@ -2060,7 +2060,7 @@ void SpellMgr::LoadSpellPetAuras()
     QueryResult result = WorldDatabase.Query("SELECT spell, effectId, pet, aura FROM spell_pet_auras");
     if (!result)
     {
-        sLog->outString(">> Loaded 0 spell pet auras. DB table `spell_pet_auras` is empty.");
+        sLog->outString(">> 加载 0 个法术宠物光环. DB表 `spell_pet_auras`为空.");
         sLog->outString();
         return;
     }
@@ -2108,7 +2108,7 @@ void SpellMgr::LoadSpellPetAuras()
         ++count;
     } while (result->NextRow());
 
-    sLog->outString(">> Loaded %u spell pet auras in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载 %u 个法术宠物光环，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
     sLog->outString();
 }
 
@@ -2150,7 +2150,7 @@ void SpellMgr::LoadEnchantCustomAttr()
         }
     }
 
-    sLog->outString(">> Loaded %u custom enchant attributes in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载 %u 个custom enchant attributes，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
     sLog->outString();
 }
 
@@ -2164,7 +2164,7 @@ void SpellMgr::LoadSpellEnchantProcData()
     QueryResult result = WorldDatabase.Query("SELECT entry, customChance, PPMChance, procEx FROM spell_enchant_proc_data");
     if (!result)
     {
-        sLog->outString(">> Loaded 0 spell enchant proc event conditions. DB table `spell_enchant_proc_data` is empty.");
+        sLog->outString(">> 加载 0 个spell enchant proc event conditions. DB表 `spell_enchant_proc_data`为空.");
         sLog->outString();
         return;
     }
@@ -2194,7 +2194,7 @@ void SpellMgr::LoadSpellEnchantProcData()
         ++count;
     } while (result->NextRow());
 
-    sLog->outString(">> Loaded %u enchant proc data definitions in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载 %u 个enchant proc data definitions，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
     sLog->outString();
 }
 
@@ -2208,7 +2208,7 @@ void SpellMgr::LoadSpellLinked()
     QueryResult result = WorldDatabase.Query("SELECT spell_trigger, spell_effect, type FROM spell_linked_spell");
     if (!result)
     {
-        sLog->outString(">> Loaded 0 linked spells. DB table `spell_linked_spell` is empty.");
+        sLog->outString(">> 加载 0 个linked spells. DB表 `spell_linked_spell`为空.");
         sLog->outString();
         return;
     }
@@ -2247,7 +2247,7 @@ void SpellMgr::LoadSpellLinked()
         ++count;
     } while (result->NextRow());
 
-    sLog->outString(">> Loaded %u linked spells in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载 %u 个linked spells，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
     sLog->outString();
 }
 
@@ -2304,7 +2304,7 @@ void SpellMgr::LoadPetLevelupSpellMap()
         }
     }
 
-    sLog->outString(">> Loaded %u pet levelup and default spells for %u families in %u ms", count, family_count, GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载 %u 个pet levelup and default spells for %u families，耗时 %u ms", count, family_count, GetMSTimeDiffToNow(oldMSTime));
     sLog->outString();
 }
 
@@ -2388,10 +2388,10 @@ void SpellMgr::LoadPetDefaultSpells()
         }
     }
 
-    sLog->outString(">> Loaded addition spells for %u pet spell data entries in %u ms", countData, GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载额外法术给 %u 个宠物法术数据条目，耗时 %u ms", countData, GetMSTimeDiffToNow(oldMSTime));
     sLog->outString();
 
-    sLog->outString("Loading summonable creature templates...");
+    sLog->outString("加载可召唤生物模板...");
     oldMSTime = getMSTime();
 
     // different summon spells
@@ -2432,7 +2432,7 @@ void SpellMgr::LoadPetDefaultSpells()
         }
     }
 
-    sLog->outString(">> Loaded %u summonable creature templates in %u ms", countCreature, GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载 %u summonable生物模板，耗时 %u ms", countCreature, GetMSTimeDiffToNow(oldMSTime));
     sLog->outString();
 }
 
@@ -2450,7 +2450,7 @@ void SpellMgr::LoadSpellAreas()
 
     if (!result)
     {
-        sLog->outString(">> Loaded 0 spell area requirements. DB table `spell_area` is empty.");
+        sLog->outString(">> 加载 0 个spell area requirements. DB表 `spell_area`为空.");
         sLog->outString();
         return;
     }
@@ -2623,27 +2623,27 @@ void SpellMgr::LoadSpellAreas()
 
     if (sWorld->getIntConfig(CONFIG_ICC_BUFF_HORDE) > 0)
     {
-        sLog->outString(">> Using ICC buff Horde: %u", sWorld->getIntConfig(CONFIG_ICC_BUFF_HORDE));
+        sLog->outString(">> 用于 ICC buff 部落: %u", sWorld->getIntConfig(CONFIG_ICC_BUFF_HORDE));
         SpellArea spellAreaICCBuffHorde = { sWorld->getIntConfig(CONFIG_ICC_BUFF_HORDE), ICC_AREA, 0, 0, 0, ICC_RACEMASK_HORDE, Gender(2), 64, 11, 1 };
         SpellArea const* saICCBuffHorde = &mSpellAreaMap.insert(SpellAreaMap::value_type(sWorld->getIntConfig(CONFIG_ICC_BUFF_HORDE), spellAreaICCBuffHorde))->second;
         mSpellAreaForAreaMap.insert(SpellAreaForAreaMap::value_type(ICC_AREA, saICCBuffHorde));
         ++count;
     }
     else
-        sLog->outString(">> ICC buff Horde: disabled");
+        sLog->outString(">> ICC buff部落:禁用");
 
     if (sWorld->getIntConfig(CONFIG_ICC_BUFF_ALLIANCE) > 0)
     {
-        sLog->outString(">> Using ICC buff Alliance: %u", sWorld->getIntConfig(CONFIG_ICC_BUFF_ALLIANCE));
+        sLog->outString(">> 用于 ICC buff 联盟: %u", sWorld->getIntConfig(CONFIG_ICC_BUFF_ALLIANCE));
         SpellArea spellAreaICCBuffAlliance = { sWorld->getIntConfig(CONFIG_ICC_BUFF_ALLIANCE), ICC_AREA, 0, 0, 0, ICC_RACEMASK_ALLIANCE, Gender(2), 64, 11, 1 };
         SpellArea const* saICCBuffAlliance = &mSpellAreaMap.insert(SpellAreaMap::value_type(sWorld->getIntConfig(CONFIG_ICC_BUFF_ALLIANCE), spellAreaICCBuffAlliance))->second;
         mSpellAreaForAreaMap.insert(SpellAreaForAreaMap::value_type(ICC_AREA, saICCBuffAlliance));
         ++count;
     }
     else
-        sLog->outString(">> ICC buff Alliance: disabled");
+        sLog->outString(">> ICC buff联盟:禁用");
 
-    sLog->outString(">> Loaded %u spell area requirements in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载 %u 个法术区域需求，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
     sLog->outString();
 }
 
@@ -2660,7 +2660,7 @@ void SpellMgr::LoadSpellInfoStore()
             mSpellInfoMap[i] = new SpellInfo(spellEntry);
     }
 
-    sLog->outString(">> Loaded spell custom attributes in %u ms", GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载法术自定义属性，耗时 %u ms", GetMSTimeDiffToNow(oldMSTime));
     sLog->outString();
 }
 
@@ -2697,7 +2697,7 @@ void SpellMgr::LoadSpellSpecificAndAuraState()
         spellInfo->_auraState = spellInfo->LoadAuraState();
     }
 
-    sLog->outString(">> Loaded spell specific and aura state in %u ms", GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载特定的法术和光环状态，耗时 %u ms", GetMSTimeDiffToNow(oldMSTime));
     sLog->outString();
 }
 
@@ -2710,7 +2710,7 @@ void SpellMgr::LoadSpellCustomAttr()
     QueryResult result = WorldDatabase.Query("SELECT spell_id, attributes FROM spell_custom_attr");
 
     if (!result)
-        sLog->outString(">> Loaded 0 spell custom attributes from DB. DB table `spell_custom_attr` is empty.");
+        sLog->outString(">> 加载 0 个spell custom attributes from DB. DB表 `spell_custom_attr`为空.");
     else
     {
         for (count = 0; result->NextRow(); ++count)
@@ -2723,7 +2723,7 @@ void SpellMgr::LoadSpellCustomAttr()
             SpellInfo* spellInfo = _GetSpellInfo(spellId);
             if (!spellInfo)
             {
-                sLog->outString("Table `spell_custom_attr` has wrong spell (spell_id: %u), ignored.", spellId);
+                sLog->outString("表 `spell_custom_attr` 有错误的法术(spell_id: %u)，忽略。", spellId);
                 continue;
             }
 
@@ -2759,7 +2759,7 @@ void SpellMgr::LoadSpellCustomAttr()
 
             spellInfo->AttributesCu |= attributes;
         }
-        sLog->outString(">> Loaded %u spell custom attributes from DB in %u ms", count, GetMSTimeDiffToNow(customAttrTime));
+        sLog->outString(">> 加载 %u 个法术自定义属性来自DB，耗时 %u ms", count, GetMSTimeDiffToNow(customAttrTime));
     }
 
     // xinef: create talent spells set
@@ -3260,7 +3260,7 @@ void SpellMgr::LoadSpellCustomAttr()
 
     CreatureAI::FillAISpellInfo();
 
-    sLog->outString(">> Loaded spell custom attributes in %u ms", GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 法术自定义属性，耗时 %u ms", GetMSTimeDiffToNow(oldMSTime));
     sLog->outString();
 }
 
@@ -7358,6 +7358,6 @@ void SpellMgr::LoadDbcDataCorrections()
     LockEntry* key = const_cast<LockEntry*>(sLockStore.LookupEntry(36)); // 3366 Opening, allows to open without proper key
     key->Type[2] = LOCK_KEY_NONE;
 
-    sLog->outString(">> Loading spell dbc data corrections  in %u ms", GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载法术dbc数据修正，耗时 %u ms", GetMSTimeDiffToNow(oldMSTime));
     sLog->outString();
 }

@@ -49,7 +49,7 @@ namespace DisableMgr
 
         if (!result)
         {
-            sLog->outString(">> Loaded 0 disables. DB table `disables` is empty!");
+            sLog->outString(">> 加载0个disables。DB表 `disables`为空！");
             sLog->outString();
             return;
         }
@@ -198,28 +198,28 @@ namespace DisableMgr
                         {
                             case MAP_COMMON:
                                 if (flags & VMAP_DISABLE_AREAFLAG)
-                                    sLog->outString("Areaflag disabled for world map %u.", entry);
+                                    sLog->outString("world地图 %u已禁用Areaflag。", entry);
                                 if (flags & VMAP_DISABLE_LIQUIDSTATUS)
-                                    sLog->outString("Liquid status disabled for world map %u.", entry);
+                                    sLog->outString("world地图 %u已禁用Liquid状态。", entry);
                                 break;
                             case MAP_INSTANCE:
                             case MAP_RAID:
                                 if (flags & VMAP_DISABLE_HEIGHT)
-                                    sLog->outString("Height disabled for instance map %u.", entry);
+                                    sLog->outString("高度已禁用，例如地图 %u。", entry);
                                 if (flags & VMAP_DISABLE_LOS)
-                                    sLog->outString("LoS disabled for instance map %u.", entry);
+                                    sLog->outString("LoS已禁用，例如地图 %u。", entry);
                                 break;
                             case MAP_BATTLEGROUND:
                                 if (flags & VMAP_DISABLE_HEIGHT)
-                                    sLog->outString("Height disabled for battleground map %u.", entry);
+                                    sLog->outString("战场地图 %u不允许高度设置。", entry);
                                 if (flags & VMAP_DISABLE_LOS)
-                                    sLog->outString("LoS disabled for battleground map %u.", entry);
+                                    sLog->outString("战场map %u已禁用LoS。", entry);
                                 break;
                             case MAP_ARENA:
                                 if (flags & VMAP_DISABLE_HEIGHT)
-                                    sLog->outString("Height disabled for arena map %u.", entry);
+                                    sLog->outString("竞技场地图%u的高度禁用。", entry);
                                 if (flags & VMAP_DISABLE_LOS)
-                                    sLog->outString("LoS disabled for arena map %u.", entry);
+                                    sLog->outString("竞技场地图%u已禁用LoS。", entry);
                                 break;
                             default:
                                 break;
@@ -234,7 +234,7 @@ namespace DisableMgr
             ++total_count;
         } while (result->NextRow());
 
-        sLog->outString(">> Loaded %u disables in %u ms", total_count, GetMSTimeDiffToNow(oldMSTime));
+        sLog->outString(">> 加载 %u 个禁用，耗时%u ms", total_count, GetMSTimeDiffToNow(oldMSTime));
         sLog->outString();
     }
 
@@ -245,7 +245,7 @@ namespace DisableMgr
         uint32 count = m_DisableMap[DISABLE_TYPE_QUEST].size();
         if (!count)
         {
-            sLog->outString(">> Checked 0 quest disables.");
+            sLog->outString(">> 检查0个任务禁用。");
             sLog->outString();
             return;
         }
@@ -265,7 +265,7 @@ namespace DisableMgr
             ++itr;
         }
 
-        sLog->outString(">> Checked %u quest disables in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+        sLog->outString(">> 选中的 %u 任务被禁用，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
         sLog->outString();
     }
 

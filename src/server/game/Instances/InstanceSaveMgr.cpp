@@ -232,14 +232,14 @@ void InstanceSaveManager::LoadInstances()
     // Initialize instance id storage (Needs to be done after the trash has been clean out)
     sMapMgr->InitInstanceIds();
 
-    // Load reset times and clean expired instances
+    // 加载重置时间并清除过期副本
     LoadResetTimes();
 
     // pussywizard
     LoadInstanceSaves();
     LoadCharacterBinds();
 
-    sLog->outString(">> Loaded instances and binds in %u ms", GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载副本和绑定，耗时 %u ms", GetMSTimeDiffToNow(oldMSTime));
     sLog->outString();
 }
 
@@ -440,7 +440,7 @@ void InstanceSaveManager::Update()
     // pussywizard: send updated calendar and raid info
     if (resetOccurred)
     {
-        sLog->outString("Instance ID reset occurred, sending updated calendar and raid info to all players!");
+        sLog->outString("副本ID重置已开始，发送更新的日历和raid信息给所有玩家！");
         WorldPacket dummy;
         for (SessionMap::const_iterator itr = sWorld->GetAllSessions().begin(); itr != sWorld->GetAllSessions().end(); ++itr)
             if (Player* plr = itr->second->GetPlayer())

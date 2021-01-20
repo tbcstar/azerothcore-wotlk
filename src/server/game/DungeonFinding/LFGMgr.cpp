@@ -149,7 +149,7 @@ namespace lfg
             ++count;
         } while (result->NextRow());
 
-        sLog->outString(">> Loaded %u lfg dungeon rewards in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+        sLog->outString(">> 加载 %u 个lfg奖励，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
         sLog->outString();
     }
 
@@ -218,7 +218,7 @@ namespace lfg
             ++count;
         } while (result->NextRow());
 
-        sLog->outString(">> Loaded %u lfg entrance positions in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+        sLog->outString(">> 加载 %u 个lfg入口位置，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
 
         // Fill all other teleport coords from areatriggers
         for (LFGDungeonContainer::iterator itr = LfgDungeonStore.begin(); itr != LfgDungeonStore.end(); ++itr)

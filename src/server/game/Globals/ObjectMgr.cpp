@@ -387,7 +387,7 @@ void ObjectMgr::LoadCreatureLocales()
         AddLocaleString(Title, locale, data.Title);
     } while (result->NextRow());
 
-    sLog->outString(">> Loaded %lu Сreature Locale strings in %u ms", (unsigned long)_creatureLocaleStore.size(), GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载 %lu 个Сreature本地字符串，耗时 %u ms", (unsigned long)_creatureLocaleStore.size(), GetMSTimeDiffToNow(oldMSTime));
 }
 
 void ObjectMgr::LoadGossipMenuItemsLocales()
@@ -421,7 +421,7 @@ void ObjectMgr::LoadGossipMenuItemsLocales()
         AddLocaleString(BoxText, locale, data.BoxText);
     } while (result->NextRow());
 
-    sLog->outString(">> Loaded %u Gossip Menu Option Locale strings in %u ms", (uint32)_gossipMenuItemsLocaleStore.size(), GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载 %u 个Gossip菜单选项Locale字符串，耗时 %u ms", (uint32)_gossipMenuItemsLocaleStore.size(), GetMSTimeDiffToNow(oldMSTime));
 }
 
 void ObjectMgr::LoadPointOfInterestLocales()
@@ -452,7 +452,7 @@ void ObjectMgr::LoadPointOfInterestLocales()
         AddLocaleString(Name, locale, data.Name);
     } while (result->NextRow());
 
-    sLog->outString(">> Loaded %u Points Of Interest Locale strings in %u ms", (uint32)_pointOfInterestLocaleStore.size(), GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载 %u 个Points Of Interest本地字符串，耗时 %u ms", (uint32)_pointOfInterestLocaleStore.size(), GetMSTimeDiffToNow(oldMSTime));
 }
 
 void ObjectMgr::LoadCreatureTemplates()
@@ -477,7 +477,7 @@ void ObjectMgr::LoadCreatureTemplates()
 
     if (!result)
     {
-        sLog->outString(">> Loaded 0 creature template definitions. DB table `creature_template` is empty.");
+        sLog->outString(">> 加载0个creature template definitions。DB表' creature_template '为空。");
         return;
     }
 
@@ -590,7 +590,7 @@ void ObjectMgr::LoadCreatureTemplates()
         itr->second.InitializeQueryData();
     }
 
-    sLog->outString(">> Loaded %u creature definitions in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载 %u 个creature definitions，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
 }
 
 void ObjectMgr::LoadCreatureTemplateAddons()
@@ -602,7 +602,7 @@ void ObjectMgr::LoadCreatureTemplateAddons()
 
     if (!result)
     {
-        sLog->outString(">> Loaded 0 creature template addon definitions. DB table `creature_template_addon` is empty.");
+        sLog->outString(">> 加载0个creature template addon definitions。DB表' creature_template_addon '为空。");
         sLog->outString();
         return;
     }
@@ -661,7 +661,7 @@ void ObjectMgr::LoadCreatureTemplateAddons()
         ++count;
     } while (result->NextRow());
 
-    sLog->outString(">> Loaded %u creature template addons in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载 %u 个creature template addons，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
     sLog->outString();
 }
 
@@ -1014,7 +1014,7 @@ void ObjectMgr::LoadCreatureAddons()
 
     if (!result)
     {
-        sLog->outString(">> Loaded 0 creature addon definitions. DB table `creature_addon` is empty.");
+        sLog->outString(">> 载入0个生物插件definitions。DB表' creature_addon '为空。");
         sLog->outString();
         return;
     }
@@ -1080,7 +1080,7 @@ void ObjectMgr::LoadCreatureAddons()
         ++count;
     } while (result->NextRow());
 
-    sLog->outString(">> Loaded %u creature addons in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载 %u 个生物插件，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
     sLog->outString();
 }
 
@@ -1093,7 +1093,7 @@ void ObjectMgr::LoadGameObjectAddons()
 
     if (!result)
     {
-        sLog->outString(">> Loaded 0 gameobject addon definitions. DB table `gameobject_addon` is empty.");
+        sLog->outString(">> 加载0个游戏对象插件definitions。DB表`gameobject_addon`为空。");
         sLog->outString();
         return;
     }
@@ -1132,7 +1132,7 @@ void ObjectMgr::LoadGameObjectAddons()
         ++count;
     } while (result->NextRow());
 
-    sLog->outString(">> Loaded %u gameobject addons in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载 %u 个gameobject addons，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
     sLog->outString();
 }
 
@@ -1198,7 +1198,7 @@ void ObjectMgr::LoadEquipmentTemplates()
 
     if (!result)
     {
-        sLog->outString(">> Loaded 0 creature equipment templates. DB table `creature_equip_template` is empty!");
+        sLog->outString(">> 加载0个生物装备模板。DB表`creature_equip_template`为空！");
         sLog->outString();
         return;
     }
@@ -1263,7 +1263,7 @@ void ObjectMgr::LoadEquipmentTemplates()
         ++count;
     } while (result->NextRow());
 
-    sLog->outString(">> Loaded %u equipment templates in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载 %u 个装备模板，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
     sLog->outString();
 }
 
@@ -1336,7 +1336,7 @@ void ObjectMgr::LoadCreatureModelInfo()
 
     if (!result)
     {
-        sLog->outString(">> Loaded 0 creature model definitions. DB table `creature_model_info` is empty.");
+        sLog->outString(">> 加载0个生物模型definitions，DB表' creature_model_info '为空。");
         sLog->outString();
         return;
     }
@@ -1380,7 +1380,7 @@ void ObjectMgr::LoadCreatureModelInfo()
         ++count;
     } while (result->NextRow());
 
-    sLog->outString(">> Loaded %u creature model based info in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载 %u 个基于生物模型的信息，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
     sLog->outString();
 }
 
@@ -1394,7 +1394,7 @@ void ObjectMgr::LoadLinkedRespawn()
 
     if (!result)
     {
-        sLog->outErrorDb(">> Loaded 0 linked respawns. DB table `linked_respawn` is empty.");
+        sLog->outErrorDb(">> 加载 0 个linked respawns. DB表 `linked_respawn`为空.");
         sLog->outString();
         return;
     }
@@ -1565,7 +1565,7 @@ void ObjectMgr::LoadLinkedRespawn()
             _linkedRespawnStore[guid] = linkedGuid;
     } while (result->NextRow());
 
-    sLog->outString(">> Loaded " UI64FMTD " linked respawns in %u ms", uint64(_linkedRespawnStore.size()), GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载 " UI64FMTD " linked respawns in %u ms", uint64(_linkedRespawnStore.size()), GetMSTimeDiffToNow(oldMSTime));
     sLog->outString();
 }
 
@@ -1625,7 +1625,7 @@ void ObjectMgr::LoadTempSummons()
 
     if (!result)
     {
-        sLog->outString(">> Loaded 0 temp summons. DB table `creature_summon_groups` is empty.");
+        sLog->outString(">> 加载0个临时召唤，DB表' creature_summon_groups '为空。");
         return;
     }
 
@@ -1698,7 +1698,7 @@ void ObjectMgr::LoadTempSummons()
         ++count;
     } while (result->NextRow());
 
-    sLog->outString(">> Loaded %u temp summons in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载 %u 个临时召唤，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
 }
 
 void ObjectMgr::LoadCreatures()
@@ -1715,7 +1715,7 @@ void ObjectMgr::LoadCreatures()
 
     if (!result)
     {
-        sLog->outErrorDb(">> Loaded 0 creatures. DB table `creature` is empty.");
+        sLog->outErrorDb(">> 加载 0 个creatures. DB表 `creature`为空.");
         sLog->outString();
         return;
     }
@@ -1860,7 +1860,7 @@ void ObjectMgr::LoadCreatures()
         ++count;
     } while (result->NextRow());
 
-    sLog->outString(">> Loaded %u creatures in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载 %u 个生物，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
     sLog->outString();
 }
 
@@ -2045,7 +2045,7 @@ void ObjectMgr::LoadGameobjects()
 
     if (!result)
     {
-        sLog->outErrorDb(">> Loaded 0 gameobjects. DB table `gameobject` is empty.");
+        sLog->outErrorDb(">> 加载 0 个gameobjects. DB表 `gameobject`为空.");
         sLog->outString();
         return;
     }
@@ -2193,7 +2193,7 @@ void ObjectMgr::LoadGameobjects()
         ++count;
     } while (result->NextRow());
 
-    sLog->outString(">> Loaded %lu gameobjects in %u ms", (unsigned long)_gameObjectDataStore.size(), GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载 %lu 个游戏对象，耗时 %u ms", (unsigned long)_gameObjectDataStore.size(), GetMSTimeDiffToNow(oldMSTime));
     sLog->outString();
 }
 
@@ -2303,7 +2303,7 @@ void ObjectMgr::LoadItemLocales()
         AddLocaleString(Description, locale, data.Description);
     } while (result->NextRow());
 
-    sLog->outString(">> Loaded %u Item Locale strings in %u ms", (uint32)_itemLocaleStore.size(), GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">>  加载 %u 个物品本地字符串，耗时 %u ms", (uint32)_itemLocaleStore.size(), GetMSTimeDiffToNow(oldMSTime));
 }
 
 void ObjectMgr::LoadItemTemplates()
@@ -2345,7 +2345,7 @@ void ObjectMgr::LoadItemTemplates()
 
     if (!result)
     {
-        sLog->outString(">> Loaded 0 item templates. DB table `item_template` is empty.");
+        sLog->outString(">> 加载0个物品模板。DB表' item_template '为空。");
         sLog->outString();
         return;
     }
@@ -2891,7 +2891,7 @@ void ObjectMgr::LoadItemTemplates()
     for (std::set<uint32>::const_iterator itr = notFoundOutfit.begin(); itr != notFoundOutfit.end(); ++itr)
         sLog->outErrorDb("Item (Entry: %u) does not exist in `item_template` but is referenced in `CharStartOutfit.dbc`", *itr);
 
-    sLog->outString(">> Loaded %u item templates in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载 %u 个物品模板，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
     sLog->outString();
 }
 
@@ -2927,7 +2927,7 @@ void ObjectMgr::LoadItemSetNameLocales()
         AddLocaleString(Name, locale, data.Name);
     } while (result->NextRow());
 
-    sLog->outString(">> Loaded %u Item Set Name Locale strings in %u ms", uint32(_itemSetNameLocaleStore.size()), GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">>  加载 %u 个物品集名字本地字符串，耗时 %u ms", uint32(_itemSetNameLocaleStore.size()), GetMSTimeDiffToNow(oldMSTime));
 }
 
 void ObjectMgr::LoadItemSetNames()
@@ -2955,7 +2955,7 @@ void ObjectMgr::LoadItemSetNames()
 
     if (!result)
     {
-        sLog->outString(">> Loaded 0 item set names. DB table `item_set_names` is empty.");
+        sLog->outString(">> 加载0个物品集名称。DB表' item_set_names '为空。");
         sLog->outString();
         return;
     }
@@ -3010,7 +3010,7 @@ void ObjectMgr::LoadItemSetNames()
         }
     }
 
-    sLog->outString(">> Loaded %u item set names in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载 %u 个物品集名称，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
     sLog->outString();
 }
 
@@ -3027,7 +3027,7 @@ void ObjectMgr::LoadVehicleTemplateAccessories()
 
     if (!result)
     {
-        sLog->outErrorDb(">> Loaded 0 vehicle template accessories. DB table `vehicle_template_accessory` is empty.");
+        sLog->outErrorDb(">> 加载 0 个vehicle template accessories. DB表 `vehicle_template_accessory`为空.");
         sLog->outString();
         return;
     }
@@ -3066,7 +3066,7 @@ void ObjectMgr::LoadVehicleTemplateAccessories()
         ++count;
     } while (result->NextRow());
 
-    sLog->outString(">> Loaded %u Vehicle Template Accessories in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载 %u 个载具模板配件，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
     sLog->outString();
 }
 
@@ -3083,7 +3083,7 @@ void ObjectMgr::LoadVehicleAccessories()
 
     if (!result)
     {
-        sLog->outString(">> Loaded 0 Vehicle Accessories in %u ms", GetMSTimeDiffToNow(oldMSTime));
+        sLog->outString(">> 加载0个载具配件，耗时 %u ms", GetMSTimeDiffToNow(oldMSTime));
         sLog->outString();
         return;
     }
@@ -3110,7 +3110,7 @@ void ObjectMgr::LoadVehicleAccessories()
         ++count;
     } while (result->NextRow());
 
-    sLog->outString(">> Loaded %u Vehicle Accessories in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载 %u 个载具配件，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
     sLog->outString();
 }
 
@@ -3123,7 +3123,7 @@ void ObjectMgr::LoadPetLevelInfo()
 
     if (!result)
     {
-        sLog->outErrorDb(">> Loaded 0 level pet stats definitions. DB table `pet_levelstats` is empty.");
+        sLog->outErrorDb(">> 加载 0 个level pet stats definitions. DB表 `pet_levelstats`为空.");
         sLog->outString();
         return;
     }
@@ -3205,7 +3205,7 @@ void ObjectMgr::LoadPetLevelInfo()
         }
     }
 
-    sLog->outString(">> Loaded %u level pet stats definitions in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载 %u 个level pet stats definitions，耗时  %u ms", count, GetMSTimeDiffToNow(oldMSTime));
     sLog->outString();
 }
 
@@ -3266,7 +3266,7 @@ void ObjectMgr::LoadPlayerInfo()
         if (!result)
         {
             sLog->outString();
-            sLog->outErrorDb(">> Loaded 0 player create definitions. DB table `playercreateinfo` is empty.");
+            sLog->outErrorDb(">> 加载 0 个player create definitions. DB表 `playercreateinfo`为空.");
             exit(1);
         }
         else
@@ -3338,12 +3338,12 @@ void ObjectMgr::LoadPlayerInfo()
                 ++count;
             } while (result->NextRow());
 
-            sLog->outString(">> Loaded %u player create definitions in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+            sLog->outString(">> 加载 %u 个player create definitions，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
         }
     }
 
     // Load playercreate items
-    sLog->outString("Loading Player Create Items Data...");
+    sLog->outString("加载Player Create 物品数据...");
     {
         uint32 oldMSTime = getMSTime();
         //                                                0     1      2       3
@@ -3351,7 +3351,7 @@ void ObjectMgr::LoadPlayerInfo()
 
         if (!result)
         {
-            sLog->outString(">> Loaded 0 custom player create items. DB table `playercreateinfo_item` is empty.");
+            sLog->outString(">> 加载0个自定义player create 物品。DB表' playercreateinfo_item '为空。");
             sLog->outString();
         }
         else
@@ -3408,13 +3408,13 @@ void ObjectMgr::LoadPlayerInfo()
                 ++count;
             } while (result->NextRow());
 
-            sLog->outString(">> Loaded %u custom player create items in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+            sLog->outString(">> 加载 %u 个自定义player create 物品，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
             sLog->outString();
         }
     }
 
     // Load playercreate spells
-    sLog->outString("Loading Player Create Spell Data...");
+    sLog->outString("加载Player Create Spell数据...");
     {
         uint32 oldMSTime = getMSTime();
 
@@ -3423,7 +3423,7 @@ void ObjectMgr::LoadPlayerInfo()
 
         if (!result)
         {
-            sLog->outErrorDb(">> Loaded 0 player create spells. DB table `%s` is empty.", sWorld->getBoolConfig(CONFIG_START_ALL_SPELLS) ? "playercreateinfo_spell_custom" : "playercreateinfo_spell");
+            sLog->outErrorDb(">> 加载 0 个player create spells. DB表 `%s`为空.", sWorld->getBoolConfig(CONFIG_START_ALL_SPELLS) ? "playercreateinfo_spell_custom" : "playercreateinfo_spell");
         }
         else
         {
@@ -3471,12 +3471,12 @@ void ObjectMgr::LoadPlayerInfo()
                 }
             } while (result->NextRow());
 
-            sLog->outString(">> Loaded %u player create spells in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+            sLog->outString(">> 加载 %u 个player create spells，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
         }
     }
 
     // Load playercreate actions
-    sLog->outString("Loading Player Create Action Data...");
+    sLog->outString("加载Player Create Action 数据...");
     {
         uint32 oldMSTime = getMSTime();
 
@@ -3485,7 +3485,7 @@ void ObjectMgr::LoadPlayerInfo()
 
         if (!result)
         {
-            sLog->outErrorDb(">> Loaded 0 player create actions. DB table `playercreateinfo_action` is empty.");
+            sLog->outErrorDb(">> 加载 0 个player create actions. DB表 `playercreateinfo_action`为空.");
             sLog->outString();
         }
         else
@@ -3516,13 +3516,13 @@ void ObjectMgr::LoadPlayerInfo()
                 ++count;
             } while (result->NextRow());
 
-            sLog->outString(">> Loaded %u player create actions in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+            sLog->outString(">> 加载 %u 个player create actions，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
             sLog->outString();
         }
     }
 
     // Loading levels data (class only dependent)
-    sLog->outString("Loading Player Create Level HP/Mana Data...");
+    sLog->outString("加载 Player Create Level HP/Mana 数据...");
     {
         uint32 oldMSTime = getMSTime();
 
@@ -3531,7 +3531,7 @@ void ObjectMgr::LoadPlayerInfo()
 
         if (!result)
         {
-            sLog->outError(">> Loaded 0 level health/mana definitions. DB table `player_classlevelstats` is empty.");
+            sLog->outError(">> 加载 0 个level health/mana definitions. DB表 `player_classlevelstats`为空.");
             exit(1);
         }
 
@@ -3599,12 +3599,12 @@ void ObjectMgr::LoadPlayerInfo()
             }
         }
 
-        sLog->outString(">> Loaded %u level health/mana definitions in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+        sLog->outString(">> 加载 %u 个level health/mana definitions，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
         sLog->outString();
     }
 
     // Loading levels data (class/race dependent)
-    sLog->outString("Loading Player Create Level Stats Data...");
+    sLog->outString("加载玩家创建关卡统计数据...");
     {
         uint32 oldMSTime = getMSTime();
 
@@ -3613,7 +3613,7 @@ void ObjectMgr::LoadPlayerInfo()
 
         if (!result)
         {
-            sLog->outErrorDb(">> Loaded 0 level stats definitions. DB table `player_levelstats` is empty.");
+            sLog->outErrorDb(">> 加载 0 个level stats definitions. DB表 `player_levelstats`为空.");
             sLog->outString();
             exit(1);
         }
@@ -3710,12 +3710,12 @@ void ObjectMgr::LoadPlayerInfo()
             }
         }
 
-        sLog->outString(">> Loaded %u level stats definitions in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+        sLog->outString(">> 加载 %u 个等级统计定义，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
         sLog->outString();
     }
 
     // Loading xp per level data
-    sLog->outString("Loading Player Create XP Data...");
+    sLog->outString("加载玩家创建XP数据...");
     {
         uint32 oldMSTime = getMSTime();
 
@@ -3728,7 +3728,7 @@ void ObjectMgr::LoadPlayerInfo()
 
         if (!result)
         {
-            sLog->outErrorDb(">> Loaded 0 xp for level definitions. DB table `player_xp_for_level` is empty.");
+            sLog->outErrorDb(">> 加载 0 个xp for level definitions. DB表 `player_xp_for_level`为空.");
             sLog->outString();
             exit(1);
         }
@@ -3770,7 +3770,7 @@ void ObjectMgr::LoadPlayerInfo()
             }
         }
 
-        sLog->outString(">> Loaded %u xp for level definitions in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+        sLog->outString(">> 加载 %u 个xp等级定义，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
         sLog->outString();
     }
 }
@@ -3920,7 +3920,7 @@ void ObjectMgr::LoadQuests()
                          " FROM quest_template");
     if (!result)
     {
-        sLog->outErrorDb(">> Loaded 0 quests definitions. DB table `quest_template` is empty.");
+        sLog->outErrorDb(">> 加载 0 个quests definitions. DB表 `quest_template`为空.");
         sLog->outString();
         return;
     }
@@ -3962,7 +3962,7 @@ void ObjectMgr::LoadQuests()
 
     if (!result)
     {
-        sLog->outError(">> Loaded 0 quest details. DB table `quest_details` is empty.");
+        sLog->outError(">> 加载 0 个quest details. DB表 `quest_details`为空.");
     }
     else
     {
@@ -3985,7 +3985,7 @@ void ObjectMgr::LoadQuests()
 
     if (!result)
     {
-        sLog->outError(">> Loaded 0 quest request items. DB table `quest_request_items` is empty.");
+        sLog->outError(">> 加载 0 个quest request items. DB表 `quest_request_items`为空.");
     }
     else
     {
@@ -4008,7 +4008,7 @@ void ObjectMgr::LoadQuests()
 
     if (!result)
     {
-        sLog->outError(">> Loaded 0 quest reward emotes. DB table `quest_offer_reward` is empty.");
+        sLog->outError(">> 加载 0 个quest reward emotes. DB表 `quest_offer_reward`为空.");
     }
     else
     {
@@ -4033,7 +4033,7 @@ void ObjectMgr::LoadQuests()
 
     if (!result)
     {
-        sLog->outError(">> Loaded 0 quest template addons. DB table `quest_template_addon` is empty.");
+        sLog->outError(">> 加载 0 个quest template addons. DB表 `quest_template_addon`为空.");
     }
     else
     {
@@ -4624,7 +4624,7 @@ void ObjectMgr::LoadQuests()
         }
     }
 
-    sLog->outString(">> Loaded %lu quests definitions in %u ms", (unsigned long)_questTemplates.size(), GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载 %lu 个任务定义。耗时 %u ms", (unsigned long)_questTemplates.size(), GetMSTimeDiffToNow(oldMSTime));
     sLog->outString();
 }
 
@@ -4662,7 +4662,7 @@ void ObjectMgr::LoadQuestLocales()
             AddLocaleString(fields[i + 7].GetString(), locale, data.ObjectiveText[i]);
     } while (result->NextRow());
 
-    sLog->outString(">> Loaded %u Quest Locale strings in %u ms", (uint32)_questLocaleStore.size(), GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载 %u 个任务本地字符串，耗时 %u ms", (uint32)_questLocaleStore.size(), GetMSTimeDiffToNow(oldMSTime));
 }
 
 void ObjectMgr::LoadScripts(ScriptsType type)
@@ -4680,7 +4680,7 @@ void ObjectMgr::LoadScripts(ScriptsType type)
     if (sScriptMgr->IsScriptScheduled())                    // function cannot be called when scripts are in use.
         return;
 
-    sLog->outString("Loading %s...", tableName.c_str());
+    sLog->outString("加载 %s...", tableName.c_str());
 
     scripts->clear();                                       // need for reload support
 
@@ -4690,7 +4690,7 @@ void ObjectMgr::LoadScripts(ScriptsType type)
 
     if (!result)
     {
-        sLog->outString(">> Loaded 0 script definitions. DB table `%s` is empty!", tableName.c_str());
+        sLog->outString(">> 加载 0 个script definitions. DB表`%s` 为空!", tableName.c_str());
         sLog->outString();
         return;
     }
@@ -4975,7 +4975,7 @@ void ObjectMgr::LoadScripts(ScriptsType type)
         ++count;
     } while (result->NextRow());
 
-    sLog->outString(">> Loaded %u script definitions in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载 %u 个script definitions，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
     sLog->outString();
 }
 
@@ -5083,7 +5083,7 @@ void ObjectMgr::LoadSpellScriptNames()
 
     if (!result)
     {
-        sLog->outString(">> Loaded 0 spell script names. DB table `spell_script_names` is empty!");
+        sLog->outString(">> 加载 0 个spell脚本名称。 DB表 `spell_script_names`为空！");
         sLog->outString();
         return;
     }
@@ -5129,7 +5129,7 @@ void ObjectMgr::LoadSpellScriptNames()
         ++count;
     } while (result->NextRow());
 
-    sLog->outString(">> Loaded %u spell script names in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载 %u 个spell脚本名称，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
     sLog->outString();
 }
 
@@ -5139,7 +5139,7 @@ void ObjectMgr::ValidateSpellScripts()
 
     if (_spellScriptsStore.empty())
     {
-        sLog->outString(">> Validated 0 scripts.");
+        sLog->outString(">> 验证0个脚本。");
         sLog->outString();
         return;
     }
@@ -5187,7 +5187,7 @@ void ObjectMgr::ValidateSpellScripts()
         ++count;
     }
 
-    sLog->outString(">> Validated %u scripts in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 验证 %u 个scripts，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
     sLog->outString();
 }
 
@@ -5212,7 +5212,7 @@ void ObjectMgr::LoadPageTexts()
 
     if (!result)
     {
-        sLog->outString(">> Loaded 0 page texts. DB table `page_text` is empty!");
+        sLog->outString(">> 加载 0 个页面文本。 DB表`page_text`为空！");
         sLog->outString();
         return;
     }
@@ -5240,7 +5240,7 @@ void ObjectMgr::LoadPageTexts()
         }
     }
 
-    sLog->outString(">> Loaded %u page texts in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载 %u 个页面文本，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
     sLog->outString();
 }
 
@@ -5279,7 +5279,7 @@ void ObjectMgr::LoadPageTextLocales()
         AddLocaleString(Text, locale, data.Text);
     } while (result->NextRow());
 
-    sLog->outString(">> Loaded %u Page Text Locale strings in %u ms", (uint32)_pageTextLocaleStore.size(), GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载 %u 个页面文本本地字符串，耗时 %u ms", (uint32)_pageTextLocaleStore.size(), GetMSTimeDiffToNow(oldMSTime));
 }
 
 void ObjectMgr::LoadInstanceTemplate()
@@ -5291,7 +5291,7 @@ void ObjectMgr::LoadInstanceTemplate()
 
     if (!result)
     {
-        sLog->outString(">> Loaded 0 instance templates. DB table `page_text` is empty!");
+        sLog->outString(">> 加载 0 个副本模板。 DB表`page_text`为空!");
         sLog->outString();
         return;
     }
@@ -5320,7 +5320,7 @@ void ObjectMgr::LoadInstanceTemplate()
         ++count;
     } while (result->NextRow());
 
-    sLog->outString(">> Loaded %u instance templates in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载 %u 个副本模板，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
     sLog->outString();
 }
 
@@ -5341,7 +5341,7 @@ void ObjectMgr::LoadInstanceEncounters()
     QueryResult result = WorldDatabase.Query("SELECT entry, creditType, creditEntry, lastEncounterDungeon FROM instance_encounters");
     if (!result)
     {
-        sLog->outErrorDb(">> Loaded 0 instance encounters, table is empty!");
+        sLog->outErrorDb(">> 加载 0 个instance encounters, table is empty!");
         sLog->outString();
         return;
     }
@@ -5414,7 +5414,7 @@ void ObjectMgr::LoadInstanceEncounters()
         ++count;
     } while (result->NextRow());
 
-    sLog->outString(">> Loaded %u instance encounters in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载 %u 个instance encounters，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
     sLog->outString();
 }
 
@@ -5443,7 +5443,7 @@ void ObjectMgr::LoadGossipText()
 
     if (!result)
     {
-        sLog->outErrorDb(">> Loaded 0 npc texts, table is empty!");
+        sLog->outErrorDb(">> 加载 0 个npc texts, table is empty!");
         sLog->outString();
         return;
     }
@@ -5498,7 +5498,7 @@ void ObjectMgr::LoadGossipText()
         count++;
     } while (result->NextRow());
 
-    sLog->outString(">> Loaded %u npc texts in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载 %u 个npc文本，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
     sLog->outString();
 }
 
@@ -5535,7 +5535,7 @@ void ObjectMgr::LoadNpcTextLocales()
         }
     } while (result->NextRow());
 
-    sLog->outString(">> Loaded %u Npc Text Locale strings in %u ms", (uint32)_npcTextLocaleStore.size(), GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载 %u 个Npc文本本地字符串，耗时 %u ms", (uint32)_npcTextLocaleStore.size(), GetMSTimeDiffToNow(oldMSTime));
 }
 
 void ObjectMgr::ReturnOrDeleteOldMails(bool serverUp)
@@ -5658,7 +5658,7 @@ void ObjectMgr::ReturnOrDeleteOldMails(bool serverUp)
         ++deletedCount;
     } while (result->NextRow());
 
-    sLog->outString(">> Processed %u expired mails: %u deleted and %u returned in %u ms", deletedCount + returnedCount, deletedCount, returnedCount, GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 已处理的过期邮件%u: %u 个删除和 %u 个返回，耗时 %u ms", deletedCount + returnedCount, deletedCount, returnedCount, GetMSTimeDiffToNow(oldMSTime));
     sLog->outString();
 }
 
@@ -5672,7 +5672,7 @@ void ObjectMgr::LoadQuestAreaTriggers()
 
     if (!result)
     {
-        sLog->outString(">> Loaded 0 quest trigger points. DB table `areatrigger_involvedrelation` is empty.");
+        sLog->outString(">> 加载0个任务触发点，DB表`areatrigger_involvedrelation`为空。");
         sLog->outString();
         return;
     }
@@ -5716,7 +5716,7 @@ void ObjectMgr::LoadQuestAreaTriggers()
         _questAreaTriggerStore[trigger_ID] = quest_ID;
     } while (result->NextRow());
 
-    sLog->outString(">> Loaded %u quest trigger points in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载 %u 个任务触发点，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
     sLog->outString();
 }
 
@@ -5746,7 +5746,7 @@ void ObjectMgr::LoadQuestOfferRewardLocale()
         AddLocaleString(fields[2].GetString(), locale, data.RewardText);
     } while (result->NextRow());
 
-    sLog->outString(">> Loaded %lu Quest Offer Reward locale strings in %u ms", _questOfferRewardLocaleStore.size(), GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载 %lu 个任务提供奖励本地字符串，耗时 %u ms", _questOfferRewardLocaleStore.size(), GetMSTimeDiffToNow(oldMSTime));
 }
 
 void ObjectMgr::LoadQuestRequestItemsLocale()
@@ -5775,7 +5775,7 @@ void ObjectMgr::LoadQuestRequestItemsLocale()
         AddLocaleString(fields[2].GetString(), locale, data.CompletionText);
     } while (result->NextRow());
 
-    sLog->outString(">> Loaded %lu Quest Request Items locale strings in %u ms", _questRequestItemsLocaleStore.size(), GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载 %lu 个任务需求物品本地字符串，耗时 %u ms", _questRequestItemsLocaleStore.size(), GetMSTimeDiffToNow(oldMSTime));
 }
 
 void ObjectMgr::LoadTavernAreaTriggers()
@@ -5788,7 +5788,7 @@ void ObjectMgr::LoadTavernAreaTriggers()
 
     if (!result)
     {
-        sLog->outString(">> Loaded 0 tavern triggers. DB table `areatrigger_tavern` is empty.");
+        sLog->outString(">> 加载0个酒馆触发器。DB表`areatrigger_tavern` 为空。");
         sLog->outString();
         return;
     }
@@ -5813,7 +5813,7 @@ void ObjectMgr::LoadTavernAreaTriggers()
         _tavernAreaTriggerStore.insert(Trigger_ID);
     } while (result->NextRow());
 
-    sLog->outString(">> Loaded %u tavern triggers in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载 %u 个旅店触发器，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
     sLog->outString();
 }
 
@@ -5826,7 +5826,7 @@ void ObjectMgr::LoadAreaTriggerScripts()
 
     if (!result)
     {
-        sLog->outString(">> Loaded 0 areatrigger scripts. DB table `areatrigger_scripts` is empty.");
+        sLog->outString(">> 加载 0 个areatrigger 脚本. DB表 `areatrigger_scripts` 为空。");
         sLog->outString();
         return;
     }
@@ -5851,7 +5851,7 @@ void ObjectMgr::LoadAreaTriggerScripts()
         _areaTriggerScriptStore[Trigger_ID] = GetScriptId(scriptName);
     } while (result->NextRow());
 
-    sLog->outString(">> Loaded %u areatrigger scripts in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载 %u 个areatrigger 脚本，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
     sLog->outString();
 }
 
@@ -5969,7 +5969,7 @@ void ObjectMgr::LoadAreaTriggers()
 
     if (!result)
     {
-        sLog->outString(">> Loaded 0 area trigger definitions. DB table `areatrigger` is empty.");
+        sLog->outString(">> 加载 0 个区域触发 definitions. DB表`areatrigger`为空。");
         sLog->outString();
         return;
     }
@@ -6005,7 +6005,7 @@ void ObjectMgr::LoadAreaTriggers()
         _areaTriggerStore[at.entry] = at;
     } while (result->NextRow());
 
-    sLog->outString(">> Loaded %u area trigger definitions in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载 %u 个area trigger definitions，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
     sLog->outString();
 }
 
@@ -6020,7 +6020,7 @@ void ObjectMgr::LoadAreaTriggerTeleports()
 
     if (!result)
     {
-        sLog->outString(">> Loaded 0 area trigger teleport definitions. DB table `areatrigger_teleport` is empty.");
+        sLog->outString(">> 加载 0 个area trigger teleport definitions. DB表`areatrigger_teleport`为空。");
         sLog->outString();
         return;
     }
@@ -6066,7 +6066,7 @@ void ObjectMgr::LoadAreaTriggerTeleports()
         _areaTriggerTeleportStore[Trigger_ID] = at;
     } while (result->NextRow());
 
-    sLog->outString(">> Loaded %u area trigger teleport definitions in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载 %u 个area trigger teleport definitions，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
     sLog->outString();
 }
 
@@ -6086,7 +6086,7 @@ void ObjectMgr::LoadAccessRequirements()
     QueryResult result = WorldDatabase.Query("SELECT mapid, difficulty, level_min, level_max, item, item2, quest_done_A, quest_done_H, completed_achievement, quest_failed_text, item_level FROM access_requirement");
     if (!result)
     {
-        sLog->outString(">> Loaded 0 access requirement definitions. DB table `access_requirement` is empty.");
+        sLog->outString(">> 加载 0 个access requirement definitions. DB表 `access_requirement` 为空。");
         sLog->outString();
         return;
     }
@@ -6165,7 +6165,7 @@ void ObjectMgr::LoadAccessRequirements()
         _accessRequirementStore[requirement_ID] = ar;
     } while (result->NextRow());
 
-    sLog->outString(">> Loaded %u access requirement definitions in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载 %u 个access requirement definitions，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
     sLog->outString();
 }
 
@@ -6435,7 +6435,7 @@ void ObjectMgr::LoadGameObjectLocales()
         AddLocaleString(CastBarCaption, locale, data.CastBarCaption);
     } while (result->NextRow());
 
-    sLog->outString(">> Loaded %u Gameobject Locale strings in %u ms", (uint32)_gameObjectLocaleStore.size(), GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载 %u 个游戏对象本地字符串，耗时 %u ms", (uint32)_gameObjectLocaleStore.size(), GetMSTimeDiffToNow(oldMSTime));
 }
 
 inline void CheckGOLockId(GameObjectTemplate const* goInfo, uint32 dataN, uint32 N)
@@ -6511,7 +6511,7 @@ void ObjectMgr::LoadGameObjectTemplate()
 
     if (!result)
     {
-        sLog->outString(">> Loaded 0 gameobject definitions. DB table `gameobject_template` is empty.");
+        sLog->outString(">> 加载 0 个gameobject definitions. DB 表`gameobject_template` 为空。");
         sLog->outString();
         return;
     }
@@ -6678,7 +6678,7 @@ void ObjectMgr::LoadGameObjectTemplate()
         ++count;
     } while (result->NextRow());
 
-    sLog->outString(">> Loaded %u game object templates in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载 %u 个游戏对象模板，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
     sLog->outString();
 }
 
@@ -6691,7 +6691,7 @@ void ObjectMgr::LoadGameObjectTemplateAddons()
 
     if (!result)
     {
-        sLog->outString(">> Loaded 0 gameobject template addon definitions. DB table `gameobject_template_addon` is empty.");
+        sLog->outString(">> 加载 0 个gameobject template addon definitions. DB表 `gameobject_template_addon`为空.");
         sLog->outString();
         return;
     }
@@ -6742,7 +6742,7 @@ void ObjectMgr::LoadGameObjectTemplateAddons()
         ++count;
     } while (result->NextRow());
 
-    sLog->outString(">> Loaded %u game object template addons in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载 %u 个游戏对象模板插件，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
     sLog->outString();
 }
 
@@ -6754,7 +6754,7 @@ void ObjectMgr::LoadExplorationBaseXP()
 
     if (!result)
     {
-        sLog->outErrorDb(">> Loaded 0 BaseXP definitions. DB table `exploration_basexp` is empty.");
+        sLog->outErrorDb(">> 加载 0 个BaseXP definitions. DB表 `exploration_basexp`为空.");
         sLog->outString();
         return;
     }
@@ -6770,7 +6770,7 @@ void ObjectMgr::LoadExplorationBaseXP()
         ++count;
     } while (result->NextRow());
 
-    sLog->outString(">> Loaded %u BaseXP definitions in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载 %u 个BaseXP definitions，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
     sLog->outString();
 }
 
@@ -6794,7 +6794,7 @@ void ObjectMgr::LoadPetNames()
 
     if (!result)
     {
-        sLog->outString(">> Loaded 0 pet name parts. DB table `pet_name_generation` is empty!");
+        sLog->outString(">> 加载 0 个pet name parts. DB表 `pet_name_generation` 为空!");
         sLog->outString();
         return;
     }
@@ -6814,7 +6814,7 @@ void ObjectMgr::LoadPetNames()
         ++count;
     } while (result->NextRow());
 
-    sLog->outString(">> Loaded %u pet name parts in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载 %u 个pet name parts，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
     sLog->outString();
 }
 
@@ -6829,7 +6829,7 @@ void ObjectMgr::LoadPetNumber()
         _hiPetNumber = fields[0].GetUInt32() + 1;
     }
 
-    sLog->outString(">> Loaded the max pet number: %d in %u ms", _hiPetNumber - 1, GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载最大宠物数量: %d ,耗时 %u ms", _hiPetNumber - 1, GetMSTimeDiffToNow(oldMSTime));
     sLog->outString();
 }
 
@@ -6864,7 +6864,7 @@ void ObjectMgr::LoadCorpses()
     PreparedQueryResult result = CharacterDatabase.Query(CharacterDatabase.GetPreparedStatement(CHAR_SEL_CORPSES));
     if (!result)
     {
-        sLog->outString(">> Loaded 0 corpses. DB table `corpse` is empty.");
+        sLog->outString(">> 加载 0 个corpses. DB表 `corpse`为空.");
         sLog->outString();
         return;
     }
@@ -6892,7 +6892,7 @@ void ObjectMgr::LoadCorpses()
         ++count;
     } while (result->NextRow());
 
-    sLog->outString(">> Loaded %u corpses in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载 %u 个尸体，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
     sLog->outString();
 }
 
@@ -6980,7 +6980,7 @@ void ObjectMgr::LoadReputationRewardRate()
         ++count;
     } while (result->NextRow());
 
-    sLog->outString(">> Loaded %u reputation_reward_rate in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载 %u 个reputation_reward_rate,耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
 }
 
 void ObjectMgr::LoadReputationOnKill()
@@ -7000,7 +7000,7 @@ void ObjectMgr::LoadReputationOnKill()
 
     if (!result)
     {
-        sLog->outErrorDb(">> Loaded 0 creature award reputation definitions. DB table `creature_onkill_reputation` is empty.");
+        sLog->outErrorDb(">> 加载 0 个creature award reputation definitions. DB表 `creature_onkill_reputation`为空.");
         sLog->outString();
         return;
     }
@@ -7053,7 +7053,7 @@ void ObjectMgr::LoadReputationOnKill()
         ++count;
     } while (result->NextRow());
 
-    sLog->outString(">> Loaded %u creature award reputation definitions in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载 %u 个creature award reputation definitions，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
     sLog->outString();
 }
 
@@ -7068,7 +7068,7 @@ void ObjectMgr::LoadReputationSpilloverTemplate()
 
     if (!result)
     {
-        sLog->outString(">> Loaded `reputation_spillover_template`, table is empty.");
+        sLog->outString(">> 加载 `reputation_spillover_template`, 表为空.");
         sLog->outString();
         return;
     }
@@ -7164,7 +7164,7 @@ void ObjectMgr::LoadReputationSpilloverTemplate()
         ++count;
     } while (result->NextRow());
 
-    sLog->outString(">> Loaded %u reputation_spillover_template in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载 %u 个reputation_spillover_template，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
     sLog->outString();
 }
 
@@ -7181,7 +7181,7 @@ void ObjectMgr::LoadPointsOfInterest()
 
     if (!result)
     {
-        sLog->outErrorDb(">> Loaded 0 Points of Interest definitions. DB table `points_of_interest` is empty.");
+        sLog->outErrorDb(">> 加载 0 个Points of Interest definitions. DB表 `points_of_interest`为空.");
         sLog->outString();
         return;
     }
@@ -7212,7 +7212,7 @@ void ObjectMgr::LoadPointsOfInterest()
         ++count;
     } while (result->NextRow());
 
-    sLog->outString(">> Loaded %u Points of Interest definitions in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载 %u 个Points of Interest definitions，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
     sLog->outString();
 }
 
@@ -7229,7 +7229,7 @@ void ObjectMgr::LoadQuestPOI()
 
     if (!result)
     {
-        sLog->outErrorDb(">> Loaded 0 quest POI definitions. DB table `quest_poi` is empty.");
+        sLog->outErrorDb(">> 加载 0 个quest POI definitions. DB表 `quest_poi`为空.");
         sLog->outString();
         return;
     }
@@ -7288,7 +7288,7 @@ void ObjectMgr::LoadQuestPOI()
         ++count;
     } while (result->NextRow());
 
-    sLog->outString(">> Loaded %u quest POI definitions in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载 %u 个quest POI definitions，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
     sLog->outString();
 }
 
@@ -7302,7 +7302,7 @@ void ObjectMgr::LoadNPCSpellClickSpells()
 
     if (!result)
     {
-        sLog->outErrorDb(">> Loaded 0 spellclick spells. DB table `npc_spellclick_spells` is empty.");
+        sLog->outErrorDb(">> 加载 0 个spellclick spells. DB表 `npc_spellclick_spells`为空.");
         sLog->outString();
         return;
     }
@@ -7355,7 +7355,7 @@ void ObjectMgr::LoadNPCSpellClickSpells()
         }
     }
 
-    sLog->outString(">> Loaded %u spellclick definitions in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载 %u 个spellclick definitions，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
     sLog->outString();
 }
 
@@ -7405,7 +7405,7 @@ void ObjectMgr::LoadQuestRelationsHelper(QuestRelations& map, std::string const&
 
     if (!result)
     {
-        sLog->outErrorDb(">> Loaded 0 quest relations from `%s`, table is empty.", table.c_str());
+        sLog->outErrorDb(">> 加载 0 个quest relations from `%s`, table is empty.", table.c_str());
         sLog->outString();
         return;
     }
@@ -7434,7 +7434,7 @@ void ObjectMgr::LoadQuestRelationsHelper(QuestRelations& map, std::string const&
         ++count;
     } while (result->NextRow());
 
-    sLog->outString(">> Loaded %u quest relations from %s in %u ms", count, table.c_str(), GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 从 %s 加载 %u 个任务关系，耗时 %u ms", count, table.c_str(), GetMSTimeDiffToNow(oldMSTime));
     sLog->outString();
 }
 
@@ -7504,7 +7504,7 @@ void ObjectMgr::LoadReservedPlayersNames()
 
     if (!result)
     {
-        sLog->outString(">> Loaded 0 reserved player names. DB table `reserved_name` is empty!");
+        sLog->outString(">> 加载 0 个reserved player names. DB表 `reserved_name` 为空!");
         sLog->outString();
         return;
     }
@@ -7530,7 +7530,7 @@ void ObjectMgr::LoadReservedPlayersNames()
         ++count;
     } while (result->NextRow());
 
-    sLog->outString(">> Loaded %u reserved player names in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载 %u 个保留玩家的名字，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
     sLog->outString();
 }
 
@@ -7705,7 +7705,7 @@ void ObjectMgr::LoadGameObjectForQuests()
 
     if (sObjectMgr->GetGameObjectTemplates()->empty())
     {
-        sLog->outString(">> Loaded 0 GameObjects for quests");
+        sLog->outString(">> 加载 0 个游戏对象给任务");
         sLog->outString();
         return;
     }
@@ -7768,7 +7768,7 @@ void ObjectMgr::LoadGameObjectForQuests()
         }
     }
 
-    sLog->outString(">> Loaded %u GameObjects for quests in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载 %u 个游戏对象给任务，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
     sLog->outString();
 }
 
@@ -7780,7 +7780,7 @@ bool ObjectMgr::LoadAcoreStrings()
     QueryResult result = WorldDatabase.PQuery("SELECT entry, content_default, locale_koKR, locale_frFR, locale_deDE, locale_zhCN, locale_zhTW, locale_esES, locale_esMX, locale_ruRU FROM acore_string");
     if (!result)
     {
-        sLog->outString(">> Loaded 0 acore strings. DB table `acore_strings` is empty.");
+        sLog->outString(">> 加载 0 个acore strings. DB表 `acore_strings`为空.");
         sLog->outString();
         return false;
     }
@@ -7799,7 +7799,7 @@ bool ObjectMgr::LoadAcoreStrings()
             AddLocaleString(fields[i + 1].GetString(), LocaleConstant(i), data.Content);
     } while (result->NextRow());
 
-    sLog->outString(">> Loaded %u acore strings in %u ms", (uint32)_acoreStringStore.size(), GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载 %u 个acore strings ，耗时 %u ms", (uint32)_acoreStringStore.size(), GetMSTimeDiffToNow(oldMSTime));
     sLog->outString();
 
     return true;
@@ -7830,7 +7830,7 @@ void ObjectMgr::LoadFishingBaseSkillLevel()
 
     if (!result)
     {
-        sLog->outErrorDb(">> Loaded 0 areas for fishing base skill level. DB table `skill_fishing_base_level` is empty.");
+        sLog->outErrorDb(">> 加载 0 个钓鱼区域基本技能等级. DB表 `skill_fishing_base_level`为空.");
         sLog->outString();
         return;
     }
@@ -7854,7 +7854,7 @@ void ObjectMgr::LoadFishingBaseSkillLevel()
         ++count;
     } while (result->NextRow());
 
-    sLog->outString(">> Loaded %u areas for fishing base skill level in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载 %u 个钓鱼区域基本技能等级，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
     sLog->outString();
 }
 
@@ -7869,7 +7869,7 @@ void ObjectMgr::ChangeFishingBaseSkillLevel(uint32 entry, int32 skill)
 
     _fishingBaseForAreaStore[entry] = skill;
 
-    sLog->outString(">> Fishing base skill level of area %u changed to %u", entry, skill);
+    sLog->outString(">> 区域 %u 的钓鱼基础技能等级改为 %u", entry, skill);
     sLog->outString();
 }
 
@@ -7975,7 +7975,7 @@ void ObjectMgr::LoadGameTele()
 
     if (!result)
     {
-        sLog->outErrorDb(">> Loaded 0 GameTeleports. DB table `game_tele` is empty!");
+        sLog->outErrorDb(">> 加载 0 个GameTeleports. DB表 `game_tele` 为空!");
         sLog->outString();
         return;
     }
@@ -8016,7 +8016,7 @@ void ObjectMgr::LoadGameTele()
         ++count;
     } while (result->NextRow());
 
-    sLog->outString(">> Loaded %u GameTeleports in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载 %u 个GameTeleports,耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
     sLog->outString();
 }
 
@@ -8115,7 +8115,7 @@ void ObjectMgr::LoadMailLevelRewards()
 
     if (!result)
     {
-        sLog->outErrorDb(">> Loaded 0 level dependent mail rewards. DB table `mail_level_reward` is empty.");
+        sLog->outErrorDb(">> 加载 0 个level dependent mail rewards. DB表 `mail_level_reward`为空.");
         sLog->outString();
         return;
     }
@@ -8160,7 +8160,7 @@ void ObjectMgr::LoadMailLevelRewards()
         ++count;
     } while (result->NextRow());
 
-    sLog->outString(">> Loaded %u level dependent mail rewards in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载 %u 个level dependent mail rewards，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
     sLog->outString();
 }
 
@@ -8255,7 +8255,7 @@ void ObjectMgr::LoadTrainerSpell()
 
     if (!result)
     {
-        sLog->outErrorDb(">>  Loaded 0 Trainers. DB table `npc_trainer` is empty!");
+        sLog->outErrorDb(">>  Loaded 0 Trainers. DB表 `npc_trainer` 为空!");
         sLog->outString();
         return;
     }
@@ -8278,7 +8278,7 @@ void ObjectMgr::LoadTrainerSpell()
         ++count;
     } while (result->NextRow());
 
-    sLog->outString(">> Loaded %d Trainers in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载 %d 个训练师，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
     sLog->outString();
 }
 
@@ -8336,7 +8336,7 @@ void ObjectMgr::LoadVendors()
     if (!result)
     {
         sLog->outString();
-        sLog->outErrorDb(">>  Loaded 0 Vendors. DB table `npc_vendor` is empty!");
+        sLog->outErrorDb(">>  Loaded 0 Vendors. DB表 `npc_vendor` 为空!");
         return;
     }
 
@@ -8368,7 +8368,7 @@ void ObjectMgr::LoadVendors()
         }
     } while (result->NextRow());
 
-    sLog->outString(">> Loaded %d Vendors in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载 %d 个供应商，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
     sLog->outString();
 }
 
@@ -8382,7 +8382,7 @@ void ObjectMgr::LoadGossipMenu()
 
     if (!result)
     {
-        sLog->outErrorDb(">> Loaded 0 gossip_menu entries. DB table `gossip_menu` is empty!");
+        sLog->outErrorDb(">> 加载 0 个gossip_menu entries. DB表 `gossip_menu` 为空!");
         sLog->outString();
         return;
     }
@@ -8405,7 +8405,7 @@ void ObjectMgr::LoadGossipMenu()
         _gossipMenusStore.insert(GossipMenusContainer::value_type(gMenu.MenuID, gMenu));
     } while (result->NextRow());
 
-    sLog->outString(">> Loaded %u gossip_menu entries in %u ms", (uint32)_gossipMenusStore.size(), GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载 %u 个gossip_menu 记录，耗时 %u ms", (uint32)_gossipMenusStore.size(), GetMSTimeDiffToNow(oldMSTime));
     sLog->outString();
 }
 
@@ -8422,7 +8422,7 @@ void ObjectMgr::LoadGossipMenuItems()
 
     if (!result)
     {
-        sLog->outErrorDb(">> Loaded 0 gossip_menu_option IDs. DB table `gossip_menu_option` is empty!");
+        sLog->outErrorDb(">> 加载 0 个gossip_menu_option IDs. DB表 `gossip_menu_option` 为空!");
         sLog->outString();
         return;
     }
@@ -8477,7 +8477,7 @@ void ObjectMgr::LoadGossipMenuItems()
         _gossipMenuItemsStore.insert(GossipMenuItemsContainer::value_type(gMenuItem.MenuID, gMenuItem));
     } while (result->NextRow());
 
-    sLog->outString(">> Loaded %u gossip_menu_option entries in %u ms", uint32(_gossipMenuItemsStore.size()), GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载 %u 个gossip_menu_option 记录，耗时 %u ms", uint32(_gossipMenuItemsStore.size()), GetMSTimeDiffToNow(oldMSTime));
     sLog->outString();
 }
 
@@ -8648,7 +8648,7 @@ void ObjectMgr::LoadScriptNames()
     } while (result->NextRow());
 
     std::sort(_scriptNamesStore.begin(), _scriptNamesStore.end());
-    sLog->outString(">> Loaded %d Script Names in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载 %d 个Script Names，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
     sLog->outString();
 }
 
@@ -8676,7 +8676,7 @@ void ObjectMgr::LoadBroadcastTexts()
     QueryResult result = WorldDatabase.Query("SELECT ID, Language, MaleText, FemaleText, EmoteID0, EmoteID1, EmoteID2, EmoteDelay0, EmoteDelay1, EmoteDelay2, SoundId, Unk1, Unk2 FROM broadcast_text");
     if (!result)
     {
-        sLog->outString(">> Loaded 0 broadcast texts. DB table `broadcast_text` is empty.");
+        sLog->outString(">> 加载 0 个broadcast texts. DB表 `broadcast_text`为空.");
         sLog->outString();
         return;
     }
@@ -8748,7 +8748,7 @@ void ObjectMgr::LoadBroadcastTexts()
         _broadcastTextStore[bct.Id] = bct;
     } while (result->NextRow());
 
-    sLog->outString(">> Loaded " SZFMTD " broadcast texts in %u ms", _broadcastTextStore.size(), GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载 " SZFMTD " broadcast texts，耗时 %u ms", _broadcastTextStore.size(), GetMSTimeDiffToNow(oldMSTime));
     sLog->outString();
 }
 
@@ -8761,7 +8761,7 @@ void ObjectMgr::LoadBroadcastTextLocales()
 
     if (!result)
     {
-        sLog->outString(">> Loaded 0 broadcast text locales. DB table `broadcast_text_locale` is empty.");
+        sLog->outString(">> 加载 0 个本地 broadcast text . DB表 `broadcast_text_locale`为空.");
         sLog->outString();
         return;
     }
@@ -8790,7 +8790,7 @@ void ObjectMgr::LoadBroadcastTextLocales()
         AddLocaleString(FemaleText, locale, bct->second.FemaleText);
     } while (result->NextRow());
 
-    sLog->outString(">> Loaded %u Broadcast Text Locales in %u ms", uint32(_broadcastTextStore.size()), GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载 %u 个本地 Broadcast Text，耗时 %u ms", uint32(_broadcastTextStore.size()), GetMSTimeDiffToNow(oldMSTime));
     sLog->outString();
 }
 
@@ -8828,7 +8828,7 @@ void ObjectMgr::LoadCreatureClassLevelStats()
 
     if (!result)
     {
-        sLog->outString(">> Loaded 0 creature base stats. DB table `creature_classlevelstats` is empty.");
+        sLog->outString(">> 加载 0 个creature base stats. DB表 `creature_classlevelstats`为空.");
         sLog->outString();
         return;
     }
@@ -8899,7 +8899,7 @@ void ObjectMgr::LoadCreatureClassLevelStats()
         }
     }
 
-    sLog->outString(">> Loaded %u creature base stats in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载 %u 个生物基础数据，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
     sLog->outString();
 }
 
@@ -8911,7 +8911,7 @@ void ObjectMgr::LoadFactionChangeAchievements()
 
     if (!result)
     {
-        sLog->outErrorDb(">> Loaded 0 faction change achievement pairs. DB table `player_factionchange_achievement` is empty.");
+        sLog->outErrorDb(">> 加载 0 个faction change achievement pairs. DB表 `player_factionchange_achievement`为空.");
         sLog->outString();
         return;
     }
@@ -8935,7 +8935,7 @@ void ObjectMgr::LoadFactionChangeAchievements()
         ++count;
     } while (result->NextRow());
 
-    sLog->outString(">> Loaded %u faction change achievement pairs in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载 %u 个faction change achievement pairs，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
     sLog->outString();
 }
 
@@ -8947,7 +8947,7 @@ void ObjectMgr::LoadFactionChangeItems()
 
     if (!result)
     {
-        sLog->outString(">> Loaded 0 faction change item pairs. DB table `player_factionchange_items` is empty.");
+        sLog->outString(">> 加载 0 个faction change item pairs. DB表 `player_factionchange_items`为空.");
         sLog->outString();
         return;
     }
@@ -8971,7 +8971,7 @@ void ObjectMgr::LoadFactionChangeItems()
         ++count;
     } while (result->NextRow());
 
-    sLog->outString(">> Loaded %u faction change item pairs in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载 %u 个faction change item pairs，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
     sLog->outString();
 }
 
@@ -8983,7 +8983,7 @@ void ObjectMgr::LoadFactionChangeQuests()
 
     if (!result)
     {
-        sLog->outErrorDb(">> Loaded 0 faction change quest pairs. DB table `player_factionchange_quests` is empty.");
+        sLog->outErrorDb(">> 加载 0 个faction change quest pairs. DB表 `player_factionchange_quests`为空.");
         sLog->outString();
         return;
     }
@@ -9007,7 +9007,7 @@ void ObjectMgr::LoadFactionChangeQuests()
         ++count;
     } while (result->NextRow());
 
-    sLog->outString(">> Loaded %u faction change quest pairs in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载 %u 个faction change quest pairs，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
     sLog->outString();
 }
 
@@ -9019,7 +9019,7 @@ void ObjectMgr::LoadFactionChangeReputations()
 
     if (!result)
     {
-        sLog->outErrorDb(">> Loaded 0 faction change reputation pairs. DB table `player_factionchange_reputations` is empty.");
+        sLog->outErrorDb(">> 加载 0 个faction change reputation pairs. DB表 `player_factionchange_reputations`为空.");
         sLog->outString();
         return;
     }
@@ -9043,7 +9043,7 @@ void ObjectMgr::LoadFactionChangeReputations()
         ++count;
     } while (result->NextRow());
 
-    sLog->outString(">> Loaded %u faction change reputation pairs in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载 %u 个faction change reputation pairs，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
     sLog->outString();
 }
 
@@ -9055,7 +9055,7 @@ void ObjectMgr::LoadFactionChangeSpells()
 
     if (!result)
     {
-        sLog->outErrorDb(">> Loaded 0 faction change spell pairs. DB table `player_factionchange_spells` is empty.");
+        sLog->outErrorDb(">> 加载 0 个faction change spell pairs. DB表 `player_factionchange_spells`为空.");
         sLog->outString();
         return;
     }
@@ -9079,7 +9079,7 @@ void ObjectMgr::LoadFactionChangeSpells()
         ++count;
     } while (result->NextRow());
 
-    sLog->outString(">> Loaded %u faction change spell pairs in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载 %u 个faction change spell pairs，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
     sLog->outString();
 }
 
@@ -9091,7 +9091,7 @@ void ObjectMgr::LoadFactionChangeTitles()
 
     if (!result)
     {
-        sLog->outString(">> Loaded 0 faction change title pairs. DB table `player_factionchange_title` is empty.");
+        sLog->outString(">> 加载 0 个faction change title pairs. DB表 `player_factionchange_title`为空.");
         return;
     }
 
@@ -9114,7 +9114,7 @@ void ObjectMgr::LoadFactionChangeTitles()
         ++count;
     } while (result->NextRow());
 
-    sLog->outString(">> Loaded %u faction change title pairs in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载 %u 个faction change title pairs，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
     sLog->outString();
 }
 
@@ -9191,7 +9191,7 @@ void ObjectMgr::LoadGameObjectQuestItems()
 
     if (!result)
     {
-        sLog->outString(">> Loaded 0 gameobject quest items. DB table `gameobject_questitem` is empty.");
+        sLog->outString(">> 加载 0 个gameobject quest items. DB表 `gameobject_questitem`为空.");
         return;
     }
 
@@ -9208,7 +9208,7 @@ void ObjectMgr::LoadGameObjectQuestItems()
         ++count;
     } while (result->NextRow());
 
-    sLog->outString(">> Loaded %u gameobject quest items in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载 %u 个游戏对象任务物品，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
 }
 
 void ObjectMgr::LoadCreatureQuestItems()
@@ -9220,7 +9220,7 @@ void ObjectMgr::LoadCreatureQuestItems()
 
     if (!result)
     {
-        sLog->outString(">> Loaded 0 creature quest items. DB table `creature_questitem` is empty.");
+        sLog->outString(">> 加载 0 个creature quest items. DB表 `creature_questitem`为空.");
         return;
     }
 
@@ -9237,5 +9237,5 @@ void ObjectMgr::LoadCreatureQuestItems()
         ++count;
     } while (result->NextRow());
 
-    sLog->outString(">> Loaded %u creature quest items in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载 %u 个生物任务物品，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
 }

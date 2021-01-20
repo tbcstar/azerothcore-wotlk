@@ -138,7 +138,7 @@ void FormationMgr::LoadCreatureFormations()
         ++count;
     } while (result->NextRow());
 
-    sLog->outString(">> Loaded %u creatures in formations in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载 %u 个生物形态，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
     sLog->outString();
 }
 

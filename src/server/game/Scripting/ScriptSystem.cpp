@@ -31,14 +31,14 @@ void SystemMgr::LoadScriptWaypoints()
     if (result)
         uiCreatureCount = result->GetRowCount();
 
-    sLog->outString("TSCR: Loading Script Waypoints for " UI64FMTD " creature(s)...", uiCreatureCount);
+    sLog->outString("TSCR: 加载脚本路径点 " UI64FMTD " 生物(s)...", uiCreatureCount);
 
     //                                     0       1         2           3           4           5
     result = WorldDatabase.Query("SELECT entry, pointid, location_x, location_y, location_z, waittime FROM script_waypoint ORDER BY pointid");
 
     if (!result)
     {
-        sLog->outString(">> Loaded 0 Script Waypoints. DB table `script_waypoint` is empty.");
+        sLog->outString(">> 加载 0 个脚本路径点. DB表 `script_waypoint` 为空.");
         sLog->outString();
         return;
     }
@@ -73,6 +73,6 @@ void SystemMgr::LoadScriptWaypoints()
         ++count;
     } while (result->NextRow());
 
-    sLog->outString(">> Loaded %u Script Waypoint nodes in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载 %u 个脚本路径节点，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
     sLog->outString();
 }

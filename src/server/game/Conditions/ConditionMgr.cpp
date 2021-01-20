@@ -883,7 +883,7 @@ void ConditionMgr::LoadConditions(bool isReload)
     //must clear all custom handled cases (groupped types) before reload
     if (isReload)
     {
-        sLog->outString("Reseting Loot Conditions...");
+        sLog->outString("重置战利品条件...");
         LootTemplates_Creature.ResetConditions();
         LootTemplates_Fishing.ResetConditions();
         LootTemplates_Gameobject.ResetConditions();
@@ -897,10 +897,10 @@ void ConditionMgr::LoadConditions(bool isReload)
         LootTemplates_Prospecting.ResetConditions();
         LootTemplates_Spell.ResetConditions();
 
-        sLog->outString("Re-Loading `gossip_menu` Table for Conditions!");
+        sLog->outString("重新加载 `gossip_menu`表给 Conditions！");
         sObjectMgr->LoadGossipMenu();
 
-        sLog->outString("Re-Loading `gossip_menu_option` Table for Conditions!");
+        sLog->outString("重新加载 `gossip_menu_option` 表给 Conditions!");
         sObjectMgr->LoadGossipMenuItems();
         sSpellMgr->UnloadSpellInfoImplicitTargetConditionLists();
     }
@@ -1141,7 +1141,7 @@ void ConditionMgr::LoadConditions(bool isReload)
         ++count;
     } while (result->NextRow());
 
-    sLog->outString(">> Loaded %u conditions in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载 %u 个conditions，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
     sLog->outString();
 }
 

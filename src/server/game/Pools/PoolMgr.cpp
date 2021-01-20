@@ -560,7 +560,7 @@ void PoolMgr::LoadFromDB()
         if (!result)
         {
             mPoolTemplate.clear();
-            sLog->outString(">> Loaded 0 object pools. DB table `pool_template` is empty.");
+            sLog->outString(">> 加载 0 个对象池. DB表 `pool_template` 为空.");
             sLog->outString();
             return;
         }
@@ -578,13 +578,13 @@ void PoolMgr::LoadFromDB()
             ++count;
         } while (result->NextRow());
 
-        sLog->outString(">> Loaded %u objects pools in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+        sLog->outString(">> 加载 %u 个对象池，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
         sLog->outString();
     }
 
     // Creatures
 
-    sLog->outString("Loading Creatures Pooling Data...");
+    sLog->outString("加载生物池数据...");
     {
         uint32 oldMSTime = getMSTime();
 
@@ -593,7 +593,7 @@ void PoolMgr::LoadFromDB()
 
         if (!result)
         {
-            sLog->outString(">> Loaded 0 creatures in  pools. DB table `pool_creature` is empty.");
+            sLog->outString(">> 加载 0 生物池. DB表 `pool_creature` 为空.");
             sLog->outString();
         }
         else
@@ -635,14 +635,14 @@ void PoolMgr::LoadFromDB()
                 ++count;
             } while (result->NextRow());
 
-            sLog->outString(">> Loaded %u creatures in pools in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+            sLog->outString(">> 加载 %u 个生物池，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
             sLog->outString();
         }
     }
 
     // Gameobjects
 
-    sLog->outString("Loading Gameobject Pooling Data...");
+    sLog->outString("加载游戏对象池数据...");
     {
         uint32 oldMSTime = getMSTime();
 
@@ -651,7 +651,7 @@ void PoolMgr::LoadFromDB()
 
         if (!result)
         {
-            sLog->outString(">> Loaded 0 gameobjects in  pools. DB table `pool_gameobject` is empty.");
+            sLog->outString(">> 加载 0 个游戏对象池. DB表 `pool_gameobject` 为空.");
             sLog->outString();
         }
         else
@@ -705,14 +705,14 @@ void PoolMgr::LoadFromDB()
                 ++count;
             } while (result->NextRow());
 
-            sLog->outString(">> Loaded %u gameobject in pools in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+            sLog->outString(">> 加载 %u 个游戏对象池，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
             sLog->outString();
         }
     }
 
     // Pool of pools
 
-    sLog->outString("Loading Mother Pooling Data...");
+    sLog->outString("加载 Mother Pooling 数据...");
     {
         uint32 oldMSTime = getMSTime();
 
@@ -721,7 +721,7 @@ void PoolMgr::LoadFromDB()
 
         if (!result)
         {
-            sLog->outString(">> Loaded 0 pools in pools");
+            sLog->outString(">> 加载 0 个pools in pools");
             sLog->outString();
         }
         else
@@ -797,12 +797,12 @@ void PoolMgr::LoadFromDB()
                 }
             }
 
-            sLog->outString(">> Loaded %u pools in mother pools in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+            sLog->outString(">> 加载 %u 个pools in mother pools，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
             sLog->outString();
         }
     }
 
-    sLog->outString("Loading Quest Pooling Data...");
+    sLog->outString("加载任务池数据...");
     {
         uint32 oldMSTime = getMSTime();
 
@@ -811,7 +811,7 @@ void PoolMgr::LoadFromDB()
 
         if (!result)
         {
-            sLog->outString(">> Loaded 0 quests in pools");
+            sLog->outString(">> 加载 0 个任务池");
             sLog->outString();
         }
         else
@@ -887,13 +887,13 @@ void PoolMgr::LoadFromDB()
                 ++count;
             } while (result->NextRow());
 
-            sLog->outString(">> Loaded %u quests in pools in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+            sLog->outString(">> 加载 %u 个任务池，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
             sLog->outString();
         }
     }
 
     // The initialize method will spawn all pools not in an event and not in another pool, this is why there is 2 left joins with 2 null checks
-    sLog->outString("Starting objects pooling system...");
+    sLog->outString("启动对象池系统...");
     {
         uint32 oldMSTime = getMSTime();
 
@@ -903,7 +903,7 @@ void PoolMgr::LoadFromDB()
 
         if (!result)
         {
-            sLog->outString(">> Pool handling system initialized, 0 pools spawned.");
+            sLog->outString(">> 池处理系统初始化，生成0个池。");
             sLog->outString();
         }
         else

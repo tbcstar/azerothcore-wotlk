@@ -31,7 +31,7 @@ void LootItemStorage::LoadStorageFromDB()
     PreparedQueryResult result = CharacterDatabase.Query(stmt);
     if (!result)
     {
-        sLog->outString(">>  Loaded 0 stored items!");
+        sLog->outString(">>  加载0个存储物品!");
         sLog->outString();
         return;
     }
@@ -47,7 +47,7 @@ void LootItemStorage::LoadStorageFromDB()
         ++count;
     } while (result->NextRow());
 
-    sLog->outString(">> Loaded %d stored items in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载 %d 个存储物品，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
     sLog->outString();
 }
 

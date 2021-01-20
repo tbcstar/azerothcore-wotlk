@@ -2152,7 +2152,7 @@ void AchievementMgr::CompletedAchievement(AchievementEntry const* achievement)
     // disable for gamemasters with GM-mode enabled
     if (m_player->IsGameMaster())
     {
-        sLog->outString("Not available in GM mode.");
+        sLog->outString("在GM模式下不可用。");
         ChatHandler(m_player->GetSession()).PSendSysMessage("Not available in GM mode");
         return;
     }
@@ -2560,7 +2560,7 @@ void AchievementGlobalMgr::LoadAchievementCriteriaList()
         ++loaded;
     }
 
-    sLog->outString(">> Loaded %u achievement criteria in %u ms", loaded, GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载 %u 个achievement criteria,耗时 %u ms", loaded, GetMSTimeDiffToNow(oldMSTime));
     sLog->outString();
 }
 
@@ -2570,7 +2570,7 @@ void AchievementGlobalMgr::LoadAchievementReferenceList()
 
     if (sAchievementStore.GetNumRows() == 0)
     {
-        sLog->outString(">> Loaded 0 achievement references.");
+        sLog->outString(">> 加载0个achievement references。");
         sLog->outString();
         return;
     }
@@ -2587,7 +2587,7 @@ void AchievementGlobalMgr::LoadAchievementReferenceList()
         ++count;
     }
 
-    sLog->outString(">> Loaded %u achievement references in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载 %u个achievement references,耗时%u ms ", count, GetMSTimeDiffToNow(oldMSTime));
     sLog->outString();
 }
 
@@ -2601,7 +2601,7 @@ void AchievementGlobalMgr::LoadAchievementCriteriaData()
 
     if (!result)
     {
-        sLog->outString(">> Loaded 0 additional achievement criteria data. DB table `achievement_criteria_data` is empty.");
+        sLog->outString(">> 加载0个additional achievement criteria数据。DB表`achievement_criteria_data`为空。");
         sLog->outString();
         return;
     }
@@ -2722,7 +2722,7 @@ void AchievementGlobalMgr::LoadAchievementCriteriaData()
             sLog->outErrorDb("Table `achievement_criteria_data` does not have expected data for criteria (Entry: %u Type: %u) for achievement %u.", criteria->ID, criteria->requiredType, criteria->referredAchievement);
     }
 
-    sLog->outString(">> Loaded %u additional achievement criteria data in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载 %u 个 additional achievement criteria数据,耗时%u ms", count, GetMSTimeDiffToNow(oldMSTime));
     sLog->outString();
 }
 
@@ -2742,7 +2742,7 @@ void AchievementGlobalMgr::LoadCompletedAchievements()
 
     if (!result)
     {
-        sLog->outString(">> Loaded 0 completed achievements. DB table `character_achievement` is empty.");
+        sLog->outString(">> 加载0个completed achievements。DB表`character_achievement`为空。");
         sLog->outString();
         return;
     }
@@ -2770,7 +2770,7 @@ void AchievementGlobalMgr::LoadCompletedAchievements()
             m_allCompletedAchievements[achievementId] =  std::chrono::system_clock::time_point::max();
     } while (result->NextRow());
 
-    sLog->outString(">> Loaded %lu completed achievements in %u ms", (unsigned long)m_allCompletedAchievements.size(), GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载 %lu 个completed achievements,耗时%u ms", (unsigned long)m_allCompletedAchievements.size(), GetMSTimeDiffToNow(oldMSTime));
     sLog->outString();
 }
 
@@ -2891,7 +2891,7 @@ void AchievementGlobalMgr::LoadRewards()
         ++count;
     } while (result->NextRow());
 
-    sLog->outString(">> Loaded %u achievement rewards in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载 %u 个achievement rewards,耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
     sLog->outString();
 }
 
@@ -2906,7 +2906,7 @@ void AchievementGlobalMgr::LoadRewardLocales()
 
     if (!result)
     {
-        sLog->outString(">> Loaded 0 achievement reward locale strings.  DB table `achievement_reward_locale` is empty");
+        sLog->outString(">> 加载 0个 成就奖励区域设置字符串。DB表`achievement_reward_locale`为空");
         sLog->outString();
         return;
     }
@@ -2935,6 +2935,6 @@ void AchievementGlobalMgr::LoadRewardLocales()
         ObjectMgr::AddLocaleString(Text, locale, data.Text);
     } while (result->NextRow());
 
-    sLog->outString(">> Loaded %lu Achievement Reward Locale strings in %u ms", (unsigned long)m_achievementRewardLocales.size(), GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载 %lu 个成就奖励区域字符串,耗时%u毫秒", (unsigned long)m_achievementRewardLocales.size(), GetMSTimeDiffToNow(oldMSTime));
     sLog->outString();
 }

@@ -637,7 +637,7 @@ void BattlegroundMgr::CreateInitialBattlegrounds()
         ++count;
     } while (result->NextRow());
 
-    sLog->outString(">> Loaded %u battlegrounds in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载 %u 个战场,耗时%u ms", count, GetMSTimeDiffToNow(oldMSTime));
 }
 
 void BattlegroundMgr::InitAutomaticArenaPointDistribution()
@@ -647,15 +647,15 @@ void BattlegroundMgr::InitAutomaticArenaPointDistribution()
 
     time_t wstime = time_t(sWorld->getWorldState(WS_ARENA_DISTRIBUTION_TIME));
     time_t curtime = time(nullptr);
-    sLog->outString("AzerothCore Battleground: Initializing Automatic Arena Point Distribution");
+    sLog->outString("TBCstar战场:初始化竞技场点数的自动分配");
     if (wstime < curtime)
     {
         m_NextAutoDistributionTime = curtime;           // reset will be called in the next update
-        sLog->outString("AzerothCore Battleground: Next arena point distribution time in the past, reseting it now.");
+        sLog->outString("TBCstar战场: 下一个竞技场点分配时间已过去，现在重新设置。");
     }
     else
         m_NextAutoDistributionTime = wstime;
-    sLog->outString("AzerothCore Battleground: Automatic Arena Point Distribution initialized.");
+    sLog->outString("TBCstar战场: 竞技场点数自动分配初始化。");
 }
 
 void BattlegroundMgr::BuildBattlegroundListPacket(WorldPacket* data, uint64 guid, Player* player, BattlegroundTypeId bgTypeId, uint8 fromWhere)
@@ -872,7 +872,7 @@ void BattlegroundMgr::LoadBattleMastersEntry()
 
     if (!result)
     {
-        sLog->outString(">> Loaded 0 battlemaster entries. DB table `battlemaster_entry` is empty!");
+        sLog->outString(">> 加载0个battlemaster entries。DB表`battlemaster_entry`为空！");
         sLog->outString();
         return;
     }
@@ -909,7 +909,7 @@ void BattlegroundMgr::LoadBattleMastersEntry()
 
     CheckBattleMasters();
 
-    sLog->outString(">> Loaded %u battlemaster entries in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载 %u 个battlemaster entries，耗时%u ms", count, GetMSTimeDiffToNow(oldMSTime));
     sLog->outString();
 }
 

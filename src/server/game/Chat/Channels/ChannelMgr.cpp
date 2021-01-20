@@ -42,7 +42,7 @@ void ChannelMgr::LoadChannels()
     QueryResult result = CharacterDatabase.PQuery("SELECT channelId, name, team, announce, ownership, password FROM channels WHERE team = %u ORDER BY channelId ASC", _teamId);
     if (!result)
     {
-        sLog->outString(">> Loaded 0 channels for %s", _teamId == TEAM_ALLIANCE ? "Alliance" : "Horde");
+        sLog->outString(">> 加载 0 个频道给 %s", _teamId == TEAM_ALLIANCE ? "联盟" : "部落");
         sLog->outString();
         return;
     }
@@ -79,7 +79,7 @@ void ChannelMgr::LoadChannels()
         ++count;
     } while (result->NextRow());
 
-    sLog->outString(">> Loaded %u channels for %s in %ums", count, _teamId == TEAM_ALLIANCE ? "Alliance" : "Horde", GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载 %u 个频道给 %s ,耗时 %u ms", count, _teamId == TEAM_ALLIANCE ? "联盟" : "部落", GetMSTimeDiffToNow(oldMSTime));
     sLog->outString();
 }
 
@@ -137,7 +137,7 @@ void ChannelMgr::LoadChannelRights()
     if (!result)
     {
         sLog->outString();
-        sLog->outString(">>  Loaded 0 Channel Rights!");
+        sLog->outString(">>  加载 0 个频道权限");
         return;
     }
 
@@ -163,7 +163,7 @@ void ChannelMgr::LoadChannelRights()
         ++count;
     } while (result->NextRow());
 
-    sLog->outString(">> Loaded %d Channel Rights in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载 %d 个通道权限，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
     sLog->outString();
 }
 

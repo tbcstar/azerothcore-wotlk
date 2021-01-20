@@ -955,17 +955,17 @@ ByteBuffer& operator<<(ByteBuffer& buf, Position::PositionXYZOStreamer const& st
 
 void MovementInfo::OutDebug()
 {
-    sLog->outString("MOVEMENT INFO");
+    sLog->outString("移动信息");
     sLog->outString("guid " UI64FMTD, guid);
     sLog->outString("flags %u", flags);
     sLog->outString("flags2 %u", flags2);
     sLog->outString("time %u current time " UI64FMTD "", flags2, uint64(::time(nullptr)));
-    sLog->outString("position: `%s`", pos.ToString().c_str());
+    sLog->outString("位置: `%s`", pos.ToString().c_str());
     if (flags & MOVEMENTFLAG_ONTRANSPORT)
     {
-        sLog->outString("TRANSPORT:");
+        sLog->outString("运输:");
         sLog->outString("guid: " UI64FMTD, transport.guid);
-        sLog->outString("position: `%s`", transport.pos.ToString().c_str());
+        sLog->outString("位置: `%s`", transport.pos.ToString().c_str());
         sLog->outString("seat: %i", transport.seat);
         sLog->outString("time: %u", transport.time);
         if (flags2 & MOVEMENTFLAG2_INTERPOLATED_MOVEMENT)

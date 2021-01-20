@@ -1538,7 +1538,7 @@ bool LootTemplate::isReference(uint32 id) const
 
 void LoadLootTemplates_Creature()
 {
-    sLog->outString("Loading creature loot templates...");
+    sLog->outString("加载生物战利品模板...");
 
     uint32 oldMSTime = getMSTime();
 
@@ -1565,7 +1565,7 @@ void LoadLootTemplates_Creature()
     LootTemplates_Creature.ReportUnusedIds(lootIdSet);
 
     if (count)
-        sLog->outString(">> Loaded %u creature loot templates in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+        sLog->outString(">> 加载 %u 个生物战利品模板，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
     else
         sLog->outErrorDb(">> Loaded 0 creature loot templates. DB table `creature_loot_template` is empty");
 
@@ -1574,7 +1574,7 @@ void LoadLootTemplates_Creature()
 
 void LoadLootTemplates_Disenchant()
 {
-    sLog->outString("Loading disenchanting loot templates...");
+    sLog->outString("加载解除附魔的战利品模板...");
 
     uint32 oldMSTime = getMSTime();
 
@@ -1600,7 +1600,7 @@ void LoadLootTemplates_Disenchant()
     LootTemplates_Disenchant.ReportUnusedIds(lootIdSet);
 
     if (count)
-        sLog->outString(">> Loaded %u disenchanting loot templates in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+        sLog->outString(">> 加载 %u 个解除附魔的战利品模板，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
     else
         sLog->outErrorDb(">> Loaded 0 disenchanting loot templates. DB table `disenchant_loot_template` is empty");
     sLog->outString();
@@ -1608,7 +1608,7 @@ void LoadLootTemplates_Disenchant()
 
 void LoadLootTemplates_Fishing()
 {
-    sLog->outString("Loading fishing loot templates...");
+    sLog->outString("加载钓鱼战利品模板...");
 
     uint32 oldMSTime = getMSTime();
 
@@ -1625,7 +1625,7 @@ void LoadLootTemplates_Fishing()
     LootTemplates_Fishing.ReportUnusedIds(lootIdSet);
 
     if (count)
-        sLog->outString(">> Loaded %u fishing loot templates in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+        sLog->outString(">> 加载 %u 个钓鱼战利品模板，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
     else
         sLog->outErrorDb(">> Loaded 0 fishing loot templates. DB table `fishing_loot_template` is empty");
 
@@ -1634,7 +1634,7 @@ void LoadLootTemplates_Fishing()
 
 void LoadLootTemplates_Gameobject()
 {
-    sLog->outString("Loading gameobject loot templates...");
+    sLog->outString("加载游戏对象战利品模板...");
 
     uint32 oldMSTime = getMSTime();
 
@@ -1661,7 +1661,7 @@ void LoadLootTemplates_Gameobject()
     LootTemplates_Gameobject.ReportUnusedIds(lootIdSet);
 
     if (count)
-        sLog->outString(">> Loaded %u gameobject loot templates in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+        sLog->outString(">> 加载 %u 个游戏对象战利品模板，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
     else
         sLog->outErrorDb(">> Loaded 0 gameobject loot templates. DB table `gameobject_loot_template` is empty");
 
@@ -1670,7 +1670,7 @@ void LoadLootTemplates_Gameobject()
 
 void LoadLootTemplates_Item()
 {
-    sLog->outString("Loading item loot templates...");
+    sLog->outString("加载道具战利品模板...");
 
     uint32 oldMSTime = getMSTime();
 
@@ -1687,7 +1687,7 @@ void LoadLootTemplates_Item()
     LootTemplates_Item.ReportUnusedIds(lootIdSet);
 
     if (count)
-        sLog->outString(">> Loaded %u item loot templates in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+        sLog->outString(">> 加载 %u 个道具战利品模板，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
     else
         sLog->outErrorDb(">> Loaded 0 item loot templates. DB table `item_loot_template` is empty");
 
@@ -1696,7 +1696,7 @@ void LoadLootTemplates_Item()
 
 void LoadLootTemplates_Milling()
 {
-    sLog->outString("Loading milling loot templates...");
+    sLog->outString("加载研磨战利品模板...");
 
     uint32 oldMSTime = getMSTime();
 
@@ -1718,7 +1718,7 @@ void LoadLootTemplates_Milling()
     LootTemplates_Milling.ReportUnusedIds(lootIdSet);
 
     if (count)
-        sLog->outString(">> Loaded %u milling loot templates in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+        sLog->outString(">> 加载 %u 个研磨战利品模板，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
     else
         sLog->outErrorDb(">> Loaded 0 milling loot templates. DB table `milling_loot_template` is empty");
 
@@ -1727,7 +1727,7 @@ void LoadLootTemplates_Milling()
 
 void LoadLootTemplates_Pickpocketing()
 {
-    sLog->outString("Loading pickpocketing loot templates...");
+    sLog->outString("加载搜索战利品模板...");
 
     uint32 oldMSTime = getMSTime();
 
@@ -1754,7 +1754,7 @@ void LoadLootTemplates_Pickpocketing()
     LootTemplates_Pickpocketing.ReportUnusedIds(lootIdSet);
 
     if (count)
-        sLog->outString(">> Loaded %u pickpocketing loot templates in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+        sLog->outString(">> 加载 %u 个搜索战利品模板，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
     else
         sLog->outErrorDb(">> Loaded 0 pickpocketing loot templates. DB table `pickpocketing_loot_template` is empty");
 
@@ -1763,7 +1763,7 @@ void LoadLootTemplates_Pickpocketing()
 
 void LoadLootTemplates_Prospecting()
 {
-    sLog->outString("Loading prospecting loot templates...");
+    sLog->outString("加载选矿战利品模板...");
 
     uint32 oldMSTime = getMSTime();
 
@@ -1785,7 +1785,7 @@ void LoadLootTemplates_Prospecting()
     LootTemplates_Prospecting.ReportUnusedIds(lootIdSet);
 
     if (count)
-        sLog->outString(">> Loaded %u prospecting loot templates in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+        sLog->outString(">> 加载 %u 个选矿战利品模板，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
     else
         sLog->outErrorDb(">> Loaded 0 prospecting loot templates. DB table `prospecting_loot_template` is empty");
 
@@ -1794,7 +1794,7 @@ void LoadLootTemplates_Prospecting()
 
 void LoadLootTemplates_Mail()
 {
-    sLog->outString("Loading mail loot templates...");
+    sLog->outString("加载邮件战利品模板...");
 
     uint32 oldMSTime = getMSTime();
 
@@ -1811,7 +1811,7 @@ void LoadLootTemplates_Mail()
     LootTemplates_Mail.ReportUnusedIds(lootIdSet);
 
     if (count)
-        sLog->outString(">> Loaded %u mail loot templates in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+        sLog->outString(">> 加载 %u 个邮件战利品模板，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
     else
         sLog->outErrorDb(">> Loaded 0 mail loot templates. DB table `mail_loot_template` is empty");
 
@@ -1820,7 +1820,7 @@ void LoadLootTemplates_Mail()
 
 void LoadLootTemplates_Skinning()
 {
-    sLog->outString("Loading skinning loot templates...");
+    sLog->outString("加载剥皮战利品模板...");
 
     uint32 oldMSTime = getMSTime();
 
@@ -1847,7 +1847,7 @@ void LoadLootTemplates_Skinning()
     LootTemplates_Skinning.ReportUnusedIds(lootIdSet);
 
     if (count)
-        sLog->outString(">> Loaded %u skinning loot templates in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+        sLog->outString(">> 加载 %u 个剥皮战利品模板，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
     else
         sLog->outErrorDb(">> Loaded 0 skinning loot templates. DB table `skinning_loot_template` is empty");
 
@@ -1856,7 +1856,7 @@ void LoadLootTemplates_Skinning()
 
 void LoadLootTemplates_Spell()
 {
-    sLog->outString("Loading spell loot templates...");
+    sLog->outString("加载法术战利品模板...");
 
     uint32 oldMSTime = getMSTime();
 
@@ -1891,7 +1891,7 @@ void LoadLootTemplates_Spell()
     LootTemplates_Spell.ReportUnusedIds(lootIdSet);
 
     if (count)
-        sLog->outString(">> Loaded %u spell loot templates in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+        sLog->outString(">> 加载 %u 个法术战利品模板，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
     else
         sLog->outErrorDb(">> Loaded 0 spell loot templates. DB table `spell_loot_template` is empty");
     sLog->outString();
@@ -1899,7 +1899,7 @@ void LoadLootTemplates_Spell()
 
 void LoadLootTemplates_Reference()
 {
-    sLog->outString("Loading reference loot templates...");
+    sLog->outString("加载参考战利品模板...");
 
     uint32 oldMSTime = getMSTime();
 
@@ -1922,6 +1922,6 @@ void LoadLootTemplates_Reference()
     // output error for any still listed ids (not referenced from any loot table)
     LootTemplates_Reference.ReportUnusedIds(lootIdSet);
 
-    sLog->outString(">> Loaded refence loot templates in %u ms", GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载参考战利品模板，耗时 %u ms", GetMSTimeDiffToNow(oldMSTime));
     sLog->outString();
 }

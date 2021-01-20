@@ -45,7 +45,7 @@ void SmartWaypointMgr::LoadFromDB()
 
     if (!result)
     {
-        sLog->outString(">> Loaded 0 SmartAI Waypoint Paths. DB table `waypoints` is empty.");
+        sLog->outString(">> 加载0个SmartAI路径点路径。DB表`waypoints`为空。");
         sLog->outString();
         return;
     }
@@ -82,7 +82,7 @@ void SmartWaypointMgr::LoadFromDB()
         total++;
     } while (result->NextRow());
 
-    sLog->outString(">> Loaded %u SmartAI waypoint paths (total %u waypoints) in %u ms", count, total, GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载 %u 个SmartAI路径点路径(总路径点%u),耗时 %u ms", count, total, GetMSTimeDiffToNow(oldMSTime));
     sLog->outString();
 }
 
@@ -115,7 +115,7 @@ void SmartAIMgr::LoadSmartAIFromDB()
 
     if (!result)
     {
-        sLog->outString(">> Loaded 0 SmartAI scripts. DB table `smart_scripts` is empty.");
+        sLog->outString(">> 加载0个SmartAI脚本。表`smart_scripts`为空。");
         sLog->outString();
         return;
     }
@@ -270,7 +270,7 @@ void SmartAIMgr::LoadSmartAIFromDB()
         mEventMap[source_type][temp.entryOrGuid].push_back(temp);
     } while (result->NextRow());
 
-    sLog->outString(">> Loaded %u SmartAI scripts in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载 %u 个SmartAI脚本,耗时%u ms", count, GetMSTimeDiffToNow(oldMSTime));
     sLog->outString();
 }
 

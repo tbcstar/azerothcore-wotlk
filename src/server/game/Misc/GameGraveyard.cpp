@@ -19,7 +19,7 @@ void Graveyard::LoadGraveyardFromDB()
     QueryResult result = WorldDatabase.Query("SELECT ID, Map, x, y, z, Comment FROM game_graveyard");
     if (!result)
     {
-        sLog->outString(">> Loaded 0 graveyard. Table `game_graveyard` is empty!");
+        sLog->outString(">> 加载 0 个墓地. 表 `game_graveyard` 为空!");
         sLog->outString();
         return;
     }
@@ -52,7 +52,7 @@ void Graveyard::LoadGraveyardFromDB()
         ++Count;
     } while (result->NextRow());
 
-    sLog->outString(">> Loaded %i graveyard in %u ms", Count, GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载 %i 个墓地，耗时 %u ms", Count, GetMSTimeDiffToNow(oldMSTime));
     sLog->outString();
 }
 
@@ -300,7 +300,7 @@ void Graveyard::LoadGraveyardZones()
 
     if (!result)
     {
-        sLog->outString(">> Loaded 0 graveyard-zone links. DB table `graveyard_zone` is empty.");
+        sLog->outString(">> 加载 0 个墓地区域链接. DB表 `graveyard_zone` 为空.");
         sLog->outString();
         return;
     }
@@ -348,7 +348,7 @@ void Graveyard::LoadGraveyardZones()
             sLog->outErrorDb("Table `graveyard_zone` has a duplicate record for Graveyard (ID: %u) and Zone (ID: %u), skipped.", safeLocId, zoneId);
     } while (result->NextRow());
 
-    sLog->outString(">> Loaded %u graveyard-zone links in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载 %u 个墓地区域链接，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
     sLog->outString();
 }
 

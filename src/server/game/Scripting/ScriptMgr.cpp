@@ -85,7 +85,7 @@ ScriptMgr* ScriptMgr::instance()
 void ScriptMgr::Initialize()
 {
     AddScripts();
-    sLog->outString("Loading C++ scripts");
+    sLog->outString("加载 C++ 脚本");
 }
 
 void ScriptMgr::Unload()
@@ -158,7 +158,7 @@ void ScriptMgr::LoadDatabase()
 
     CheckIfScriptsInDatabaseExist();
 
-    sLog->outString(">> Loaded %u C++ scripts in %u ms", GetScriptCount(), GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载 %u 个C++ 脚本，耗时 %u ms", GetScriptCount(), GetMSTimeDiffToNow(oldMSTime));
     sLog->outString();
 }
 

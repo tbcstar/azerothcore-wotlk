@@ -97,7 +97,7 @@ void LoadSkillPerfectItemTable()
         ++count;
     } while (result->NextRow());
 
-    sLog->outString(">> Loaded %u spell perfection definitions in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载 %u 个spell perfection definitions，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
     sLog->outString();
 }
 
@@ -183,7 +183,7 @@ void LoadSkillExtraItemTable()
         ++count;
     } while (result->NextRow());
 
-    sLog->outString(">> Loaded %u spell specialization definitions in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载 %u 个spell specialization definitions，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
     sLog->outString();
 }
 

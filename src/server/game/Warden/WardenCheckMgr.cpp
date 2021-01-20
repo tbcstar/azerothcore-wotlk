@@ -32,7 +32,7 @@ void WardenCheckMgr::LoadWardenChecks()
     // Check if Warden is enabled by config before loading anything
     if (!sWorld->getBoolConfig(CONFIG_WARDEN_ENABLED))
     {
-        sLog->outString(">> Warden disabled, loading checks skipped.");
+        sLog->outString(">> Warden禁用，跳过加载checks.");
         sLog->outString();
         return;
     }
@@ -41,7 +41,7 @@ void WardenCheckMgr::LoadWardenChecks()
 
     if (!result)
     {
-        sLog->outString(">> Loaded 0 Warden checks. DB table `warden_checks` is empty!");
+        sLog->outString(">> 加载 0 个Warden checks. DB表 `warden_checks` 为空!");
         sLog->outString();
         return;
     }
@@ -170,7 +170,7 @@ void WardenCheckMgr::LoadWardenChecks()
         ++count;
     } while (result->NextRow());
 
-    sLog->outString(">> Loaded %u warden checks.", count);
+    sLog->outString(">> 加载 %u 个warden checks.", count);
     sLog->outString();
 }
 
@@ -179,7 +179,7 @@ void WardenCheckMgr::LoadWardenOverrides()
     // Check if Warden is enabled by config before loading anything
     if (!sWorld->getBoolConfig(CONFIG_WARDEN_ENABLED))
     {
-        sLog->outString(">> Warden disabled, loading check overrides skipped.");
+        sLog->outString(">> Warden禁用, 跳过加载check overrides.");
         sLog->outString();
         return;
     }
@@ -189,7 +189,7 @@ void WardenCheckMgr::LoadWardenOverrides()
 
     if (!result)
     {
-        sLog->outString(">> Loaded 0 Warden action overrides. DB table `warden_action` is empty!");
+        sLog->outString(">> 加载 0 个Warden action overrides. DB表 `warden_action` 为空!");
         sLog->outString();
         return;
     }
@@ -216,7 +216,7 @@ void WardenCheckMgr::LoadWardenOverrides()
         }
     } while (result->NextRow());
 
-    sLog->outString(">> Loaded %u warden action overrides.", count);
+    sLog->outString(">> 加载 %u 个warden action overrides.", count);
     sLog->outString();
 }
 

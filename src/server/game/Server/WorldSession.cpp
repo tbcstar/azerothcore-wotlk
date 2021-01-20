@@ -1360,7 +1360,7 @@ bool WorldSession::DosProtection::EvaluateOpcode(WorldPacket& p, time_t time) co
     if (++packetCounter.amountCounter <= maxPacketCounterAllowed)
         return true;
 
-    sLog->outString("AntiDOS: Account %u, IP: %s, Ping: %u, Character %s, flooding packet (opc: %s (0x%X), count: %u)",
+    sLog->outString("DOS防御: 账户 %u, IP: %s, Ping: %u, 角色 %s, 泛洪数据包 (opc: %s (0x%X), 总数: %u)",
                     Session->GetAccountId(), Session->GetRemoteAddress().c_str(), Session->GetLatency(),
                     Session->GetPlayerName().c_str(), opcodeTable[p.GetOpcode()].name, p.GetOpcode(), packetCounter.amountCounter);
 
@@ -1370,7 +1370,7 @@ bool WorldSession::DosProtection::EvaluateOpcode(WorldPacket& p, time_t time) co
             return true;
         case POLICY_KICK:
             {
-                sLog->outString("AntiDOS: Player %s kicked!", Session->GetPlayerName().c_str());
+                sLog->outString("DOS防御: 玩家 %s 踢出!", Session->GetPlayerName().c_str());
                 Session->KickPlayer();
                 return false;
             }
@@ -1391,7 +1391,7 @@ bool WorldSession::DosProtection::EvaluateOpcode(WorldPacket& p, time_t time) co
                         break;
                 }
 
-                sLog->outString("AntiDOS: Player automatically banned for %u seconds.", duration);
+                sLog->outString("DOS防御: 玩家自动被禁止 %u 秒。", duration);
                 return false;
             }
         default: // invalid policy

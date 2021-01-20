@@ -291,7 +291,7 @@ void TicketMgr::LoadTickets()
     PreparedQueryResult result = CharacterDatabase.Query(stmt);
     if (!result)
     {
-        sLog->outString(">> Loaded 0 GM tickets. DB table `gm_ticket` is empty!");
+        sLog->outString(">> 加载 0 个GM tickets. DB表 `gm_ticket` 为空!");
 
         return;
     }
@@ -318,7 +318,7 @@ void TicketMgr::LoadTickets()
         ++count;
     } while (result->NextRow());
 
-    sLog->outString(">> Loaded %u GM tickets in %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 加载 %u 个GM tickets，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
 }
 
 void TicketMgr::LoadSurveys()
@@ -330,7 +330,7 @@ void TicketMgr::LoadSurveys()
     if (QueryResult result = CharacterDatabase.Query("SELECT MAX(surveyId) FROM gm_survey"))
         _lastSurveyId = (*result)[0].GetUInt32();
 
-    sLog->outString(">> Loaded GM Survey count from database in %u ms", GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString(">> 从数据库加载GM调查数量，耗时 %u ms", GetMSTimeDiffToNow(oldMSTime));
 }
 
 void TicketMgr::AddTicket(GmTicket* ticket)

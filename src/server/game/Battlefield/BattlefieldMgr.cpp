@@ -35,14 +35,14 @@ void BattlefieldMgr::InitBattlefield()
     if (!pBf->SetupBattlefield())
     {
         sLog->outString();
-        sLog->outString("Battlefield : Wintergrasp init failed.");
+        sLog->outString("战场:冬拥湖 初始化失败。");
         delete pBf;
     }
     else
     {
         m_BattlefieldSet.push_back(pBf);
         sLog->outString();
-        sLog->outString("Battlefield : Wintergrasp successfully initiated.");
+        sLog->outString("战场:冬拥湖 成功启动。");
     }
 
     /* For Cataclysm: Tol Barad
