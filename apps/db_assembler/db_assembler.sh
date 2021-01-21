@@ -8,17 +8,17 @@ source "$CURRENT_PATH/includes/includes.sh"
 
 cmdopt=$1
 
-PS3='[Please enter your choice]: '
+PS3='[请输入您的选择]: '
 options=(
-    "all: Assemble all"                              # 1
-    "bases: Assemble only bases"                      # 2
-    "updates: Assemble only updates"                 # 3
-    "customs: Assemble only customs"                  # 4
-    "import-all: Assemble & Import all"              # 5
-    "import-bases: Assemble & Import only bases"      # 6
-    "import-updates: Assemble & Import only updates" # 7
-    "import-customs:  Assemble & Import only customs" # 8
-    "quit: Exit from this menu"                      # 9
+    "all: 装配所有"                              # 1
+    "基础: 只装配基地"                      # 2
+    "更新: 只组装更新"                 # 3
+    "自定义: 只组装自定义"                  # 4
+    "导入-all: 组装&导入所有"              # 5
+    "导入-bases: 装配 & 只导入 bases"      # 6
+    "导入-updates: 装配 & 只导入 updates" # 7
+    "导入-customs:  装配 & 只导入 customs" # 8
+    "quit:退出该菜单"                      # 9
     )
 
 function _switch() {
@@ -55,10 +55,10 @@ function _switch() {
             exit
             ;;
         ""|"--help")
-            echo "Available commands:"
+            echo "可用命令:"
             printf '%s\n' "${options[@]}"
             ;;
-        *) echo "invalid option, use --help option for the commands list";;
+        *) echo "无效选项，在命令列表中使用——help选项";;
     esac
 }
 
@@ -70,7 +70,7 @@ do
 
     select opt in "${options[@]}"
     do
-        echo "=====     DB ASSEMBLER MENU     ====="
+        echo "=====     DB汇编程序菜单     ====="
         _switch $REPLY
         break
     done
