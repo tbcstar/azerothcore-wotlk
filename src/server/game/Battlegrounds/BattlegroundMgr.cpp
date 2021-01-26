@@ -43,7 +43,7 @@
 #endif
 
 /*********************************************************/
-/***            BATTLEGROUND MANAGER                   ***/
+/***                  战场管理器                       ***/
 /*********************************************************/
 
 BattlegroundMgr::BattlegroundMgr() : m_ArenaTesting(false), m_Testing(false),
@@ -638,6 +638,7 @@ void BattlegroundMgr::CreateInitialBattlegrounds()
     } while (result->NextRow());
 
     sLog->outString(">> 加载 %u 个战场,耗时%u ms", count, GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString();
 }
 
 void BattlegroundMgr::InitAutomaticArenaPointDistribution()

@@ -74,5 +74,4 @@ void SystemMgr::LoadScriptWaypoints()
     } while (result->NextRow());
 
     sLog->outString(">> 加载 %u 个脚本路径节点，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
-    sLog->outString();
 }

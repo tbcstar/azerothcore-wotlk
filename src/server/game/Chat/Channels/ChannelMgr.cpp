@@ -43,7 +43,6 @@ void ChannelMgr::LoadChannels()
     if (!result)
     {
         sLog->outString(">> 加载 0 个频道给 %s", _teamId == TEAM_ALLIANCE ? "联盟" : "部落");
-        sLog->outString();
         return;
     }
 
@@ -136,8 +135,8 @@ void ChannelMgr::LoadChannelRights()
     QueryResult result = CharacterDatabase.Query("SELECT name, flags, speakdelay, joinmessage, delaymessage, moderators FROM channels_rights");
     if (!result)
     {
-        sLog->outString();
         sLog->outString(">>  加载 0 个频道权限");
+        sLog->outString();
         return;
     }
 

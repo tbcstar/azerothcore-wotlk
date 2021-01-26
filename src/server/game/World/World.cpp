@@ -1884,13 +1884,15 @@ void World::SetInitialWorldSettings()
     AddonMgr::LoadFromDB();
 
     // pussywizard:
-    sLog->outString("删除无效的邮件物品...\n");
+    sLog->outString("删除无效的邮件物品...");
+    sLog->outString();
     CharacterDatabase.Query("DELETE mi FROM mail_items mi LEFT JOIN item_instance ii ON mi.item_guid = ii.guid WHERE ii.guid IS NULL");
     CharacterDatabase.Query("DELETE mi FROM mail_items mi LEFT JOIN mail m ON mi.mail_id = m.id WHERE m.id IS NULL");
     CharacterDatabase.Query("UPDATE mail m LEFT JOIN mail_items mi ON m.id = mi.mail_id SET m.has_items=0 WHERE m.has_items<>0 AND mi.mail_id IS NULL");
 
     ///- Handle outdated emails (delete/return)
     sLog->outString("返回旧的邮件...");
+    sLog->outString();
     sObjectMgr->ReturnOrDeleteOldMails(false);
 
     ///- Load AutoBroadCast
@@ -1923,11 +1925,13 @@ void World::SetInitialWorldSettings()
     sLog->outString("加载日历数据...");
     sCalendarMgr->LoadFromDB();
 
-    sLog->outString("初始化法术信息precomputed的数据..."); // must be called after loading items, professions, spells and pretty much anything
+    sLog->outString("初始化 SpellInfo precomputed 数据..."); // must be called after loading items, professions, spells and pretty much anything
+    sLog->outString();
     sObjectMgr->InitializeSpellInfoPrecomputedData();
 
     ///- Initialize game time and timers
     sLog->outString("初始化游戏时间和计时器");
+    sLog->outString();
     m_gameTime = time(nullptr);
     m_startTime = m_gameTime;
 
@@ -1958,9 +1962,11 @@ void World::SetInitialWorldSettings()
 
     ///- Initialize MapManager
     sLog->outString("启动地图系统");
+    sLog->outString();
     sMapMgr->Initialize();
 
     sLog->outString("启动游戏事件系统...");
+    sLog->outString();
     uint32 nextGameEvent = sGameEventMgr->StartSystem();
     m_timers[WUPDATE_EVENTS].SetInterval(nextGameEvent);    //depend on next event
 
@@ -1971,6 +1977,7 @@ void World::SetInitialWorldSettings()
     Channel::CleanOldChannelsInDB();
 
     sLog->outString("启动竞技场赛季...");
+    sLog->outString();
     sGameEventMgr->StartArenaSeason();
 
     sTicketMgr->Initialize();
@@ -2017,6 +2024,7 @@ void World::SetInitialWorldSettings()
     InitCalendarOldEventsDeletionTime();
 
     sLog->outString("计算公会每日重置时间...");
+    sLog->outString();
     InitGuildResetTime();
 
     sLog->outString("加载 Petitions...");
@@ -2159,6 +2167,7 @@ void World::LoadAutobroadcasts()
     } while (result->NextRow());
 
     sLog->outString(">> 加载 %u 个自动广播 definitions，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString();
 }
 
 /// Update the World !

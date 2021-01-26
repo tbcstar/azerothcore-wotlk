@@ -319,6 +319,7 @@ void TicketMgr::LoadTickets()
     } while (result->NextRow());
 
     sLog->outString(">> 加载 %u 个GM tickets，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString();
 }
 
 void TicketMgr::LoadSurveys()
@@ -331,6 +332,7 @@ void TicketMgr::LoadSurveys()
         _lastSurveyId = (*result)[0].GetUInt32();
 
     sLog->outString(">> 从数据库加载GM调查数量，耗时 %u ms", GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString();
 }
 
 void TicketMgr::AddTicket(GmTicket* ticket)

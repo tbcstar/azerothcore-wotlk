@@ -80,6 +80,7 @@ void TransportMgr::LoadTransportTemplates()
     } while (result->NextRow());
 
     sLog->outString(">> 加载 %u 个传送器模板，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString();
 }
 
 class SplineRawInitializer
@@ -432,6 +433,7 @@ void TransportMgr::SpawnContinentTransports()
         }
 
         sLog->outString(">> 生成 %u 个大陆移动传送器，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+        sLog->outString();
 
         if (sWorld->getBoolConfig(CONFIG_ENABLE_CONTINENT_TRANSPORT_PRELOADING))
         {

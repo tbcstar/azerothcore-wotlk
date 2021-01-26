@@ -36,7 +36,7 @@ uint32 GuildMgr::GenerateGuildId()
 {
     if (NextGuildId >= 0xFFFFFFFE)
     {
-        sLog->outError("Guild ids overflow!! Can't continue, shutting down server. ");
+        sLog->outError("Guild ids overflow!! Can't continue, shutting down server.");
         World::StopNow(ERROR_EXIT_CODE);
     }
     return NextGuildId++;
@@ -101,6 +101,7 @@ void GuildMgr::LoadGuilds()
         if (!result)
         {
             sLog->outString(">> 加载 0 个公会 definitions. DB表 `guild` 为空.");
+            sLog->outString();
         }
         else
         {
@@ -121,12 +122,13 @@ void GuildMgr::LoadGuilds()
                 ++count;
             } while (result->NextRow());
 
-            sLog->outString(">> 加载 %u 个公会 definitions，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+            sLog->outString(">> ", count, GetMSTimeDiffToNow(oldMSTime));
+            sLog->outString();
         }
     }
 
     // 2. Load all guild ranks
-    sLog->outString("Loading guild ranks...");
+    sLog->outString("加载公会等级...");
     {
         uint32 oldMSTime = getMSTime();
 
@@ -139,6 +141,7 @@ void GuildMgr::LoadGuilds()
         if (!result)
         {
             sLog->outString(">> 加载 0 个guild ranks. DB表 `guild_rank` 为空.");
+            sLog->outString();
         }
         else
         {
@@ -155,6 +158,7 @@ void GuildMgr::LoadGuilds()
             } while (result->NextRow());
 
             sLog->outString(">> 加载 %u 个guild ranks，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+            sLog->outString();
         }
     }
 
@@ -176,7 +180,10 @@ void GuildMgr::LoadGuilds()
                              "LEFT JOIN characters c ON c.guid = gm.guid ORDER BY guildid ASC");
 
         if (!result)
+        {
             sLog->outString(">> 加载 0 个公会成员. DB表 `guild_member` 为空.");
+            sLog->outString();
+        }
         else
         {
             uint32 count = 0;
@@ -193,6 +200,7 @@ void GuildMgr::LoadGuilds()
             } while (result->NextRow());
 
             sLog->outString(">> 加载 %u 个公会成员，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+            sLog->outString();
         }
     }
 
@@ -210,6 +218,7 @@ void GuildMgr::LoadGuilds()
         if (!result)
         {
             sLog->outString(">> 加载 0 个guild bank tab rights. DB表 `guild_bank_right` 为空.");
+            sLog->outString();
         }
         else
         {
@@ -226,6 +235,7 @@ void GuildMgr::LoadGuilds()
             } while (result->NextRow());
 
             sLog->outString(">> 加载 %u 个bank tab rights ，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+            sLog->outString();
         }
     }
 
@@ -242,6 +252,7 @@ void GuildMgr::LoadGuilds()
         if (!result)
         {
             sLog->outString(">> 加载 0 个加载公会事件日志. DB表 `guild_eventlog` 为空.");
+            sLog->outString();
         }
         else
         {
@@ -258,6 +269,7 @@ void GuildMgr::LoadGuilds()
             } while (result->NextRow());
 
             sLog->outString(">> 加载 %u 个公会事件日志,耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+            sLog->outString();
         }
     }
 
@@ -275,6 +287,7 @@ void GuildMgr::LoadGuilds()
         if (!result)
         {
             sLog->outString(">> 加载 0 个公会银行事件日志. DB表 `guild_bank_eventlog` 为空.");
+            sLog->outString();
         }
         else
         {
@@ -291,6 +304,7 @@ void GuildMgr::LoadGuilds()
             } while (result->NextRow());
 
             sLog->outString(">> 加载 %u 个公会银行事件日志，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+            sLog->outString();
         }
     }
 
@@ -307,7 +321,8 @@ void GuildMgr::LoadGuilds()
 
         if (!result)
         {
-            sLog->outString(">> 加载 0 个guild bank tabs. DB表 `guild_bank_tab` 为空。");
+            sLog->outString(">> 加载 0 个guild bank tabs. DB表 `guild_bank_tab` 为空.");
+            sLog->outString();
         }
         else
         {
@@ -324,6 +339,7 @@ void GuildMgr::LoadGuilds()
             } while (result->NextRow());
 
             sLog->outString(">> 加载 %u 个guild bank tabs，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+            sLog->outString();
         }
     }
 
@@ -342,7 +358,8 @@ void GuildMgr::LoadGuilds()
 
         if (!result)
         {
-            sLog->outString(">> 加载 0 个guild bank tab items. DB表 `guild_bank_item` or `item_instance` 为空。");
+            sLog->outString(">> 加载 0 个guild bank tab items. DB表 `guild_bank_item` or `item_instance` 为空.");
+            sLog->outString();
         }
         else
         {
@@ -359,6 +376,7 @@ void GuildMgr::LoadGuilds()
             } while (result->NextRow());
 
             sLog->outString(">> 加载 %u 个guild bank tab items，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+            sLog->outString();
         }
     }
 
@@ -376,6 +394,7 @@ void GuildMgr::LoadGuilds()
         }
 
         sLog->outString(">> 验证已加载的公会数据，耗时 %u ms", GetMSTimeDiffToNow(oldMSTime));
+        sLog->outString();
     }
 }
 

@@ -36,13 +36,15 @@ void BattlefieldMgr::InitBattlefield()
     {
         sLog->outString();
         sLog->outString("战场:冬拥湖 初始化失败。");
+        sLog->outString();
         delete pBf;
     }
     else
     {
         m_BattlefieldSet.push_back(pBf);
         sLog->outString();
-        sLog->outString("战场:冬拥湖 成功启动。");
+        sLog->outString("战场:冬拥湖启动成功。");
+        sLog->outString();
     }
 
     /* For Cataclysm: Tol Barad

@@ -591,6 +591,7 @@ void ObjectMgr::LoadCreatureTemplates()
     }
 
     sLog->outString(">> 加载 %u 个creature definitions，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString();
 }
 
 void ObjectMgr::LoadCreatureTemplateAddons()
@@ -1699,6 +1700,7 @@ void ObjectMgr::LoadTempSummons()
     } while (result->NextRow());
 
     sLog->outString(">> 加载 %u 个临时召唤，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString();
 }
 
 void ObjectMgr::LoadCreatures()
@@ -3339,6 +3341,7 @@ void ObjectMgr::LoadPlayerInfo()
             } while (result->NextRow());
 
             sLog->outString(">> 加载 %u 个player create definitions，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+            sLog->outString();
         }
     }
 
@@ -3472,6 +3475,7 @@ void ObjectMgr::LoadPlayerInfo()
             } while (result->NextRow());
 
             sLog->outString(">> 加载 %u 个player create spells，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+            sLog->outString();
         }
     }
 
@@ -6981,6 +6985,7 @@ void ObjectMgr::LoadReputationRewardRate()
     } while (result->NextRow());
 
     sLog->outString(">> 加载 %u 个reputation_reward_rate,耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString();
 }
 
 void ObjectMgr::LoadReputationOnKill()
@@ -8749,7 +8754,6 @@ void ObjectMgr::LoadBroadcastTexts()
     } while (result->NextRow());
 
     sLog->outString(">> 加载 " SZFMTD " broadcast texts，耗时 %u ms", _broadcastTextStore.size(), GetMSTimeDiffToNow(oldMSTime));
-    sLog->outString();
 }
 
 void ObjectMgr::LoadBroadcastTextLocales()
@@ -9209,6 +9213,7 @@ void ObjectMgr::LoadGameObjectQuestItems()
     } while (result->NextRow());
 
     sLog->outString(">> 加载 %u 个游戏对象任务物品，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString();
 }
 
 void ObjectMgr::LoadCreatureQuestItems()
@@ -9238,4 +9243,5 @@ void ObjectMgr::LoadCreatureQuestItems()
     } while (result->NextRow());
 
     sLog->outString(">> 加载 %u 个生物任务物品，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString();
 }

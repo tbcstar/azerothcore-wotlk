@@ -103,6 +103,7 @@ void CalendarMgr::LoadFromDB()
         } while (result->NextRow());
 
     sLog->outString(">> 加载 %u 个日历邀请", count);
+    sLog->outString();
 
     for (uint64 i = 1; i < _maxEventId; ++i)
         if (!GetEvent(i))

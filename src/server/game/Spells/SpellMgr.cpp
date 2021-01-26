@@ -1770,6 +1770,7 @@ void SpellMgr::LoadSpellProcEvents()
     } while (result->NextRow());
 
     sLog->outString(">> 加载 %u 个额外的法术触发事件条件，耗时 %u ms", count, GetMSTimeDiffToNow(oldMSTime));
+    sLog->outString();
 }
 
 void SpellMgr::LoadSpellProcs()
