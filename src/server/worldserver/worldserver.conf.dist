@@ -1936,15 +1936,15 @@ ListenRange.Yell = 300
 WaypointMovementStopTimeForPlayer = 120
 
 #    NpcEvadeIfTargetIsUnreachable
-#        Description: Specifies the time (in seconds) that a creature whom target
-#                     is unreachable to end up in evade mode.
+#        描述:指定一个生物被攻击的时间(以秒为单位)
+#                     无法进入逃避模式。
 #        Default:     5
 
 NpcEvadeIfTargetIsUnreachable = 5
 
 #    NpcRegenHPIfTargetIsUnreachable
-#        Description: Regenerates HP for Creatures in Raids if they cannot reach the target.
-#                     Keep disabled if you are experiencing mmaps/pathing issues.
+#        描述:在副本中，如果生物不能到达目标，将恢复他们的生命值。
+#                     如果您遇到mmap /路径问题，请保持禁用。
 #
 #        Default:     1 - (Enabled)
 #                     0 - (Disabled)
