@@ -1,0 +1,19 @@
+[worldserver]
+
+#
+# 详细的日志统计配置
+# 
+# enabled:  这支持日志系统的各个部分
+# dumpSize:  在写入日志文件之前缓存了多少行信息。
+#            对于较小的服务器，可以将其保留为低数字，但是对于较大的服务器，可以将其保留为低数字
+#            可能会由于不断写入磁盘而导致速度降低。
+#
+
+KillDetailedLogging.enabled=true;
+KillDetailedLogging.dumpSize=10;
+
+DeathDetailedLogging.enabled=true;
+DeathetailedLogging.dumpSize=10;
+
+ZoneAreaDetailedLogging.enabled=true;
+ZoneAreaDetailedLogging.dumpSize=10;

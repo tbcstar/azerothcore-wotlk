@@ -1,0 +1,28 @@
+[worldserver]
+
+################################################################################################################
+#    Dynamic.XP.Rate
+#        描述:你可以设置不同级别的个人经验值。
+#
+#        Dynamic.XP.Rate.Announce: 1 (Enable) Default
+#                                  0 (Disable)
+#
+#        Dynamic.XP.Rate: 1 (Enable) Default
+#                         0 (Disable)
+#
+#        Dynamic.XP.Rate.X-X: 1+ (在该级别范围内自定义经验值)
+#                             0  (重置自定义XP率为默认在该级别范围)
+#
+Dynamic.XP.Rate.Announce = 1
+
+Dynamic.XP.Rate = 1
+
+Dynamic.XP.Rate.1-9 = 3
+Dynamic.XP.Rate.10-19 = 2
+Dynamic.XP.Rate.20-29 = 2
+Dynamic.XP.Rate.30-39 = 2
+Dynamic.XP.Rate.40-49 = 2
+Dynamic.XP.Rate.50-59 = 1
+Dynamic.XP.Rate.60-69 = 0
+Dynamic.XP.Rate.70-79 = 0
+##################################################################################################################

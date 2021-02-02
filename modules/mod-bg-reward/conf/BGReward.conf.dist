@@ -1,0 +1,193 @@
+#
+# 此文件是WarheadCore项目的一部分。有关版权信息，请参见AUTHORS文件
+#
+# This file is free software; as a special exception the author gives
+# unlimited permission to copy and/or distribute it, with or without
+# modifications, as long as this notice is preserved.
+#
+# This program is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY, to the extent permitted by law; without even the
+# implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+#
+# User has manually chosen to ignore the git-tests, so throw them a warning.
+# This is done EACH compile so they can be alerted about the consequences.
+#
+
+########################################
+# BGReward module configuration
+########################################
+[worldserver]
+
+###################################################################################################
+# BATTLEGROUND REWARD CONFIG-战场奖励配置
+#
+#
+#    Battleground.Reward.Enable
+#       说明:启用战场奖励。
+#
+#       Default: 0  - (Disable)
+#        	     1  - (Enable)
+#
+
+Battleground.Reward.Enable = 0
+
+#
+#    Battleground.Reward.WinnerTeam.Count
+#       说明：奖励计数赢家战场团队。
+#
+#       Default: 2
+#
+
+Battleground.Reward.WinnerTeam.Count = 2
+
+#
+#    Battleground.Reward.LoserTeam.Count
+#        明：奖励计数失败者战场团队。
+#        	  Default: 1  - (Default)
+#
+
+Battleground.Reward.LoserTeam.Count = 1
+
+#
+#    Battleground.Reward.ItemID.WS
+#       说明：战场战歌峡谷的奖励物品。
+#
+#       Default: 20558 -战歌峡谷荣誉奖章
+#
+
+Battleground.Reward.ItemID.WS = 20558
+
+#
+#    Battleground.Reward.ItemID.AB
+#       说明：战场阿拉希盆地上的奖励物品。
+#
+#       Default: 20559 -阿拉希盆地荣誉奖章
+#
+
+Battleground.Reward.ItemID.AB = 20559
+
+#
+#    Battleground.Reward.ItemID.EY
+#       说明：风暴战场之眼上的奖励物品。
+#
+#       Default: 29024 -风暴之眼荣誉奖章
+#
+
+Battleground.Reward.ItemID.EY = 29024
+
+#
+#    Battleground.Reward.ItemID.IC
+#       说明：战场征服之岛上的奖励物品。
+#
+#       Default: 47395 -征服之岛荣誉奖章
+#
+
+Battleground.Reward.ItemID.IC = 47395
+
+#
+#    Battleground.Reward.ItemID.SA
+#       说明：远古战场上的奖励物品。
+#
+#       Default: 42425 -远古海滩荣誉奖章
+#
+
+Battleground.Reward.ItemID.SA = 42425
+
+#
+#    Battleground.Reward.ItemID.AV
+#       说明：战场奥特兰克山谷的奖励物品。
+#
+#       Default: 20560 -奥特兰克山谷荣誉奖章
+#
+
+Battleground.Reward.ItemID.AV = 20560
+
+#
+###################################################################################################
+
+###################################################################################################
+# ARENA REWARD CONFIG -竞技场奖励配置
+#
+#
+#    Arena.Reward.Enable
+#        说明：启用竞技场奖励。
+#
+#        Default: 0  - (Disable)
+#        	      1  - (Enable)
+#
+
+Arena.Reward.Enable = 0
+
+#
+#    Arena.Reward.WinnerTeam.Count
+#       说明：奖励计数冠军竞技场团队。
+#
+#       Default: 2
+#
+
+Arena.Reward.WinnerTeam.Count = 2
+
+#
+#    Arena.Reward.LoserTeam.Count
+#        说明：奖励计数失败者竞技场团队。
+#        	  Default: 1  - (Default)
+#
+
+Arena.Reward.LoserTeam.Count = 1
+
+#
+#    Arena.Reward.Winner.ItemID.2v2
+#       说明：竞技场2v2上的奖励物品。
+#
+#       Default: 29434 -公正徽章
+#
+
+Arena.Reward.Winner.ItemID.2v2 = 29434
+
+#
+#    Arena.Reward.Loser.ItemID.2v2
+#       描述:竞技场2v2中的奖励物品。
+#
+#       Default: 29434 -公正徽章
+#
+
+Arena.Reward.Loser.ItemID.2v2 = 29434
+
+#
+#    Arena.Reward.Winner.ItemID.3v3
+#       ：描述:竞技场3v3的奖励物品。
+#
+#       Default: 29434 -公正徽章
+#
+
+Arena.Reward.Winner.ItemID.3v3 = 29434
+
+#
+#    Arena.Reward.Loser.ItemID.3v3
+#       描述:竞技场3v3的奖励物品。
+#
+#       Default: 29434 -公正徽章
+#
+
+Arena.Reward.Loser.ItemID.3v3 = 29434
+
+#
+#    Arena.Reward.Winner.ItemID.5v5
+#       竞技场5v5的奖励物品。
+#
+#       Default: 29434 -公正徽章
+#
+
+Arena.Reward.Winner.ItemID.5v5 = 29434
+
+#
+#    Arena.Reward.Loser.ItemID.5v5
+#       竞技场5v5的奖励物品。
+#
+#       Default: 29434 -公正徽章
+#
+
+Arena.Reward.Loser.ItemID.5v5 = 29434
+
+#
+###################################################################################################

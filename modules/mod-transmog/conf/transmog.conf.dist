@@ -1,0 +1,202 @@
+[worldserver]
+
+
+###################################################################################################
+#    Transmogrification config
+###################################################################################################
+#
+#    SETTINGS
+#
+#    Transmogrification.EnableTransmogInfo
+#        说明:启用/禁用幻化的信息按钮
+#        Default:    1
+#
+#    Transmogrification.TransmogNpcText
+#        描述:幻化的信息菜单的npc_text条目
+#        Default:    601083
+#
+#    Transmogrification.Allowed
+#        描述:允许幻化的物品条目列表(跳过质量和CanUseItem检查)
+#                     Example: "25 35674 5623"
+#        Default:    ""
+#
+#    Transmogrification.NotAllowed
+#        描述:不允许进行幻化的项目条目列表
+#                     Example: "25 35674 5623"
+#        Default:    ""
+
+Transmogrification.EnableTransmogInfo = 1
+Transmogrification.TransmogNpcText = 601083
+
+Transmogrification.Allowed = ""
+Transmogrification.NotAllowed = ""
+
+#
+#    COPPER COST
+#
+#    Transmogrification.ScaledCostModifier
+#        说明:默认货币成本的乘数(无默认成本时为0)
+#        Default:    1.0
+#
+#    Transmogrification.CopperCost
+#        描述:在其他成本之上增加的成本(可以为负)
+#        Default:    0
+#
+#    对于自定义黄金成本设置ScaledCostModifier为0.0和铜成本为任何你想要的成本
+
+Transmogrification.ScaledCostModifier = 1.0
+Transmogrification.CopperCost = 0
+
+#
+#    TOKEN COST
+#
+#    Transmogrification.RequireToken
+#        说明:增加/禁用T币成本
+#        Default:    0
+#
+#    Transmogrification.TokenEntry
+#        描述:T币物品的条目
+#        Default:    49426
+#
+#    Transmogrification.TokenAmount
+#        说明:所需T币数量
+#        Default:    1
+
+Transmogrification.RequireToken = 0
+Transmogrification.TokenEntry = 49426
+Transmogrification.TokenAmount = 1
+
+#
+#    REQUIREMENTS
+#
+#    Transmogrification.AllowPoor
+#        描述:允许灰色物品作为源物品和目标物品
+#        Default:    0
+#
+#    Transmogrification.AllowCommon
+#        描述:允许白色物品作为源和目标物品使用
+#        Default:    0
+#
+#    Transmogrification.AllowUncommon
+#        描述:允许绿色物品作为来源和目标物品
+#        Default:    1
+#
+#    Transmogrification.AllowRare
+#        描述:允许蓝色物品作为来源和目标物品
+#        Default:    1
+#
+#    Transmogrification.AllowEpic
+#        描述:允许紫色物品作为源物品和目标物品使用
+#        Default:    1
+#
+#    Transmogrification.AllowLegendary
+#        描述:允许橙色物品作为来源和目标物品使用
+#        Default:    0
+#
+#    Transmogrification.AllowArtifact
+#        描述:允许金色物品被用作源物品和目标物品
+#        Default:    0
+#
+#    Transmogrification.AllowHeirloom
+#        描述:允许传家宝物品被用作来源和目标物品
+#        Default:    1
+#
+#    Transmogrification.AllowMixedArmorTypes
+#        描述:例如，允许布甲物品用板甲幻化
+#        Default:    0
+#
+#    Transmogrification.AllowMixedWeaponTypes
+#        举例来说，允许斧头被匕首幻化
+#        Default:    0
+#
+#    Transmogrification.AllowFishingPoles
+#        描述:允许鱼竿被幻化
+#        Default:    0
+#
+#    Transmogrification.IgnoreReqRace
+#        说明:忽略源物品所需的种族
+#        Default:    0
+#
+#    Transmogrification.IgnoreReqClass
+#        说明:忽略源物品所需的类型
+#        Default:    0
+#
+#    Transmogrification.IgnoreReqSkill
+#        说明:忽略源物品所需的技能
+#        Default:    0
+#
+#    Transmogrification.IgnoreReqSpell
+#        说明:忽略源物品所需的法术
+#        Default:    0
+#
+#    Transmogrification.IgnoreReqLevel
+#        说明:忽略源物品所需级别
+#        Default:    0
+#
+#    Transmogrification.IgnoreReqEvent
+#        说明:忽略源物品所需的事件
+#        Default:    0
+#
+#    Transmogrification.IgnoreReqStats
+#        描述:忽略统计计数> 0要求的源物品
+#        Default:    0
+
+Transmogrification.AllowPoor = 0
+Transmogrification.AllowCommon = 0
+Transmogrification.AllowUncommon = 1
+Transmogrification.AllowRare = 1
+Transmogrification.AllowEpic = 1
+Transmogrification.AllowLegendary = 0
+Transmogrification.AllowArtifact = 0
+Transmogrification.AllowHeirloom = 1
+
+Transmogrification.AllowMixedArmorTypes = 0
+Transmogrification.AllowMixedWeaponTypes = 0
+Transmogrification.AllowFishingPoles = 0
+
+Transmogrification.IgnoreReqRace = 0
+Transmogrification.IgnoreReqClass = 0
+Transmogrification.IgnoreReqSkill = 0
+Transmogrification.IgnoreReqSpell = 0
+Transmogrification.IgnoreReqLevel = 0
+Transmogrification.IgnoreReqEvent = 0
+Transmogrification.IgnoreReqStats = 0
+
+#
+#    SET FEATURE
+#
+#    Transmogrification.EnableSets
+#        Description: 启用/禁用set特性。如果你想永久禁用，请检查 Transmogrification.h
+#        Default:    1
+#
+#    Transmogrification.MaxSets
+#        Description: 玩家可以保存的最大数量 (hardcap at 25)
+#        Default:    10
+#
+#    Transmogrification.EnableSetInfo
+#        Description: 启用/禁用set特性的info按钮
+#        Default:    1
+#
+#    Transmogrification.SetNpcText
+#        Description: set特性的info菜单的npc_text条目
+#        Default:    601084
+#
+#    Transmogrification.SetCostModifier
+#        Description: 违约黄金成本的乘数(所有成本加在一起)(无违约成本变为0)
+#        Default:    3.0
+#
+#    Transmogrification.SetCopperCost
+#        Description: 在其他成本之上增加的成本(可以是负数)
+#        Default:    0
+
+Transmogrification.EnableSets = 1
+Transmogrification.MaxSets = 10
+
+Transmogrification.EnableSetInfo = 1
+Transmogrification.SetNpcText = 601084
+
+Transmogrification.SetCostModifier = 3.0
+Transmogrification.SetCopperCost = 0
+
+#
+###################################################################################################

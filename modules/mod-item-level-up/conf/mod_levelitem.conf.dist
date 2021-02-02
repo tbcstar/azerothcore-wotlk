@@ -1,0 +1,19 @@
+[worldserver]
+
+#    Enable the module
+#        Default:     Enabled  = 1
+#                     Disabled = 0
+
+LevelItem.Enable = 1
+
+#    Announce the module
+#        Default:     Enabled  = 1
+#                     Disabled = 0
+
+LevelItem.Announce = 1
+
+#    Set item's max level
+#        描述:最大等级的物品可以使用到
+#        Default:     Enabled = 80                     
+
+LevelItem.MaxItemLevel = 80

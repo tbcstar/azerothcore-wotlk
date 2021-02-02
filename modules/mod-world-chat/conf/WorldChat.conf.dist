@@ -1,0 +1,51 @@
+[worldserver]
+###################################################################################################
+# WIZZY WORLD CHAT SYSTEM
+#
+# These settings control WiiZZy's World Chat System
+#
+#    World_Chat.Enable
+#        描述:启用WiiZZy的世界聊天系统
+#        Default:     True	- (Enabled)
+#                     False	- (Disabled)
+
+World_Chat.Enable = true
+
+#
+#    World_Chat.CrossFactions
+#        说明:允许跨派系的世界聊天
+#        Default:     False	- (Disabled)
+#                     True	- (Enabled)
+#
+
+World_Chat.CrossFactions = false
+
+#
+#    World_Chat.Announce
+#        说明:允许宣布服务器使用这个模块的玩家
+#        Default:     True	- (Enabled)
+#                     False	- (Disabled)
+#
+
+World_Chat.Announce = false
+
+#
+#    World_Chat.OnLogin.State
+#        ：说明:在角色登录时默认启用世界
+#        Default:     True	- (Enabled)
+#                     False	- (Disabled)
+#
+
+World_Chat.OnLogin.State = true
+
+#
+#    World_Chat.ChannelName
+#        描述:在一个特定的频道上启用世界，你可以/加入游戏
+#        Default:     "World"	- (Enabled)
+#                     ""		- (Disabled)
+#
+
+World_Chat.ChannelName = "World"
+
+#
+###################################################################################################

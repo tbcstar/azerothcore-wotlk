@@ -1,0 +1,25 @@
+[worldserver]
+
+###################################################################################################
+#  ELUNA SETTINGS
+#
+#   Eluna.Enabled
+#       说明:启用/禁用Eluna LuaEngine
+#       Default:    true  - (enabled)
+#                   false - (disabled)
+#
+#   Eluna.TraceBack
+#       Description: Sets whether to use debug.traceback function on a lua error or not.
+#                    Notice that you can redefine the function.
+#       Default:    false - (use default error output)
+#                   true  - (use debug.traceback function)
+#
+#   Eluna.ScriptPath
+#       说明:设置加载脚本的脚本文件夹的位置
+#                    路径可以是相对的，也可以是绝对的。
+#       Default:    "lua_scripts"
+#
+
+Eluna.Enabled = true
+Eluna.TraceBack = false
+Eluna.ScriptPath = "lua_scripts"

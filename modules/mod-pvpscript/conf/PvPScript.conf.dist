@@ -1,0 +1,37 @@
+[worldserver]
+
+#
+#    PvPChest
+#        说明:启用或禁用这个功能，让玩家掉落战利品。
+#        Default:     Enabled  = 1
+#                     Disabled = 0
+PvPChest = 1
+
+#
+#    ChestID
+#        描述:允许玩家产生他们选择的箱子
+#        Default:     Enabled  = 179697
+#                    
+ChestID = "80000"
+
+#
+#    KillAnnounce
+#        描述:向杀死他们的玩家宣布。
+#        Config:     Disable = "0" : Announce  = "1" : Notifaction = "2" : Both = "3"
+#                    
+KillAnnounce = "1"
+
+#
+#    ChestTimer
+#        描述:箱子在世界中消失的时间(秒)
+#        Config: Default = 120
+#                    
+ChestTimer = "120"
+
+#
+#    spawnchestIP
+#        说明:允许箱子产生，如果玩家是在同一IP地址
+#        Config:     Disable = "0"
+#					 Enable = "1" do not spawn chest if same IP
+#                    
+spawnchestIP = "1"

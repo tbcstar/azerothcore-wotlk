@@ -1,0 +1,86 @@
+[worldserver]
+
+###################################################################################################
+#	CONGRATS ON LEVEL-UP
+###################################################################################################
+
+# 启用这个模块吗? (1: true | 0: false)
+
+Congrats.Enable = 1
+
+# 启用每个级别的祝贺通知 (1: true | 0: false)
+CongratsPerLevel.Enable = 1
+
+# 当玩家登录时宣布模块?
+
+Congrats.Announce = 1
+
+# 设置玩家在每个等级所获得的内容
+# M: 金币 
+# S: 将对玩家施放的法术BUFF
+# 1: 给予玩家的第一个物品id
+# 2: 给予玩家的第二个物品id
+
+# Level 10
+# 1 金币/王者祝福BUFF
+# 红玫瑰 / TCG: 泡沫塑料剑架
+Congrats.L10M = 1;
+Congrats.L10S = 20217
+Congrats.L101 = 3419
+Congrats.L102 = 45063
+
+# Level 20
+# 10 金币 / 真言术：韧
+# 布娃娃 / TCG: 强者的旗帜
+Congrats.L20M = 10
+Congrats.L20S = 48161
+Congrats.L201 = 5433
+Congrats.L202 = 38578
+
+# Level 30
+# 15 金币 / 野性印记
+# 无袖T恤衫 / TCG: 食人魔皮纳塔
+Congrats.L30M = 15
+Congrats.L30S = 48469
+Congrats.L301 = 18231
+Congrats.L302 = 46780
+
+# Level 40
+# 20 金币 / 王者祝福
+# 暗影线圈 / TCG: 食人魔玩偶
+Congrats.L40M = 20
+Congrats.L40S = 20217
+Congrats.L401 = 31945
+Congrats.L402 = 49704
+
+# Level 50
+# 25 金币 / 真言术：韧
+# 山脉之血 / TCG: 球中的小鬼
+Congrats.L50M = 25
+Congrats.L50S = 48161
+Congrats.L501 = 11382
+Congrats.L502 = 32542
+
+# Level 60
+# 30 金币 / 野性印记
+# 烈酒的遥控器 / TCG: 地精杂烩煲
+Congrats.L60M = 30
+Congrats.L60S = 48469
+Congrats.L601 = 37863
+Congrats.L602 = 33219
+
+# Level 70
+# 35 金币 / 真言术：韧
+# 科尔戈的黄金 / TCG: 快干塑像底座
+Congrats.L70M = 35
+Congrats.L70S = 48161
+Congrats.L701 = 9360
+Congrats.L702 = 54212
+
+# Level 80
+# 100 金币 / 王者祝福
+# 有虫子的科尔戈黄金 / 闹鬼的纪念品
+Congrats.L80M = 100
+Congrats.L80S = 20217
+Congrats.L801 = 9361
+Congrats.L802 = 40110

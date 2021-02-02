@@ -1,0 +1,19 @@
+[worldserver]
+
+# XPWeekend.Announce
+# 	通知玩家模块已启用，即使不是周末。
+# default: 1 = true 
+#
+XPWeekend.Announce = 0
+
+# XPWeekend.Enabled
+#	启用/禁用模块。
+#default: 1 = enable
+#
+XPWeekend.Enabled = 1
+
+# XPWeekend.xpAmount
+#	允许配置文件设置xp给出的倍数
+# default = 2 (double)
+#
+XPWeekend.xpAmount = 2
