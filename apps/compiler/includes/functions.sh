@@ -1,6 +1,6 @@
 
 function comp_clean() {
-  echo "Cleaning build files"
+  echo "清洁构建文件"
 
   CWD=$(pwd)
 
@@ -18,9 +18,9 @@ function comp_configure() {
 
   cd $BUILDPATH
 
-  echo "Build path: $BUILDPATH"
-  echo "DEBUG info: $CDEBUG"
-  echo "Compilation type: $CTYPE"
+  echo "构建路径: $BUILDPATH"
+  echo "调试信息: $CDEBUG"
+  echo "编译类型: $CTYPE"
   # -DCMAKE_BUILD_TYPE=$CCTYPE disable optimization "slow and huge amount of ram"
   # -DWITH_COREDEBUG=$CDEBUG compiled with debug information
 
@@ -48,7 +48,7 @@ function comp_configure() {
 function comp_compile() {
   [ $MTHREADS == 0 ] && MTHREADS=$(grep -c ^processor /proc/cpuinfo) && MTHREADS=$(($MTHREADS + 2))
 
-  echo "Using $MTHREADS threads"
+  echo "使用 $MTHREADS 线程"
 
   CWD=$(pwd)
 

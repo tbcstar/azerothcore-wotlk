@@ -71,7 +71,7 @@ case $COMPILER in
     ;;
 
   * )
-    echo "Unknown compiler $COMPILER"
+    echo "未知的编译器 $COMPILER"
     exit 1
     ;;
 esac

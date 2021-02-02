@@ -4,22 +4,22 @@ CURRENT_PATH="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 source "$CURRENT_PATH/includes/includes.sh"
 
-PS3='[Please enter your choice]: '
+PS3='[请输入您的选择]: '
 options=(
-    "init (i): First Installation"                  # 1
+    "init (i): 第一次安装"                  # 1
     "install-deps (d): Configure OS dep"            # 2
-    "pull (u): Update Repository"                   # 3
-    "reset (r): Reset & Clean Repository"           # 4
-    "compiler (c): Run compiler tool"               # 5
-    "db-assembler (a): Run db assembler tool"       # 6
-    "module-search (ms): Module Search by keyword" # 7
-    "module-install (mi): Module Install by name"  # 8
-    "module-update (mu): Module Update by name"    # 9
-    "module-remove: (mr): Module Remove by name"   # 10
-    "client-data: (gd): download client data from github repository (beta)"   # 11
-    "run-worldserver (rw): execute a simple restarter for worldserver" # 12
-    "run-authserver (ra): execute a simple restarter for authserver" # 13
-    "quit: Exit from this menu"                     # 14
+    "pull (u): 更新存储库"                   # 3
+    "reset (r): 重置和清理存储库"           # 4
+    "compiler (c): 运行编译器工具"               # 5
+    "db-assembler (a): 运行db汇编工具"       # 6
+    "module-search (ms): 按关键字搜索模块" # 7
+    "module-install (mi): 按名称安装模块"  # 8
+    "module-update (mu): 按名称更新模块"    # 9
+    "module-remove: (mr): 按名称删除模块"   # 10
+    "client-data: (gd): 从github存储库下载客户端数据(测试版)"   # 11
+    "run-worldserver (rw): 为worldserver执行一个简单的restarter" # 12
+    "run-authserver (ra): 为authserver执行一个简单的restarter" # 13
+    "quit: 退出此菜单"                     # 14
     )
 
 function _switch() {
@@ -71,10 +71,10 @@ function _switch() {
             exit
             ;;
         ""|"--help")
-            echo "Available commands:"
+            echo "可用命令:"
             printf '%s\n' "${options[@]}"
             ;;
-        *) echo "invalid option, use --help option for the commands list";;
+        *) echo "无效选项，在命令列表中使用——help选项";;
     esac
 }
 

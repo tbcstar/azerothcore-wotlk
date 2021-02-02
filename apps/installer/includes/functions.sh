@@ -1,13 +1,13 @@
 function inst_configureOS() {
     echo "Platform: $OSTYPE"
     case "$OSTYPE" in
-        solaris*) echo "Solaris is not supported yet" ;;
+        solaris*) echo "目前还不支持Solaris" ;;
         darwin*)  source "$AC_PATH_INSTALLER/includes/os_configs/osx.sh" ;;  
         linux*)
-            # If $OSDISTRO is set, use this value (from config.sh)
+            # 如果设置了$OSDISTRO，使用这个值(从config.sh)
             if [ ! -z "$OSDISTRO" ]; then
                 DISTRO=$OSDISTRO
-            # If available, use LSB to identify distribution
+            # 如果可用，使用LSB来识别分布
             elif [ -f /etc/lsb-release -o -d /etc/lsb-release.d ]; then
                 DISTRO=$(lsb_release -i | cut -d: -f2 | sed s/'^\t'//)
             # Otherwise, use release info file
@@ -16,7 +16,7 @@ function inst_configureOS() {
             fi
 
             case $DISTRO in
-            # add here distro that are debian or ubuntu based
+            # 在这里添加基于debian或ubuntu的发行版
             # TODO: find a better way, maybe checking the existance
             # of a package manager
                 "neon" | "ubuntu")
@@ -26,22 +26,22 @@ function inst_configureOS() {
                     DISTRO="debian"
                 ;;
                 *)
-                    echo "Distro: $DISTRO, is not supported. If your distribution is based on debian or ubuntu,
-                        please set the 'OSDISTRO' environment variable to one of these distro (you can use config.sh file)"
+                    echo "发行版: $DISTRO, 不支持。如果你的发行版是基于debian或ubuntu的，
+                        请将“OSDISTRO”环境变量设置为其中一个发行版(你可以使用config.sh文件)"
                 ;;
             esac
 
 
             DISTRO=${DISTRO,,}
 
-            echo "Distro: $DISTRO"
+            echo "发行版: $DISTRO"
 
-            # TODO: implement different configurations by distro
+            # 待办事项:按发行版实现不同的配置
             source "$AC_PATH_INSTALLER/includes/os_configs/$DISTRO.sh"
         ;;
-        bsd*)     echo "BSD is not supported yet" ;;
+        bsd*)     echo "目前还不支持BSD" ;;
         msys*)    source "$AC_PATH_INSTALLER/includes/os_configs/windows.sh" ;;
-        *)        echo "This platform is not supported" ;;
+        *)        echo "跳出的警告" ;;
     esac
 }
 
@@ -113,13 +113,13 @@ function inst_module_search {
     local idx=0;
 
     if [ -z "$1" ]; then
-        echo "Type what to search or leave blank for full list"
+        echo "键入要搜索的内容，或为完整列表留空"
         read -p "Insert name: " res
     fi
 
     local search="+$res"
 
-    echo "Searching $res..."
+    echo "搜索 $res..."
     echo "";
 
     readarray -t MODS < <(curl --silent "https://api.github.com/search/repositories?q=org%3Aazerothcore${search}+fork%3Atrue+topic%3Acore-module+sort%3Astars&type=" \
@@ -129,9 +129,9 @@ function inst_module_search {
         read v b < <(inst_getVersionBranch "https://raw.githubusercontent.com/azerothcore/$mod/master/acore-module.json")
 
         if [[ "$b" != "none" ]]; then
-            echo "-> $mod (tested with AC version: $v)"
+            echo "-> $mod (测试过的AC版本: $v)"
         else
-            echo "-> $mod (no revision available for AC v$AC_VERSION, it could not work!)"
+            echo "-> $mod (AC没有修订版 v$AC_VERSION, 它不能工作!)"
         fi
     done
 
@@ -142,7 +142,7 @@ function inst_module_search {
 function inst_module_install {
     local res
     if [ -z "$1" ]; then
-        echo "Type the name of the module to install"
+        echo "键入要安装的模块的名称"
         read -p "Insert name: " res
     else
         res="$1"
@@ -151,9 +151,9 @@ function inst_module_install {
     read v b < <(inst_getVersionBranch "https://raw.githubusercontent.com/azerothcore/$res/master/acore-module.json")
 
     if [[ "$b" != "none" ]]; then
-        Joiner:add_repo "https://github.com/azerothcore/$res" "$res" "$b" && echo "Done, please re-run compiling and db assembly. Read instruction on module repository for more information"
+        Joiner:add_repo "https://github.com/azerothcore/$res" "$res" "$b" && echo "完成后，请重新运行编译和数据库汇编。更多信息请阅读模块存储库的说明"
     else
-        echo "Cannot install $res module: it doesn't exists or no version compatible with AC v$ACORE_VERSION are available"   
+        echo "不能安装 $res 模块: 它不存在或没有与AC v$ACORE_VERSION 兼容的版本可用"   
     fi
 
     echo "";
@@ -167,7 +167,7 @@ function inst_module_update {
     local p;
 
     if [ -z "$1" ]; then
-        echo "Type the name of the module to update"
+        echo "键入要更新的模块的名称"
         read -p "Insert name: " res
     else
         res="$1"
@@ -180,15 +180,15 @@ function inst_module_update {
 
         cd "$J_PATH_MODULES/$res/"
 
-        # use current branch if something wrong with json
+        # 如果json有问题，请使用当前分支
         if [[ "$v" == "none" || "$v" == "not-defined" ]]; then
             b=`git rev-parse --abbrev-ref HEAD`
         fi
 
-        Joiner:upd_repo "https://github.com/azerothcore/$res" "$res" "$b" && echo "Done, please re-run compiling and db assembly" || echo "Cannot update"
+        Joiner:upd_repo "https://github.com/azerothcore/$res" "$res" "$b" && echo "完成后，请重新运行编译和数据库汇编" || echo "无法更新"
         cd $_tmp
     else
-        echo "Cannot update! Path doesn't exist"
+        echo "不能更新!路径不存在"
     fi;
 
     echo "";
@@ -197,13 +197,13 @@ function inst_module_update {
 
 function inst_module_remove {
     if [ -z "$1" ]; then
-        echo "Type the name of the module to remove"
+        echo "键入要删除的模块的名称"
         read -p "Insert name: " res
     else
         res="$1"
     fi
 
-    Joiner:remove "$res" && echo "Done, please re-run compiling"  || echo "Cannot remove"
+    Joiner:remove "$res" && echo "完成，请重新运行编译"  || echo "不能清除"
 
     echo "";
     echo "";
@@ -211,7 +211,7 @@ function inst_module_remove {
 
 
 function inst_simple_restarter {
-    echo "Running $1 ..."
+    echo "运行 $1 ..."
     bash "$AC_PATH_APPS/startup-scripts/simple-restarter" "$AC_BINPATH_FULL" "$1"
     echo
     #disown -a
@@ -221,7 +221,7 @@ function inst_simple_restarter {
 function inst_download_client_data {
     local path="$AC_BINPATH_FULL"
 
-    echo "Downloading client data in: $path/data.zip ..."
+    echo "下载客户端数据: $path/data.zip ..."
     curl -L https://github.com/wowgaming/client-data/releases/download/v9/data.zip > "$path/data.zip" \
         && unzip -o "$path/data.zip" -d "$path/" && rm "$path/data.zip"
 }

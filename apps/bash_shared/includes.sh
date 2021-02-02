@@ -1,6 +1,6 @@
 [[ ${GUARDYVAR:-} -eq 1 ]] && return || readonly GUARDYVAR=1 # include it once
 
-# force default language for applications
+# 强制应用程序使用默认语言
 LC_ALL=C 
 
 AC_PATH_APPS="$( cd "$( dirname "${BASH_SOURCE[0]}" )/../" && pwd )"

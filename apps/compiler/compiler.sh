@@ -14,7 +14,7 @@ function run_option() {
         fun="comp_$1"
         $fun
     else
-        echo "invalid option, use --help option for the commands list"
+        echo "无效选项，在命令列表中使用——help选项"
     fi
 }
 
@@ -23,12 +23,12 @@ function comp_quit() {
 }
 
 comp_options=(
-    "build: Configure and compile"
-    "clean: Clean build files"
-    "configure: Run CMake"
-    "compile: Compile only" 
-    "all: clean, configure and compile"
-    "quit: Close this menu")
+    "build: 配置和编译"
+    "clean: 清洁构建文件"
+    "configure: 运行CMake"
+    "compile: 只编译" 
+    "all: 清理、配置和编译"
+    "quit: 关闭菜单")
 comp_functions=(
     "comp_build" 
     "comp_clean" 
@@ -37,9 +37,9 @@ comp_functions=(
     "comp_all"
     "comp_quit")
 
-PS3='[ Please enter your choice ]: '
+PS3='[ 请输入您的选择 ]: '
 
-runHooks "ON_AFTER_OPTIONS" #you can create your custom options
+runHooks "ON_AFTER_OPTIONS" #您可以创建自定义选项
 
 function _switch() {
     _reply="$1"
@@ -47,7 +47,7 @@ function _switch() {
 
     case $_reply in
         ""|"--help")
-            echo "Available commands:"
+            echo "可用命令:"
             printf '%s\n' "${options[@]}"
             ;;
         *) 

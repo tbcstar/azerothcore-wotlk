@@ -27,7 +27,7 @@ fi
 source "$J_PATH/joiner.sh"
 
 if [ -f "$AC_PATH_INSTALLER/config.sh"  ]; then
-    source "$AC_PATH_INSTALLER/config.sh" # should overwrite previous
+    source "$AC_PATH_INSTALLER/config.sh" # 应该覆盖之前的
 fi
 
 source "$AC_PATH_APPS/compiler/includes/includes.sh"

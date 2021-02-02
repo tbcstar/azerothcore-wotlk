@@ -38,7 +38,7 @@ function dbasm_mysqlExec() {
                 # it happens on new mysql 5.7 installations
                 # since mysql_native_password is explicit now
                 if [[ "$err" == *"Access denied"* ]]; then
-                    echo "Setting mysql_native_password and  for  $PROMPT_USER ..."
+                    echo "设置 mysql_native_password 和 $PROMPT_USER ..."
                     sudo -h "$MYSQL_HOST" "$DB_MYSQL_EXEC" -P "$MYSQL_PORT" -e "UPDATE mysql.user SET authentication_string=PASSWORD('${PROMPT_PASS}'), plugin='mysql_native_password' WHERE User='${PROMPT_USER}'; FLUSH PRIVILEGES;"
                 fi
             fi
@@ -56,7 +56,7 @@ function dbasm_mysqlExec() {
                 local _dbname=${!_name}
 
                 eval $_confs
-                echo "Grant permissions for ${MYSQL_USER}'@'${MYSQL_HOST} to ${_dbname}"
+                echo "授予权限 ${MYSQL_USER}'@'${MYSQL_HOST} 给 ${_dbname}"
                 "$DB_MYSQL_EXEC"  -h "$MYSQL_HOST" -u "$PROMPT_USER" $options -P "$MYSQL_PORT" -e "GRANT ALL PRIVILEGES ON ${_dbname}.* TO '${MYSQL_USER}'@'${MYSQL_HOST}'  WITH GRANT OPTION;"
             done
 		else
@@ -106,9 +106,9 @@ function dbasm_createDB() {
     CONF_PASS=$MYSQL_PASS
 
     if dbasm_dbExists $dbname "$confs"; then
-        echo "$dbname database exists"
+        echo "$dbname 数据库存在"
     else
-		echo "Creating DB ${dbname} ..."
+		echo "创建数据库 ${dbname} ..."
         dbasm_mysqlExec "$confs" "CREATE DATABASE \`${dbname}\`" ""
         dbasm_mysqlExec "$confs" "CREATE USER IF NOT EXISTS '${CONF_USER}'@'${MYSQL_HOST}' IDENTIFIED BY '${CONF_PASS}';"
         dbasm_mysqlExec "$confs" "GRANT ALL PRIVILEGES ON \`${dbname}\`.* TO '${CONF_USER}'@'${MYSQL_HOST}' WITH GRANT OPTION;"
@@ -152,11 +152,11 @@ function dbasm_assemble() {
 
 
         if [ ! ${#base[@]} -eq 0 ]; then
-            echo "Generating $OUTPUT_FOLDER$database$suffix_base ..."
+            echo "生成 $OUTPUT_FOLDER$database$suffix_base ..."
 
             for d in "${base[@]}"
             do
-                echo "Searching on $d ..."
+                echo "搜索 $d ..."
                 if [ ! -z "$d" ]; then
                     for entry in "$d"/**/*.sql
                     do
@@ -175,11 +175,11 @@ function dbasm_assemble() {
         echo "" > "$updFile"
 
         if [ ! ${#updates[@]} -eq 0 ]; then
-            echo "Generating $OUTPUT_FOLDER$database$suffix_upd ..."
+            echo "生成 $OUTPUT_FOLDER$database$suffix_upd ..."
 
             for d in "${updates[@]}"
             do
-                echo "Searching on $d ..."
+                echo "搜索 $d ..."
                 if [ ! -z "$d" ]; then
                     for entry in "$d"/**/*.sql
                     do
@@ -201,11 +201,11 @@ function dbasm_assemble() {
         echo "" > "$custFile"
 
         if [ ! ${#custom[@]} -eq 0 ]; then
-            echo "Generating $OUTPUT_FOLDER$database$suffix_custom ..."
+            echo "生成 $OUTPUT_FOLDER$database$suffix_custom ..."
 
             for d in "${custom[@]}"
             do
-                echo "Searching on $d ..."
+                echo "搜索 $d ..."
                 if [ ! -z "$d" ]; then
                     for entry in "$d"/**/*.sql
                     do
@@ -291,14 +291,14 @@ function dbasm_db_import() {
 
     if [[ $type = "base" && $DB_SKIP_BASE_IMPORT_IF_EXISTS = true ]]; then
         if dbasm_isNotEmpty $dbname "$confs"; then
-            echo "$dbname is not empty, base importing skipped"
+            echo "$dbname 不是空的，Base导入跳过"
             return
 	else
-	    echo "$dbname seems empty"
+	    echo "$dbname 似乎是空的"
         fi
     fi
 
-    echo "importing $1 - $2 ..."
+    echo "导入 $1 - $2 ..."
     
     # MYSQL_PORT needs to be reseted as the next eval might not overwite the current value causing the commands to use wrong port
     MYSQL_PORT=3306
@@ -338,29 +338,29 @@ function dbasm_import() {
     with_updates=$2
     with_custom=$3
 
-    echo "=====       CHECKING DBs        ====="
+    echo "=====       检查 DBs        ====="
     for db in ${DATABASES[@]}
     do
         dbasm_createDB "$db"
     done
-    echo "=====           DONE            ====="
+    echo "=====           完成            ====="
 
     #
     # BACKUP
     #
 
     if [ $BACKUP_ENABLE = true ]; then
-        echo "===== STARTING BACKUP PROCESS   ====="
+        echo "===== 开始备份过程   ====="
         mkdir -p "$BACKUP_FOLDER"
 
         for db in ${DATABASES[@]}
         do
             dbasm_db_backup "$db"
         done
-        echo "=====           DONE            ====="
+        echo "=====           完成            ====="
     fi
 
-    echo "===== STARTING IMPORTING PROCESS ====="
+    echo "===== 开始导入过程 ====="
     #
     # IMPORT
     #
@@ -385,5 +385,5 @@ function dbasm_import() {
         done
     fi
 
-    echo "=====           DONE            ====="
+    echo "=====           完成            ====="
 }

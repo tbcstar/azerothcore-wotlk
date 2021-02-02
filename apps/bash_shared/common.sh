@@ -6,11 +6,11 @@ source "$AC_PATH_CONF/dist/config.sh" # include dist to avoid missing conf varia
 if [ -f "$AC_PATH_CONF/config.sh"  ]; then
     source "$AC_PATH_CONF/config.sh" # should overwrite previous
 else
-    echo "NOTICE: file <$AC_PATH_CONF/config.sh> has not been found, you should create and configure it."
+    echo "通知: 文件 <$AC_PATH_CONF/config.sh> 没有找到，您应该创建并配置它。"
 fi
 
 #
-# Load modules
+# 加载模块
 #
 
 for entry in "$AC_PATH_MODULES/"*/include.sh
