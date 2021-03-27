@@ -815,6 +815,7 @@ ChatLogs.Guild = 0
 ChatLogs.Public = 0
 
 #
+#    WARNING: enabling this might cause issues to your addon channel
 #    ChatLogs.Addon
 #        说明:记录插件消息。
 #        Default:     0 - (Disabled)
@@ -1579,9 +1580,9 @@ IsPreloadedContinentTransport.Enabled = 0
 # WARDEN SETTINGS
 #
 #    Warden.Enabled
-#        说明：启用Warden反作弊系统。
-#        Default:     0 - (Disabled)
-#                     1 - (Enabled)
+#        Description: 启用Warden反作弊系统.
+#        Default:     1 - (Enabled)
+#                     0 - (Disabled)
 
 Warden.Enabled = 1
 
@@ -1950,6 +1951,13 @@ NpcEvadeIfTargetIsUnreachable = 5
 #                     0 - (Disabled)
 
 NpcRegenHPIfTargetIsUnreachable = 1
+
+#    NpcRegenHPTimeIfTargetIsUnreachable
+#        Description: Specifies the time (in seconds) that a creature whom target
+#                     is unreachable in raid to end up regenerate health.
+#        Default:     10
+
+NpcRegenHPTimeIfTargetIsUnreachable = 10
 
 #
 ###################################################################################################
@@ -2332,6 +2340,14 @@ Rate.Drop.Item.Legendary        = 1
 Rate.Drop.Item.Artifact         = 1
 Rate.Drop.Item.Referenced       = 1
 Rate.Drop.Money                 = 1
+
+#    RewardBonusMoney
+#        Description: Allows to further tweak the amount of extra money rewarded by quests when the player
+#                     is at MaxPlayerLevel (this amount is specified in quest_template.RewardBonusMoney).
+#                     NOTE: the final amount will also affected by Rate.Drop.Money
+#        Default:     1
+
+Rate.RewardBonusMoney = 1
 
 #
 #    Rate.SellValue.Item.Poor
@@ -2730,15 +2746,16 @@ Battleground.QueueAnnouncer.PlayerOnly = 0
 #        Default:     300000 - (Enabled, 5 minutes)
 #                     0      - (Disabled, Not recommended)
 
-BattleGround.PrematureFinishTimer = 300000
+Battleground.PrematureFinishTimer = 300000
 
 #
-#    BattleGround.PremadeGroupWaitForMatch
-#        描述:一个预先制作好的队伍等待与其他队伍匹配的时间(单位:毫秒)。
+#    Battleground.PremadeGroupWaitForMatch
+#        Description: 时间(以毫秒为单位)预先制作的组必须等待匹配的组
+#                     other faction.
 #        Default:     1800000 - (Enabled, 30 minutes)
 #                     0       - (Disabled, Not recommended)
 
-BattleGround.PremadeGroupWaitForMatch = 1800000
+Battleground.PremadeGroupWaitForMatch = 1800000
 
 #
 #    Battleground.GiveXPForKills
