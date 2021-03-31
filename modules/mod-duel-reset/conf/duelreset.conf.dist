@@ -1,0 +1,16 @@
+[worldserver]
+
+#
+#    DuelResetCooldowns
+#        描述:重置所有的冷却时间之前决斗开始和恢复他们当决斗结束。
+#        Default:     1  - (Enabled)
+#                     0  - (Disabled)
+
+DuelResetCooldowns = 1
+
+#    DuelResetHealthMana
+#        Description: 在决斗开始前重置生命值和法力值，决斗结束后恢复它们。
+#        Default:     1  - (Enabled)
+#                     0  - (Disabled)
+
+DuelResetHealthMana = 1
