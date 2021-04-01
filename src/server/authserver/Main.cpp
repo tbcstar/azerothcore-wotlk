@@ -48,8 +48,8 @@ LoginDatabaseWorkerPool LoginDatabase;                      // Accessor to the a
 /// Print out the usage string for this program on the console.
 void usage(const char* prog)
 {
-    sLog->outString("Usage: \n %s [<options>]\n"
-                    "    -c config_file           use config_file as configuration file\n\r",
+    sLog->outString("用法: \n %s [<选项>]\n"
+                    "    -c config_file           使用config_file作为配置文件\n\r",
                     prog);
 }
 
@@ -65,7 +65,7 @@ extern int main(int argc, char** argv)
         {
             if (++count >= argc)
             {
-                printf("Runtime-Error: -c option requires an input argument\n");
+                printf("Runtime-Error: -c 选项需要一个输入参数\n");
                 usage(argv[0]);
                 return 1;
             }
@@ -97,9 +97,9 @@ extern int main(int argc, char** argv)
     sLog->outString("                                ╚██████╗╚██████╔╝██║  ██║███████╗");
     sLog->outString("                                 ╚═════╝ ╚═════╝ ╚═╝  ╚═╝╚══════╝\n");
 
-    sLog->outString("     AzerothCore 3.3.5a  -  www.azerothcore.org\n");
+    sLog->outString("     TBCstar  -  www.tbcstar.com\n");
 
-    sLog->outString("Using configuration file %s.", configFile.c_str());
+    sLog->outString("使用配置文件 %s.", configFile.c_str());
 
     sLog->outDetail("%s (Library: %s)", OPENSSL_VERSION_TEXT, SSLeay_version(SSLEAY_VERSION));
 
@@ -109,7 +109,7 @@ extern int main(int argc, char** argv)
     ACE_Reactor::instance(new ACE_Reactor(new ACE_TP_Reactor(), true), true);
 #endif
 
-    sLog->outBasic("Max allowed open files is %d", ACE::max_handles());
+    sLog->outBasic("最大允许打开的文件是 %d", ACE::max_handles());
 
     // authserver PID file creation
     std::string pidFile = sConfigMgr->GetOption<std::string>("PidFile", "");
@@ -160,7 +160,7 @@ extern int main(int argc, char** argv)
         return 1;
     }
 
-    sLog->outString("Authserver listening to %s:%d", bind_ip.c_str(), rmport);
+    sLog->outString("Authserver 正在监听 %s:%d", bind_ip.c_str(), rmport);
 
     // Initialize the signal handlers
     acore::SignalHandler signalHandler;
@@ -195,7 +195,7 @@ extern int main(int argc, char** argv)
             if (!currentAffinity)
                 sLog->outError("server.authserver", "Processors marked in UseProcessors bitmask (hex) %x are not accessible for the authserver. Accessible processors bitmask (hex): %x", affinity, appAff);
             else if (SetProcessAffinityMask(hProcess, currentAffinity))
-                sLog->outString("server.authserver", "Using processors (bitmask, hex): %x", currentAffinity);
+                sLog->outString("server.authserver", "使用处理器(位掩码，十六进制): %x", currentAffinity);
             else
                 sLog->outError("server.authserver", "Can't set used processors (hex): %x", currentAffinity);
         }
@@ -204,9 +204,9 @@ extern int main(int argc, char** argv)
     if (highPriority)
     {
         if (SetPriorityClass(hProcess, HIGH_PRIORITY_CLASS))
-            sLog->outString("server.authserver", "authserver process priority class set to HIGH");
+            sLog->outString("server.authserver", "authserver进程优先级设置为HIGH");
         else
-            sLog->outError("server.authserver", "Can't set authserver process priority class.");
+            sLog->outError("server.authserver", "无法设置authserver进程优先级类。");
     }
 
 #else // Linux
@@ -226,7 +226,7 @@ extern int main(int argc, char** argv)
         {
             CPU_ZERO(&mask);
             sched_getaffinity(0, sizeof(mask), &mask);
-            sLog->outString("Using processors (bitmask, hex): %lx", *(__cpu_mask*)(&mask));
+            sLog->outString("使用处理器(位掩码，十六进制): %lx", *(__cpu_mask*)(&mask));
         }
     }
 
@@ -235,7 +235,7 @@ extern int main(int argc, char** argv)
         if (setpriority(PRIO_PROCESS, 0, PROCESS_HIGH_PRIORITY))
             sLog->outError("Can't set authserver process priority class, error: %s", strerror(errno));
         else
-            sLog->outString("authserver process priority class set to %i", getpriority(PRIO_PROCESS, 0));
+            sLog->outString("authserver进程优先级类设置为 %i", getpriority(PRIO_PROCESS, 0));
     }
 
 #endif
@@ -248,7 +248,7 @@ extern int main(int argc, char** argv)
     // possibly enable db logging; avoid massive startup spam by doing it here.
     if (sConfigMgr->GetOption<bool>("EnableLogDB", false))
     {
-        sLog->outString("Enabling database logging...");
+        sLog->outString("启用数据库日志记录...");
         sLog->SetLogDB(true);
     }
 
@@ -264,7 +264,7 @@ extern int main(int argc, char** argv)
         if ((++loopCounter) == numLoops)
         {
             loopCounter = 0;
-            sLog->outDetail("Ping MySQL to keep connection alive");
+            sLog->outDetail("Ping MySQL已保持连接");
             LoginDatabase.KeepAlive();
         }
     }
@@ -272,7 +272,7 @@ extern int main(int argc, char** argv)
     // Close the Database Pool and library
     StopDB();
 
-    sLog->outString("Halting process...");
+    sLog->outString("停止中...");
     return 0;
 }
 
@@ -309,7 +309,7 @@ bool StartDB()
         return false;
     }
 
-    sLog->outString("Started auth database connection pool.");
+    sLog->outString("已启动auth数据库连接池。");
     return true;
 }
 

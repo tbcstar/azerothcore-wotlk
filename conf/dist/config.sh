@@ -23,12 +23,12 @@ BINPATH="$AC_PATH_ROOT/env/dist"
 
 ##############################################
 #
-#  COMPILER_CONFIGURATIONS
+#  编译器配置
 #
 ##############################################
 
 
-# Set preferred compilers.
+# 设置首选的编译器。
 # To use gcc (not suggested) instead of clang change in:
 #  CCOMPILERC="/usr/bin/gcc"
 #  CCOMPILERCXX="/usr/bin/g++"
@@ -37,46 +37,46 @@ CCOMPILERC="/usr/bin/clang"
 CCOMPILERCXX="/usr/bin/clang++"
 
 
-# how many thread must be used for compilation ( leave zero to use all available )
+# 编译时必须使用多少线程(保留0以使用所有可用的线程)
 MTHREADS=0
-# enable/disable warnings during compilation
+# 在编译期间启用/禁用警告
 CWARNINGS=ON
-# enable/disable some debug informations ( it's not a debug compilation )
+# 启用/禁用一些调试信息(它不是调试编译)
 CDEBUG=OFF
-# specify compilation type
+# 指定编译类型
 CTYPE=Release
-# compile scripts
+# 脚本编译
 CSCRIPTS=ON
-# compile unit tests
+# 编译单元测试
 CBUILD_TESTING=OFF
 # compile server
 CSERVERS=ON
 # compile tools
-CTOOLS=OFF
+CTOOLS=ON
 # use precompiled headers ( fatest compilation but not optimized if you change headers often )
 CSCRIPTPCH=ON
 CCOREPCH=ON
 
-# Skip specific modules from compilation (cmake reconfigure needed)
+# 从编译中跳过特定模块(需要重新配置cmake)
 # use semicolon ; to separate modules
 CDISABLED_AC_MODULES=""
 
 # you can add your custom definitions here ( -D )
 # example:  CCUSTOMOPTIONS=" -DWITH_PERFTOOLS=ON -DENABLE_EXTRA_LOGS=ON"
 #
-CCUSTOMOPTIONS=""
+CCUSTOMOPTIONS="-DENABLE_EXTRAS=1 -DENABLE_EXTRA_LOGS=ON"
 
 
 ##############################################
 #
-#  DB ASSEMBLER / EXPORTER CONFIGURATIONS
+#  DB汇编/导出配置
 #
 ##############################################
 
 #
-# Basically you don't have to edit it
-# but if you have another database you can add it here
-# and create relative confiugurations below
+# 基本上你不需要编辑它
+# 但如果你有另一个数据库，你可以添加到这里
+# 并在下面创建相对配置
 #
 DATABASES=(
 	"AUTH"
@@ -87,8 +87,8 @@ DATABASES=(
 OUTPUT_FOLDER="$AC_PATH_ROOT/env/dist/sql/"
 
 ####### BACKUP
-# Set to true if you want to backup your azerothcore databases before importing the SQL with the db_assembler
-# Do not forget to stop your database software (mysql) before doing so
+# 如果您想在使用db_assembler导入SQL之前备份您的azerothcore数据库，则将其设置为true
+# 在此之前不要忘记停止数据库软件(mysql)
 
 BACKUP_ENABLE=false
 
@@ -96,7 +96,7 @@ BACKUP_FOLDER="$AC_PATH_ROOT/env/dist/sql/backup/"
 
 #######
 
-# FULL DB
+# 完整的数据库
 DB_AUTH_PATHS=(
     "$SRCPATH/data/sql/base/db_auth/"
 )
@@ -161,26 +161,26 @@ DB_MYSQL_EXEC="mysql"
 DB_MYSQL_DUMP_EXEC="mysqldump"
 
 
-DB_AUTH_CONF="MYSQL_USER='acore'; \
-                    MYSQL_PASS='acore'; \
+DB_AUTH_CONF="MYSQL_USER='root'; \
+                    MYSQL_PASS='A112233a!'; \
                     MYSQL_HOST='localhost';\
-                    MYSQL_PORT='3306';\
+                    MYSQL_PORT='3310';\
                     "
 
-DB_CHARACTERS_CONF="MYSQL_USER='acore'; \
-                    MYSQL_PASS='acore'; \
+DB_CHARACTERS_CONF="MYSQL_USER='root'; \
+                    MYSQL_PASS='A112233a!'; \
                     MYSQL_HOST='localhost';\
-                    MYSQL_PORT='3306';\
+                    MYSQL_PORT='3310';\
                     "
 
-DB_WORLD_CONF="MYSQL_USER='acore'; \
-                    MYSQL_PASS='acore'; \
+DB_WORLD_CONF="MYSQL_USER='root'; \
+                    MYSQL_PASS='A112233a!'; \
                     MYSQL_HOST='localhost';\
-                    MYSQL_PORT='3306';\
+                    MYSQL_PORT='3310';\
                     "
 
-DB_AUTH_NAME="acore_auth"
+DB_AUTH_NAME="auth"
 
-DB_CHARACTERS_NAME="acore_characters"
+DB_CHARACTERS_NAME="characters"
 
-DB_WORLD_NAME="acore_world"
+DB_WORLD_NAME="world"
