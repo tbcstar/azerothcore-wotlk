@@ -93,3 +93,11 @@ local.properties
 #  !modules/yourmodule
 #
 # ==================
+!modules/mod-eluna-lua-engine
+!modules/mod-anticheat
+!modules/mod-cfbg
+!modules/mod-duel-reset
+!modules/mod-npc-gambler
+!modules/mod-transmog
+!modules/mod-weekend-xp
+!modules/mod-world-chat
