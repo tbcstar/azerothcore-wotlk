@@ -1187,13 +1187,15 @@ void AddOutdoorPvPScripts()
 #endif
 }
 
-//~ **********************  Put your custom scripts below, like the commented examples, uncomment and edit *************************************
+//~ **********************  将您的自定义脚本放在下面，如注释示例，取消注释和编辑 *************************************
 
 //~ void AddSC_MySuperScript();
 
+void AddSC_HighRiskSystems();
 void AddCustomScripts()
 {
 #ifdef SCRIPTS
     //~ AddSC_MySuperScript();
+	AddSC_HighRiskSystems();
 #endif
 }
