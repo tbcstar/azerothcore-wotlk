@@ -221,7 +221,7 @@ function inst_simple_restarter {
 function inst_download_client_data {
     local path="$AC_BINPATH_FULL"
 
-    echo "下载客户端数据: $path/data.zip ..."
-    curl -L https://github.com/wowgaming/client-data/releases/download/v9/data.zip > "$path/data.zip" \
+    echo "Downloading client data in: $path/data.zip ..."
+    curl -L https://github.com/wowgaming/client-data/releases/download/v10/data.zip > "$path/data.zip" \
         && unzip -o "$path/data.zip" -d "$path/" && rm "$path/data.zip"
 }
