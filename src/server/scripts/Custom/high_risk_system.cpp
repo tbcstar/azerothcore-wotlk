@@ -34,7 +34,6 @@ void ReskillCheck(Player* killer, Player* killed)
     AreaTableEntry const* area2 = sAreaTableStore.LookupEntry(killer->GetAreaId());
     if (area->IsSanctuary() || area2->IsSanctuary())
         return;
-    
 }
 class HighRiskSystem : public PlayerScript
 {
