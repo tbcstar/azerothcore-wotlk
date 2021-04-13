@@ -1196,6 +1196,6 @@ void AddCustomScripts()
 {
 #ifdef SCRIPTS
     //~ AddSC_MySuperScript();
-	AddSC_HighRiskSystems();
+    AddSC_HighRiskSystems();
 #endif
 }
