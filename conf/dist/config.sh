@@ -56,6 +56,8 @@ CTOOLS=ON
 # use precompiled headers ( fatest compilation but not optimized if you change headers often )
 CSCRIPTPCH=ON
 CCOREPCH=ON
+# enable/disable extra logs
+CEXTRA_LOGS=0
 
 # 从编译中跳过特定模块(需要重新配置cmake)
 # use semicolon ; to separate modules

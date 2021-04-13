@@ -5570,6 +5570,11 @@ void Player::DurabilityPointsLossAll(int32 points, bool inventory)
 
 void Player::DurabilityPointsLoss(Item* item, int32 points)
 {
+    if (HasAuraType(SPELL_AURA_PREVENT_DURABILITY_LOSS))
+    {
+        return;
+    }
+
     int32 pMaxDurability = item->GetUInt32Value(ITEM_FIELD_MAXDURABILITY);
     int32 pOldDurability = item->GetUInt32Value(ITEM_FIELD_DURABILITY);
     int32 pNewDurability = pOldDurability - points;
@@ -19846,7 +19851,6 @@ bool Player::Satisfy(DungeonProgressionRequirements const* ar, uint32 target_map
                 ilvlRequirementNotMet = true;
             }
         }
-
 
         Difficulty target_difficulty = GetDifficulty(mapEntry->IsRaid());
         MapDifficulty const* mapDiff = GetDownscaledMapDifficultyData(target_map, target_difficulty);

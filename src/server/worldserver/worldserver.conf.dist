@@ -2732,6 +2732,22 @@ Battleground.CastDeserter = 1
 Battleground.QueueAnnouncer.Enable = 0
 
 #
+#    Battleground.QueueAnnouncer.Limited.Enable
+#        Description: Show announce only if left players in queue = 1
+#        Default:     0 - (Disabled)
+#                     1 - (Enabled)
+
+Battleground.QueueAnnouncer.Limited.Enable = 0
+
+#
+#    Battleground.QueueAnnouncer.SpamProtection.Delay
+#        Description: Show announce if player rejoined in queue after sec
+#        Default:     30
+#
+
+Battleground.QueueAnnouncer.SpamProtection.Delay = 30
+
+#
 #    Battleground.QueueAnnouncer.PlayerOnly
 #        战场队列公告类型。
 #        Default:     0 - (系统消息，任何人都可以看到)
