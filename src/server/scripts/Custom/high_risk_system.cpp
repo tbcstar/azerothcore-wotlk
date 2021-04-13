@@ -55,7 +55,7 @@ public:
 			if (GameObject* go = killer->SummonGameObject(GOB_CHEST, killed->GetPositionX(), killed->GetPositionY(), killed->GetPositionZ(), killed->GetOrientation(), 0.0f, 0.0f, 0.0f, 0.0f, 300))
 			{
 				killer->AddGameObject(go);
-				go->SetOwnerGUID(NULL);
+				go->SetOwnerGUID(0);
 
 				for (int i = urand(0, 17); i < EQUIPMENT_SLOT_END; ++i)
 					/* Equipment Set first */
