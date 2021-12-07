@@ -78,7 +78,7 @@ DataDir = "/home/server/data"
 #        Example:     "/home/youruser/azerothcore/logs"
 #        Default:     "" - (日志文件将保存在当前路径下)
 
-LogsDir = "/www/game/server/log"
+LogsDir = "/home/server/log"
 
 #
 #    LoginDatabaseInfo
@@ -95,9 +95,9 @@ LogsDir = "/www/game/server/log"
 #                     "127.0.0.1;3306;acore;acore;acore_world"      - (WorldDatabaseInfo)
 #                     "127.0.0.1;3306;acore;acore;acore_characters" - (CharacterDatabaseInfo)
 
-LoginDatabaseInfo     = "127.0.0.1;3310;root;A112233a!;auth"
-WorldDatabaseInfo     = "127.0.0.1;3310;root;A112233a!;world"
-CharacterDatabaseInfo = "127.0.0.1;3310;root;A112233a!;characters"
+LoginDatabaseInfo     = "127.0.0.1;3306;root;A112233a!;auth"
+WorldDatabaseInfo     = "127.0.0.1;3306;root;A112233a!;world"
+CharacterDatabaseInfo = "127.0.0.1;33060;root;A112233a!;characters"
 
 #
 #    Database.Reconnect.Seconds
@@ -186,7 +186,7 @@ BuildDirectory = ""
 #        Example:     "../AzerothCore"
 #        Default:     ""
 
-SourceDirectory = ""
+SourceDirectory = "/home/azerothcore-wotlk"
 
 #
 #    MySQLExecutable
@@ -3380,12 +3380,12 @@ StrictChannelNames = 0
 
 #
 # Instance.SharedNormalHeroicId
-#  Description:  没有描述
-#  Default:  0 - Disable
-#      		 1 - Enable
+#  Description:  Forces ICC and RS Normal and Heroic to share lockouts.  ToC is uneffected and Normal and Heroic will be separate.
+#  Default:  1 - Enable
+#      0 - Disable
 #
 
-Instance.SharedNormalHeroicId = 0
+Instance.SharedNormalHeroicId = 1
 
 #
 #     Instance.ResetTimeRelativeTimestamp
