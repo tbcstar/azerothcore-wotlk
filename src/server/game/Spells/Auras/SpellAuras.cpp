@@ -18,9 +18,8 @@
 #include "ArenaSpectator.h"
 #include "CellImpl.h"
 #include "Common.h"
-#include "DynamicObject.h"
+#include "GameTime.h"
 #include "GridNotifiers.h"
-#include "GridNotifiersImpl.h"
 #include "Log.h"
 #include "ObjectAccessor.h"
 #include "ObjectMgr.h"
@@ -35,6 +34,12 @@
 #include "Util.h"
 #include "Vehicle.h"
 #include "WorldPacket.h"
+
+// TODO: this import is not necessary for compilation and marked as unused by the IDE
+//  however, for some reasons removing it would cause a damn linking issue
+//  there is probably some underlying problem with imports which should properly addressed
+//  see: https://github.com/azerothcore/azerothcore-wotlk/issues/9766
+#include "GridNotifiersImpl.h"
 
 // update aura target map every 500 ms instead of every update - reduce amount of grid searcher calls
 static constexpr int32 UPDATE_TARGET_MAP_INTERVAL = 500;
@@ -185,7 +190,7 @@ void AuraApplication::_HandleEffect(uint8 effIndex, bool apply)
         {
             AuraApplication* strongestApp = apply ? this : nullptr;
             AuraEffect* strongestEff = apply ? aurEff : nullptr;
-            int32 amount = apply ? abs(aurEff->GetAmount()) : 0;
+            int32 amount = apply ? std::abs(aurEff->GetAmount()) : 0;
             Unit* target = GetTarget();
             Unit::AuraEffectList const& auraList = target->GetAuraEffectsByType(aurEff->GetAuraType());
             for (Unit::AuraEffectList::const_iterator iter = auraList.begin(); iter != auraList.end(); ++iter)
@@ -203,7 +208,7 @@ void AuraApplication::_HandleEffect(uint8 effIndex, bool apply)
                 if (!aurApp)
                     continue;
 
-                if (amount < abs((*iter)->GetForcedAmount()))
+                if (amount < std::abs((*iter)->GetForcedAmount()))
                 {
                     // xinef: if we have strongest aura and it is active, turn it off
                     // xinef: otherwise just save new aura;
@@ -216,7 +221,7 @@ void AuraApplication::_HandleEffect(uint8 effIndex, bool apply)
                     }
                     strongestApp = aurApp;
                     strongestEff = (*iter);
-                    amount = abs((*iter)->GetAmount());
+                    amount = std::abs((*iter)->GetAmount());
                 }
                 // xinef: itered aura is weaker, deactivate if active
                 else if (aurApp->IsActive((*iter)->GetEffIndex()))
@@ -403,7 +408,7 @@ Aura* Aura::Create(SpellInfo const* spellproto, uint8 effMask, WorldObject* owne
 
 Aura::Aura(SpellInfo const* spellproto, WorldObject* owner, Unit* caster, Item* castItem, ObjectGuid casterGUID, ObjectGuid itemGUID /*= ObjectGuid::Empty*/) :
     m_spellInfo(spellproto), m_casterGuid(casterGUID ? casterGUID : caster->GetGUID()),
-    m_castItemGuid(itemGUID ? itemGUID : castItem ? castItem->GetGUID() : ObjectGuid::Empty), m_castItemEntry(castItem ? castItem->GetEntry() : 0), m_applyTime(time(nullptr)),
+    m_castItemGuid(itemGUID ? itemGUID : castItem ? castItem->GetGUID() : ObjectGuid::Empty), m_castItemEntry(castItem ? castItem->GetEntry() : 0), m_applyTime(GameTime::GetGameTime().count()),
     m_owner(owner), m_timeCla(0), m_updateTargetMapInterval(0),
     m_casterLevel(caster ? caster->getLevel() : m_spellInfo->SpellLevel), m_procCharges(0), m_stackAmount(1),
     m_isRemoved(false), m_isSingleTarget(false), m_isUsingCharges(false), m_triggeredByAuraSpellInfo(nullptr)
@@ -932,6 +937,28 @@ void Aura::RefreshTimers(bool periodicReset /*= false*/)
         {
             aurEff->CalculatePeriodic(caster, periodicReset, false);
             aurEff->CalculatePeriodicData();
+        }
+    }
+}
+
+// xinef: dot's rolling function
+void Aura::RefreshTimersWithMods()
+{
+    Unit* caster = GetCaster();
+    m_maxDuration = CalcMaxDuration();
+    if ((caster && caster->HasAuraTypeWithAffectMask(SPELL_AURA_PERIODIC_HASTE, m_spellInfo)) || m_spellInfo->HasAttribute(SPELL_ATTR5_SPELL_HASTE_AFFECTS_PERIODIC))
+    {
+        m_maxDuration = int32(m_maxDuration * caster->GetFloatValue(UNIT_MOD_CAST_SPEED));
+    }
+
+    // xinef: we should take ModSpellDuration into account, but none of the spells using this function is affected by contents of ModSpellDuration
+    RefreshDuration();
+
+    for (uint8 i = 0; i < MAX_SPELL_EFFECTS; ++i)
+    {
+        if (AuraEffect* aurEff = m_effects[i])
+        {
+            aurEff->CalculatePeriodic(caster, false, false);
         }
     }
 }
@@ -1779,7 +1806,10 @@ void Aura::HandleAuraSpecificMods(AuraApplication const* aurApp, Unit* caster, b
                     }
                     // Remove Vanish on stealth remove
                     if (GetId() == 1784)
+                    {
                         target->RemoveAurasWithFamily(SPELLFAMILY_ROGUE, 0x800, 0, 0, ObjectGuid::Empty);
+                        target->RemoveAurasDueToSpell(18461);
+                    }
                     break;
                 }
 
@@ -1926,11 +1956,11 @@ bool Aura::IsAuraStronger(Aura const* newAura) const
                 continue;
 
             // xinef: assume that all spells are either positive or negative, otherwise they should not be in one group
-            int32 curValue = abs(thisEffect->GetAmount());
-            if (curValue < abs(newEffect->GetAmount()))
+            int32 curValue = std::abs(thisEffect->GetAmount());
+            if (curValue < std::abs(newEffect->GetAmount()))
                 return true;
 
-            if (curValue == abs(newEffect->GetAmount()))
+            if (curValue == std::abs(newEffect->GetAmount()))
                 if(!IsPassive() && !IsPermanent() && GetDuration() < newAura->GetDuration())
                     return true;
         }
@@ -2108,7 +2138,7 @@ bool Aura::IsProcOnCooldown() const
 {
     /*if (m_procCooldown)
     {
-        if (m_procCooldown > time(nullptr))
+        if (m_procCooldown > GameTime::GetGameTime().count())
             return true;
     }*/
     return false;
@@ -2116,7 +2146,7 @@ bool Aura::IsProcOnCooldown() const
 
 void Aura::AddProcCooldown(uint32 /*msec*/)
 {
-    //m_procCooldown = time(nullptr) + msec;
+    //m_procCooldown = GameTime::GetGameTime().count() + msec;
 }
 
 void Aura::PrepareProcToTrigger(AuraApplication* aurApp, ProcEventInfo& eventInfo)
