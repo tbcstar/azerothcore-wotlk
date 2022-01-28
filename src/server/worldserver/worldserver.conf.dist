@@ -1760,8 +1760,8 @@ ListenRange.Yell = 300
 
 #
 #    Creature.MovingStopTimeForPlayer
-#        Description: Time (in milliseconds) during which creature will not move after
-#                     interaction with player.
+#        Description: 与玩家互动后生物不移动的时间
+#                     (以毫秒计)。
 #        Default: 180000
 
 Creature.MovingStopTimeForPlayer = 180000
@@ -2260,7 +2260,7 @@ Rate.Drop.Item.ReferencedAmount = 1
 #        Description: 经验率(战场外)
 #        Default:     1 - (Rate.XP.Kill)
 #                     1 - (Rate.XP.Quest)
-#                     1 - (Rate.XP.Quest.DF) - Dungeon Finder/LFG quests only.
+#                     1 - (Rate.XP.Quest.DF) - 地下城搜寻者/LFG任务。
 #                     1 - (Rate.XP.Explore)
 #                     1 - (Rate.XP.Pet)
 
@@ -2554,8 +2554,8 @@ AutoBroadcast.Timer = 60000
 
 #
 #    AutoBroadcast.MinDisableLevel
-#        Description: Minimum level required to disable autobroadcast announcements if EnablePlayerSettings option is enabled.
-#        Default:     0 - (Not allowed to disable it)
+#        Description: 如果启用了EnablePlayerSettings选项，禁用自动广播通知所需的最低级别。  
+#        Default:     0 - (不允许禁用它)
 
 AutoBroadcast.MinDisableLevel = 0
 
@@ -3616,7 +3616,7 @@ LFG.KickPreventionTimer = 900
 
 #
 #     EnablePlayerSettings
-#        Description: Enables the usage of character specific settings.
+#        Description: 启用特定字符设置的使用。
 #        Default:     0 - Disabled
 #                     1 - Enabled
 
@@ -3624,11 +3624,11 @@ EnablePlayerSettings = 0
 
 #
 #     JoinBGAndLFG.Enable
-#        Description: Allow queueing for BG and LFG at the same time.
+#        Description: 允许BG和LFG同时排队。 
 #        Default:     0 - Disabled
 #                     1 - Enabled
 
-JoinBGAndLFG.Enable = 0
+JoinBGAndLFG.Enable = 1
 
 #
 ###################################################################################################
