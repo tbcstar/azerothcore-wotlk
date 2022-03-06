@@ -2291,12 +2291,17 @@ Rate.XP.Explore   = 1
 Rate.XP.Pet       = 1
 
 #
-#    Rate.XP.BattlegroundKill
-#        Description: 战场上荣誉击杀的经验率。不受Rate.XP.Kill的影响。
-#                     只在Battleground.GiveXPForKills = 1 上有效
+#    Rate.XP.BattlegroundKill...
+#        Description: 战场上光荣击杀的经验率。 不受 Rate.XP.Kill 的影响。 为每个战场自定义。
+#                     仅在Battleground.GiveXPForKills = 1 时有效
 #        Default:     1
 
-Rate.XP.BattlegroundKill = 1
+Rate.XP.BattlegroundKillAV   = 1
+Rate.XP.BattlegroundKillWSG  = 1
+Rate.XP.BattlegroundKillAB   = 1
+Rate.XP.BattlegroundKillEOTS = 1
+Rate.XP.BattlegroundKillSOTA = 1
+Rate.XP.BattlegroundKillIC   = 1
 
 #
 #    Rate.RepairCost
