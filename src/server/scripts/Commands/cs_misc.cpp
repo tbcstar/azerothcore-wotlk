@@ -119,6 +119,7 @@ public:
             { "setskill",          HandleSetSkillCommand,          SEC_GAMEMASTER,         Console::No  },
             { "pinfo",             HandlePInfoCommand,             SEC_GAMEMASTER,         Console::Yes },
             { "respawn",           HandleRespawnCommand,           SEC_GAMEMASTER,         Console::No  },
+            { "respawn all",       HandleRespawnAllCommand,        SEC_GAMEMASTER,         Console::No  },
             { "mute",              HandleMuteCommand,              SEC_GAMEMASTER,         Console::Yes },
             { "mutehistory",       HandleMuteInfoCommand,          SEC_GAMEMASTER,         Console::Yes },
             { "unmute",            HandleUnmuteCommand,            SEC_GAMEMASTER,         Console::Yes },
@@ -412,7 +413,7 @@ public:
             return false;
         }
 
-        Battleground* bg = sBattlegroundMgr->CreateNewBattleground(randomizedArenaBgTypeId, 80, 80, ArenaType(hcnt >= 2 ? hcnt : 2), false);
+        Battleground* bg = sBattlegroundMgr->CreateNewBattleground(randomizedArenaBgTypeId, GetBattlegroundBracketById(bgt->GetMapId(), bgt->GetBracketId()), ArenaType(hcnt >= 2 ? hcnt : 2), false);
         if (!bg)
         {
             handler->PSendSysMessage("Couldn't create arena map!");
@@ -1657,20 +1658,22 @@ public:
                 {
                     // output that player don't have any items to destroy
                     handler->PSendSysMessage(LANG_REMOVEITEM_FAILURE, handler->GetNameLink(playerTarget).c_str(), itemId);
+                    handler->SetSentErrorMessage(true);
+                    return false;
                 }
-                else if (!playerTarget->HasItemCount(itemId, -count))
+
+                if (!playerTarget->HasItemCount(itemId, -count))
                 {
                     // output that player don't have as many items that you want to destroy
                     handler->PSendSysMessage(LANG_REMOVEITEM_ERROR, handler->GetNameLink(playerTarget).c_str(), itemId);
+                    handler->SetSentErrorMessage(true);
+                    return false;
                 }
             }
-            else
-            {
-                // output successful amount of destroyed items
-                playerTarget->DestroyItemCount(itemId, -count, true, false);
-                handler->PSendSysMessage(LANG_REMOVEITEM, itemId, -count, handler->GetNameLink(playerTarget).c_str());
-            }
 
+            // output successful amount of destroyed items
+            playerTarget->DestroyItemCount(itemId, -count, true, false);
+            handler->PSendSysMessage(LANG_REMOVEITEM, itemId, -count, handler->GetNameLink(playerTarget).c_str());
             return true;
         }
 
@@ -2333,7 +2336,6 @@ public:
     {
         Player* player = handler->GetSession()->GetPlayer();
 
-        // accept only explicitly selected target (not implicitly self targeting case)
         Unit* target = handler->getSelectedUnit();
         if (player->GetTarget() && target)
         {
@@ -2350,6 +2352,15 @@ public:
             }
             return true;
         }
+
+        handler->SendSysMessage(LANG_SELECT_CREATURE);
+        handler->SetSentErrorMessage(true);
+        return false;
+    }
+
+    static bool HandleRespawnAllCommand(ChatHandler* handler)
+    {
+        Player* player = handler->GetSession()->GetPlayer();
 
         CellCoord p(Acore::ComputeCellCoord(player->GetPositionX(), player->GetPositionY()));
         Cell cell(p);

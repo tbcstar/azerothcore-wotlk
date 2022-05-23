@@ -149,7 +149,7 @@ void Player::SendPreparedQuest(ObjectGuid guid)
             }
         }
     }
-        // multiple entries
+    // multiple entries
     else
     {
         QEmote qe;
@@ -179,8 +179,8 @@ void Player::SendPreparedQuest(ObjectGuid guid)
 
                     int loc_idx = GetSession()->GetSessionDbLocaleIndex();
                     if (loc_idx >= 0)
-                        if (NpcTextLocale const* nl = sObjectMgr->GetNpcTextLocale(textid))
-                            ObjectMgr::GetLocaleString(nl->Text_0[0], loc_idx, title);
+                        if (NpcTextLocale const* npcTextLocale = sObjectMgr->GetNpcTextLocale(textid))
+                            ObjectMgr::GetLocaleString(npcTextLocale->Text_0[0], loc_idx, title);
                 }
                 else
                 {
@@ -188,11 +188,12 @@ void Player::SendPreparedQuest(ObjectGuid guid)
 
                     int loc_idx = GetSession()->GetSessionDbLocaleIndex();
                     if (loc_idx >= 0)
-                        if (NpcTextLocale const* nl = sObjectMgr->GetNpcTextLocale(textid))
-                            ObjectMgr::GetLocaleString(nl->Text_1[0], loc_idx, title);
+                        if (NpcTextLocale const* npcTextLocale = sObjectMgr->GetNpcTextLocale(textid))
+                            ObjectMgr::GetLocaleString(npcTextLocale->Text_1[0], loc_idx, title);
                 }
             }
         }
+
         PlayerTalkClass->SendQuestGiverQuestList(qe, title, guid);
     }
 }
@@ -736,6 +737,7 @@ void Player::RewardQuest(Quest const* quest, uint32 reward, Object* questGiver, 
     for (Unit::AuraEffectList::const_iterator i = ModXPPctAuras.begin(); i != ModXPPctAuras.end(); ++i)
         AddPct(XP, (*i)->GetAmount());
 
+    sScriptMgr->OnQuestComputeXP(this, quest, XP);
     int32 moneyRew = 0;
     if (getLevel() >= sWorld->getIntConfig(CONFIG_MAX_PLAYER_LEVEL) || sScriptMgr->ShouldBeRewardedWithMoneyInsteadOfExp(this))
     {
@@ -1610,24 +1612,24 @@ QuestGiverStatus Player::GetQuestDialogStatus(Object* questgiver)
             continue;
 
         QuestStatus status = GetQuestStatus(questId);
-        if ((status == QUEST_STATUS_COMPLETE && !GetQuestRewardStatus(questId)) || (quest->IsAutoComplete() && CanTakeQuest(quest, false)))
+        if (status == QUEST_STATUS_COMPLETE && !GetQuestRewardStatus(questId))
         {
-            if (quest->IsRepeatable() || quest->IsDailyOrWeekly())
-            {
-                 result2 = DIALOG_STATUS_REWARD_REP;
-            }
-            else
-            {
-                result2 = DIALOG_STATUS_REWARD;
-            }
+            result2 = DIALOG_STATUS_REWARD;
         }
         else if (status == QUEST_STATUS_INCOMPLETE)
         {
             result2 = DIALOG_STATUS_INCOMPLETE;
         }
 
+        if (quest->IsAutoComplete() && CanTakeQuest(quest, false) && quest->IsRepeatable() && !quest->IsDailyOrWeekly())
+        {
+            result2 = DIALOG_STATUS_REWARD_REP;
+        }
+
         if (result2 > result)
+        {
             result = result2;
+        }
     }
 
     for (QuestRelations::const_iterator i = qr.first; i != qr.second; ++i)
@@ -2253,8 +2255,12 @@ bool Player::HasQuestForItem(uint32 itemid, uint32 excludeQuestId /* 0 */, bool 
 
             // hide quest if player is in raid-group and quest is no raid quest
             if (GetGroup() && GetGroup()->isRaidGroup() && !qinfo->IsAllowedInRaid(GetMap()->GetDifficulty()))
-                if (!InBattleground()) //there are two ways.. we can make every bg-quest a raidquest, or add this code here.. i don't know if this can be exploited by other quests, but i think all other quests depend on a specific area.. but keep this in mind, if something strange happens later
+            {
+                if (!InBattleground() && !GetGroup()->isBFGroup()) //there are two ways.. we can make every bg-quest a raidquest, or add this code here.. i don't know if this can be exploited by other quests, but i think all other quests depend on a specific area.. but keep this in mind, if something strange happens later
+                {
                     continue;
+                }
+            }
 
             // There should be no mixed ReqItem/ReqSource drop
             // This part for ReqItem drop

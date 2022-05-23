@@ -173,6 +173,9 @@ enum WorldBoolConfigs
     CONFIG_REALM_LOGIN_ENABLED,
     CONFIG_PLAYER_SETTINGS_ENABLED,
     CONFIG_ALLOW_JOIN_BG_AND_LFG,
+    CONFIG_MISS_CHANCE_MULTIPLIER_ONLY_FOR_PLAYERS,
+    CONFIG_LEAVE_GROUP_ON_LOGOUT,
+    CONFIG_VMAP_BLIZZLIKE_PVP_LOS,
     BOOL_CONFIG_VALUE_COUNT
 };
 
@@ -306,6 +309,7 @@ enum WorldIntConfigs
     CONFIG_BATTLEGROUND_QUEUE_ANNOUNCER_LIMIT_MIN_PLAYERS,
     CONFIG_ARENA_MAX_RATING_DIFFERENCE,
     CONFIG_ARENA_RATING_DISCARD_TIMER,
+    CONFIG_ARENA_PREV_OPPONENTS_DISCARD_TIMER,
     CONFIG_ARENA_AUTO_DISTRIBUTE_INTERVAL_DAYS,
     CONFIG_ARENA_GAMES_REQUIRED,
     CONFIG_ARENA_SEASON_ID,
@@ -396,6 +400,7 @@ enum WorldIntConfigs
     CONFIG_LOOT_NEED_BEFORE_GREED_ILVL_RESTRICTION,
     CONFIG_LFG_MAX_KICK_COUNT,
     CONFIG_LFG_KICK_PREVENTION_TIMER,
+    CONFIG_CHANGE_FACTION_MAX_MONEY,
     INT_CONFIG_VALUE_COUNT
 };
 
@@ -579,11 +584,7 @@ public:
     virtual void UpdateRealmCharCount(uint32 accid) = 0;
     [[nodiscard]] virtual LocaleConstant GetAvailableDbcLocale(LocaleConstant locale) const = 0;
     virtual void LoadDBVersion() = 0;
-    virtual void LoadDBRevision() = 0;
     [[nodiscard]] virtual char const* GetDBVersion() const = 0;
-    [[nodiscard]] virtual char const* GetWorldDBRevision() const = 0;
-    [[nodiscard]] virtual char const* GetCharacterDBRevision() const = 0;
-    [[nodiscard]] virtual char const* GetAuthDBRevision() const = 0;
     virtual void LoadAutobroadcasts() = 0;
     virtual void UpdateAreaDependentAuras() = 0;
     [[nodiscard]] virtual uint32 GetCleaningFlags() const = 0;

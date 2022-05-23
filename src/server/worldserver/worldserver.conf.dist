@@ -385,6 +385,13 @@ vmap.enableHeight = 1
 
 vmap.petLOS = 1
 
+#    vmap.BlizzlikePvPLOS
+#        Description: Check line of sight for battleground and arena gameobjects and other doodads (such as WSG treestumps).
+#        Default:     1 - (Enabled, players will be able to fire spells through treestumps and other objects).
+#                     0 - (Disabled, players will NOT be able to fire spells through treestumps and other objects).
+
+vmap.BlizzlikePvPLOS = 1
+
 #
 #    vmap.enableIndoorCheck
 #        Description: 基于VMap的室内检查来移除室外的光环(坐骑等)。
@@ -1814,7 +1821,7 @@ NpcRegenHPTimeIfTargetIsUnreachable = 10
 #                                                                                      Racial Trait Swap, NPC - All Mounts Modules
 #        Default:     ""
 
-Creatures.CustomIDs = "190010,55005,999991,25462,98888,601014"
+Creatures.CustomIDs = "190010,55005,999991,25462,98888,601014,34567,34568"
 
 #
 ###################################################################################################
@@ -2470,7 +2477,8 @@ DurabilityLoss.InPvP = 0
 
 #
 #    DurabilityLoss.OnDeath
-#        Description: 死亡时耐久度损失百分比
+#        Description: 死亡时耐久性损失百分比。
+#        Note:        On 3.3.5 client always shows log message "Your items have lost 10% durability"
 #        Default:     10
 
 DurabilityLoss.OnDeath = 10
@@ -2550,22 +2558,27 @@ Die.Command.Mode = 1
 
 #    Rate.MissChanceMultiplier.Creature
 #    Rate.MissChanceMultiplier.Player
+#    Rate.MissChanceMultiplier.OnlyAffectsPlayer
 #
 #        Description: 当目标比玩家高3级或以上时，
 #                     命中的几率是由公式决定: 94 - (levelDiff - 2) * Rate.MissChanceMultiplier
 #                     The higher the Rate.MissChanceMultiplier constant, the higher is the chance to miss.
 #
-#                     注意:当玩家与目标的差别小于3级时，这并不影响，
-#                     这里我们使用这个(线性)公式来计算命中率:
+#                     注意:当玩家与目标的差距小于3级时，这不会影响，
+#                     这个(线性)公式被用来计算命中几率:96 - levelDiff。
+#                     如果只想影响MissChance，可以将Rate.MissChanceMultiplier.OnlyAffectsPlayer设置为1
+#                     for player casters only. This way you won't be affecting creature missing chance.
 #
 #                     例如:如果你希望机会保持线性增长，使用1。
 #
 #        Default:     Rate.MissChanceMultiplier.TargetCreature = 11
 #                     Rate.MissChanceMultiplier.TargetPlayer = 7
+#                     Rate.MissChanceMultiplier.OnlyAffectsPlayer = 0
 #
 
 Rate.MissChanceMultiplier.TargetCreature = 11
 Rate.MissChanceMultiplier.TargetPlayer = 7
+Rate.MissChanceMultiplier.OnlyAffectsPlayer = 1
 
 #
 ###################################################################################################
@@ -2917,6 +2930,14 @@ Arena.MaxRatingDifference = 150
 #                     0      - (Disabled)
 
 Arena.RatingDiscardTimer = 600000
+
+#
+#    Arena.PreviousOpponentsDiscardTimer
+#        Description: Time (in milliseconds) after which the previous opponents will be ignored.
+#        Default:     120000 - (Enabled, 2 minutes - Blizzlike)
+#                     0      - (Disabled)
+
+Arena.PreviousOpponentsDiscardTimer = 120000
 
 #
 #    Arena.AutoDistributePoints
@@ -3696,6 +3717,24 @@ EnablePlayerSettings = 0
 JoinBGAndLFG.Enable = 1
 
 #
+#   LeaveGroupOnLogout.Enabled
+#        Description: Should the player leave their group when they log out?
+#                     (It does not affect raids or dungeon finder groups)
+#
+#        Default:     1 - (Enabled)
+
+LeaveGroupOnLogout.Enabled = 1
+
+#
+#     ChangeFaction.MaxMoney
+#        Description: Maximum amount of gold allowed on the character to perform a faction change.
+#        Default:     0 - Disabled
+#                     > 0 - Enabled (money in copper)
+#        Example:     If set to 10000, the maximum amount of money allowed on the character would be 1 gold.
+
+ChangeFaction.MaxMoney = 0
+
+#
 ###################################################################################################
 
 ###################################################################################################
@@ -3875,6 +3914,16 @@ Logger.module=4,Console Server
 #Logger.vehicles=4,Console Server
 #Logger.warden=4,Console Server
 #Logger.weather=4,Console Server
+
+#
+#    Log.Async.Enable
+#        Description: Enables asynchronous message logging.
+#        Default:     0 - (Disabled)
+#                     1 - (Enabled)
+
+Log.Async.Enable = 0
+
+#
 ###################################################################################################
 
 ###################################################################################################
