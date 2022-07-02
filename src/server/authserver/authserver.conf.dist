@@ -160,7 +160,7 @@ StrictVersionCheck = 0
 #        Default:     ""
 #
 
-SourceDirectory = ""
+SourceDirectory = "/home/azerothcore-wotlk"
 
 #
 #    MySQLExecutable
@@ -209,7 +209,7 @@ AllowLoggingIPAddressesInDatabase = 1
 #                                                                           Unix/Linux)
 #        Default:     "127.0.0.1;3306;acore;acore;acore_auth"
 
-LoginDatabaseInfo = "127.0.0.1;3306;root;A112233a!;auth"
+LoginDatabaseInfo = "172.16.0.9;3306;root;A111111a!;auth"
 
 #
 #    Database.Reconnect.Seconds

@@ -96,9 +96,9 @@ LogsDir = "/home/server/log"
 #                     "127.0.0.1;3306;acore;acore;acore_world"      - (WorldDatabaseInfo)
 #                     "127.0.0.1;3306;acore;acore;acore_characters" - (CharacterDatabaseInfo)
 
-LoginDatabaseInfo     = "127.0.0.1;3306;root;A112233a!;auth"
-WorldDatabaseInfo     = "127.0.0.1;3306;root;A112233a!;world"
-CharacterDatabaseInfo = "127.0.0.1;33060;root;A112233a!;characters"
+LoginDatabaseInfo     = "172.16.0.9;3306;root;A111111a!;auth"
+WorldDatabaseInfo     = "172.16.0.9;3306;root;A111111a!;world"
+CharacterDatabaseInfo = "172.16.0.9;3306;root;A111111a!;characters"
 
 #
 #    Database.Reconnect.Seconds
@@ -178,7 +178,7 @@ CMakeCommand = ""
 #        Example:     "../AzerothCore"
 #        Default:     ""
 
-BuildDirectory = ""
+BuildDirectory = "/home/server/"
 
 #
 #    SourceDirectory
@@ -386,9 +386,9 @@ vmap.enableHeight = 1
 vmap.petLOS = 1
 
 #    vmap.BlizzlikePvPLOS
-#        Description: Check line of sight for battleground and arena gameobjects and other doodads (such as WSG treestumps).
-#        Default:     1 - (Enabled, players will be able to fire spells through treestumps and other objects).
-#                     0 - (Disabled, players will NOT be able to fire spells through treestumps and other objects).
+#        Description: 检查战场和竞技场游戏对象和其他小玩意儿（如 WSG 树桩）的视线。
+#        Default:     1 - (Enabled, 玩家将能够通过树桩和其他物体发射法术).
+#                     0 - (Disabled, 玩家将无法通过树桩和其他物体发射法术).
 
 vmap.BlizzlikePvPLOS = 1
 
@@ -605,7 +605,7 @@ GameType = 1
 #                     28 - (QA Server     - 任何语言)
 #                     29 - (CN9           - basic-Latin at create, any at login)
 
-RealmZone = 1
+RealmZone = 16
 
 #
 #    World.RealmAvailability
