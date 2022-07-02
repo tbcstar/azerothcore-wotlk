@@ -288,7 +288,7 @@ SaveRespawnTimeImmediately = 1
 
 #
 #    MaxOverspeedPings
-#        Description: Maximum overspeed ping count before character is disconnected.
+#        Description: 角色断开前的最大超速 ping 计数。
 #        Default:     2  - (Enabled, Minimum value)
 #                     3+ - (Enabled, More checks before kick)
 #                     0  - (Disabled)
@@ -577,35 +577,35 @@ GameType = 1
 #        Description: 服务器领域区。设置允许使用的字母、字符等名称。
 #        Default      1  - (Development   - 任何语言)
 #                     2  - (美国 - 扩展-拉丁文)
-#                     3  - (Oceanic       - 扩展-拉丁文)
+#                     3  - (大洋洲       - 扩展-拉丁文)
 #                     4  - (拉丁美洲 - 扩展-拉丁文)
-#                     5  - (Tournament    - basic-Latin at create, any at login)
+#                     5  - (锦标赛    - 基本-创建时为拉丁语，登录时为任意语言)
 #                     6  - (韩国         - 东方-亚洲)
-#                     7  - (Tournament    - basic-Latin at create, any at login)
+#                     7  - (锦标赛    - 基本-创建时为拉丁语，登录时为任意语言)
 #                     8  - (英国       - 扩展-拉丁文)
 #                     9  - (德国        - 扩展-拉丁文)
 #                     10 - (法国        - 扩展-拉丁文)
 #                     11 - (西班牙       - 扩展-拉丁文)
 #                     12 - (俄罗斯       - Cyrillic)
-#                     13 - (Tournament    - basic-Latin at create, any at login)
+#                     13 - (锦标赛    - 基本-创建时为拉丁语，登录时为任意语言)
 #                     14 - (台湾        - 东方-亚洲)
-#                     15 - (Tournament    - basic-Latin at create, any at login)
+#                     15 - (锦标赛    - 基本-创建时为拉丁语，登录时为任意语言)
 #                     16 - (中国         - 东方-亚洲)
-#                     17 - (CN1           - basic-Latin at create, any at login)
-#                     18 - (CN2           - basic-Latin at create, any at login)
-#                     19 - (CN3           - basic-Latin at create, any at login)
-#                     20 - (CN4           - basic-Latin at create, any at login)
-#                     21 - (CN5           - basic-Latin at create, any at login)
-#                     22 - (CN6           - basic-Latin at create, any at login)
-#                     23 - (CN7           - basic-Latin at create, any at login)
-#                     24 - (CN8           - basic-Latin at create, any at login)
-#                     25 - (Tournament    - basic-Latin at create, any at login)
+#                     17 - (CN1           - 基本-创建时为拉丁语，登录时为任意语言)
+#                     18 - (CN2           - 基本-创建时为拉丁语，登录时为任意语言)
+#                     19 - (CN3           - 基本-创建时为拉丁语，登录时为任意语言)
+#                     20 - (CN4           - 基本-创建时为拉丁语，登录时为任意语言)
+#                     21 - (CN5           - 基本-创建时为拉丁语，登录时为任意语言)
+#                     22 - (CN6           - 基本-创建时为拉丁语，登录时为任意语言)
+#                     23 - (CN7           - 基本-创建时为拉丁语，登录时为任意语言)
+#                     24 - (CN8           - 基本-创建时为拉丁语，登录时为任意语言)
+#                     25 - (锦标赛    - 基本-创建时为拉丁语，登录时为任意语言)
 #                     26 - (测试服务器   - 任何语言)
-#                     27 - (Tournament    - basic-Latin at create, any at login)
+#                     27 - (锦标赛    - 基本-创建时为拉丁语，登录时为任意语言)
 #                     28 - (QA Server     - 任何语言)
-#                     29 - (CN9           - basic-Latin at create, any at login)
+#                     29 - (CN9           - 基本-创建时为拉丁语，登录时为任意语言)
 
-RealmZone = 16
+RealmZone = 1
 
 #
 #    World.RealmAvailability
@@ -640,7 +640,7 @@ StrictPlayerNames = 0
 #                         Note: Client needs to have the appropriate fonts installed which support
 #                         the charset. For non-official localization, custom fonts need to be
 #                         placed in clientdir/Fonts.
-#                     3 - (Enabled, Basic Latin characters + server timezone specific)
+#                     3 - (已启用，基本拉丁字符 + 服务器时区特定)
 
 StrictCharterNames = 3
 
@@ -654,7 +654,7 @@ StrictCharterNames = 3
 #                         Note: Client needs to have the appropriate fonts installed which support
 #                         the charset. For non-official localization, custom fonts need to be
 #                         placed in clientdir/Fonts.
-#                     3 - (Enabled, Basic Latin characters + server timezone specific)
+#                     3 - (已启用，基本拉丁字符 + 服务器时区特定)
 
 StrictPetNames = 3
 
@@ -1109,7 +1109,7 @@ Guild.EventLogRecordsCount = 100
 
 #
 #    Guild.ResetHour
-#        Description: Hour of the day when the daily cap resets occur.
+#        Description: 每日上限重置时间。
 #        Range:       0-23
 #        Default:     6 - (06:00 AM)
 
@@ -1143,16 +1143,16 @@ MinPetitionSigns = 0
 
 #
 #    MaxGroupXPDistance
-#        Description: Max distance to creature for group member to get experience at creature
-#                     death.
+#        Description: 团体成员与生物的最大距离，
+#                     可以获得生物死亡的经验
 #        Default:     74
 
 MaxGroupXPDistance = 74
 
 #
 #    MaxRecruitAFriendBonusDistance
-#        Description: Max distance between character and and group to gain the Recruit-A-Friend
-#                     XP multiplier.
+#        Description: 角色组队之间的最大距离，
+#                     以获得招募朋友 XP 乘数。
 #        Default:     100
 
 MaxRecruitAFriendBonusDistance = 100
@@ -1166,7 +1166,7 @@ MailDeliveryDelay = 3600
 
 #
 #    SkillChance.Prospecting
-#        Description: Allow skill increase from prospecting.
+#        Description: 允许从勘探中提高技能。
 #        Default:     0 - (Disabled)
 #                     1 - (Enabled)
 
@@ -1174,7 +1174,7 @@ SkillChance.Prospecting = 0
 
 #
 #    SkillChance.Milling
-#        Description: Allow skill increase from milling.
+#        Description: 允许通过铣削提高技能。
 #        Default:     0 - (Disabled)
 #                     1 - (Enabled)
 
@@ -1228,7 +1228,7 @@ FlashAtStart = 1
 #        Example:     "Welcome to John\'s Server@"
 #        Default:     "Welcome to an AzerothCore server."
 
-Motd = "欢迎来到时光回溯，我的伙伴，这是最初的起点，也是新征程的开始！"
+Motd = ""
 
 #    请注意: 另一个(硬编码)文本将出现在MOTD下面:
 #
@@ -1269,9 +1269,9 @@ Command.LookupMaxResults = 0
 AllowTickets = 1
 
 #    DeletedCharacterTicketTrace
-#        Description: Keep trace of tickets opened by deleted characters
-#                     gm_ticket.playerGuid will be 0, old GUID and character name
-#                     will be included in gm_ticket.comment
+#        Description: 跟踪已删除角色打开的门票
+#                     gm_ticket.playerGuid 将为 0，
+#                     旧 GUID 和角色名称将包含在 gm_ticket.comment
 #        Default:     0 - (Disabled)
 #                     1 - (Enabled)
 
@@ -1687,8 +1687,8 @@ Corpse.Decay.WORLDBOSS = 3600
 
 #
 #    Rate.Corpse.Decay.Looted
-#        Description: Multiplier for Corpse.Decay.* to configure how long creature corpses stay
-#                     after they have been looted.
+#        Description: Corpse.Decay.* 的倍数，
+#                     用于配置生物尸体在被掠夺后停留的时间。
 #         Default:    0.5
 
 Rate.Corpse.Decay.Looted = 0.5
@@ -1830,10 +1830,10 @@ Creatures.CustomIDs = "190010,55005,999991,25462,98888,601014,34567,34568"
 # CHAT SETTINGS-聊天配置
 #
 #    ChatFakeMessagePreventing
-#        Description: Additional protection from creating fake chat messages using spaces.
-#                     Collapses multiple subsequent whitespaces into a single whitespace.
-#                     Not applied to the addon language, but may break old addons that use
-#                     "normal" chat messages for sending data to other clients.
+#        Description: 防止使用空格创建虚假聊天消息的额外保护。
+#                     将多个后续空格折叠成一个空格。
+#                     不适用于插件语言，
+#                     但可能会破坏使用“正常”聊天消息向其他客户端发送数据的旧插件。
 #        Default:     1 - (Enabled, Blizzlike)
 #                     0 - (Disabled)
 #
@@ -1857,17 +1857,17 @@ ChatStrictLinkChecking.Severity = 0
 
 #
 #    ChatStrictLinkChecking.Kick
-#        Description: Defines what should be done if a message containing invalid control characters
-#                     is received.
-#        Default:     0 - (Silently ignore message)
-#                     1 - (Ignore message and kick player)
+#        Description: 定义如果收到包含无效控制的
+#                     角色消息应该做什么。
+#        Default:     0 - (默默地忽略消息)
+#                     1 - (忽略消息并踢掉玩家)
 #
 
 ChatStrictLinkChecking.Kick = 0
 
 #
 #    ChatFlood.MessageCount
-#        Description: Chat flood protection, number of messages before player gets muted.
+#        Description: 聊天防洪，玩家静音前的消息数量。
 #        Default:     10 - (Enabled)
 #                     0  - (Disabled)
 
@@ -1875,21 +1875,21 @@ ChatFlood.MessageCount = 10
 
 #
 #    ChatFlood.MessageDelay
-#        Description: Time (in seconds) between messages to be counted into ChatFlood.MessageCount.
+#        Description: 消息之间的时间（以秒为单位）计入 ChatFlood.MessageCount。
 #        Default:     1
 
 ChatFlood.MessageDelay = 1
 
 #
 #    ChatFlood.MuteTime
-#        Description: Time (in seconds) characters get muted for violating ChatFlood.MessageCount.
+#        Description: 时间（以秒为单位）角色因违反 ChatFlood.MessageCount 而被静音。
 #        Default:     10
 
 ChatFlood.MuteTime = 10
 
 #
 #    Chat.MuteFirstLogin
-#        Description: Speaking is allowed after playing for Chat.MuteTimeFirstLogin minutes. You may use party and guild chat.
+#        Description: 玩完 Chat.MuteTimeFirstLogin 分钟后允许说话。 您可以使用阵营和公会聊天。
 #        Default:     0 - (Disabled)
 #                     1 - (Enabled)
 
@@ -1897,62 +1897,62 @@ Chat.MuteFirstLogin = 0
 
 #
 #    Chat.MuteTimeFirstLogin
-#        Description: The time after which the player will be able to speak.
+#        Description: 玩家可以说话的时间。
 #        Default:     120 - (Minutes)
 
 Chat.MuteTimeFirstLogin = 120
 
 #
 #    Channel.RestrictedLfg
-#        Description: Restrict LookupForGroup channel to characters registered in the LFG tool.
-#        Default:     1 - (Enabled, Allow join to channel only if registered in LFG)
-#                     0 - (Disabled, Allow join to channel in any time)
+#        Description: 将 LookupForGroup 频道限制为在 LFG 工具中注册的角色。
+#        Default:     1 - (已启用，仅当在 LFG 中注册时才允许加入频道)
+#                     0 - (已禁用，允许随时加入频道)
 
 Channel.RestrictedLfg = 1
 
 #
 #    Channel.SilentlyGMJoin
-#        Description: Silently join GM characters to channels. If set to 1, channel kick and ban
-#                     commands issued by a GM will not be broadcasted.
-#        Default:     0 - (Disabled, Join with announcement)
-#                     1 - (Enabled, Join without announcement)
+#        Description: 悄悄地将 GM 角色加入频道。
+#                     如果设置为 1，则不会广播 GM 发出的频道踢和禁止命令。
+#        Default:     0 - (已禁用，加入公告)
+#                     1 - (已启用，无需通知即可加入)
 
 Channel.SilentlyGMJoin = 0
 
 #    Channel.ModerationGMLevel
-#        Min GM account security level required for executing moderator in-game commands in the channels
-#        This also bypasses password prompts on joining channels which require password
-#                 0 (in-game channel moderator privileges only)
-#        Default: 1 (enabled for moderators and above)
+#        在频道中执行版主游戏内命令所需的最低 GM 帐户安全级别
+#        这也绕过了加入需要密码的频道时的密码提示
+#                 0 (仅限游戏内频道版主权限)
+#        Default: 1 (对版主及以上启用)
 
 Channel.ModerationGMLevel = 1
 
 #
 #    ChatLevelReq.Channel
-#        Description: Level requirement for characters to be able to write in chat channels.
+#        Description: 能够在聊天频道中书写的角色的等级要求。
 #        Default:     1
 
 ChatLevelReq.Channel = 1
 
 #
 #    ChatLevelReq.Whisper
-#        Description: Level requirement for characters to be able to whisper other characters.
+#        Description: 角色的等级要求能够与其他角色密语。
 #        Default:     1
 
 ChatLevelReq.Whisper = 1
 
 #
 #    ChatLevelReq.Say
-#        Description: Level requirement for characters to be able to use say/yell/emote.
+#        Description: 角色能够使用说/喊/表情的等级要求。
 #        Default:     1
 
 ChatLevelReq.Say = 1
 
 #
 #    PartyLevelReq
-#        Description: Minimum level at which players can invite to group, even if they aren't on
-#                     the invite friends list. (Players who are on that friend list can always
-#                     invite despite having lower level)
+#        Description: 玩家可以邀请加入群组的最低级别，
+#                     即使他们不在邀请好友列表中。
+#                     （该好友列表中的玩家尽管等级较低，但始终可以邀请）
 #        Default:     1
 
 PartyLevelReq = 1
@@ -1967,14 +1967,14 @@ AllowPlayerCommands = 1
 
 #
 #    PreserveCustomChannels
-#        Description: Store custom chat channel settings like password, automatic ownership handout
-#                     or ban list in the database. Needs to be enabled to save custom
-#                     world/trade/etc. channels that have automatic ownership handout disabled.
-#                     (.channel set ownership $channel off)
-#        Default:     0 - (Disabled, Blizzlike, Channel settings are lost if last person left)
+#        Description: 在数据库中存储自定义聊天频道设置，
+#                     如密码、自动所有权分发或禁止列表
+#                     需要启用以保存自定义世界/贸易/等。 禁用了自动所有权分配的频道。
+#                     （.channel 设置所有权 $channel 关闭）
+#        Default:     0 - (Disabled, Blizzlike, 如果最后一个人离开，频道设置会丢失)
 #                     1 - (Enabled)
 
-PreserveCustomChannels = 1
+PreserveCustomChannels = 0
 
 #
 #    PreserveCustomChannelDuration
@@ -2072,8 +2072,8 @@ GM.AllowFriend = 1
 
 #
 #    GM.LowerSecurity
-#        Description: Allow lower security levels to use commands on higher security level
-#                     characters.
+#        Description: 允许较低安全级别对
+#                     较高安全级别角色使用命令。
 #        Default:     0 - (Disabled)
 #                     1 - (Enabled)
 
@@ -2081,7 +2081,7 @@ GM.LowerSecurity = 0
 
 #
 #    GM.TicketSystem.ChanceOfGMSurvey
-#        Description: Chance of sending a GM survey after ticket completion.
+#        Description: ticket完成后发送GM调查的机会。
 #        Default:     50 - (Enabled)
 #                     0  - (Disabled)
 
@@ -2225,7 +2225,7 @@ Rate.RewardBonusMoney = 1
 #    Rate.SellValue.Item.Legendary
 #    Rate.SellValue.Item.Artifact
 #    Rate.SellValue.Item.Heirloom
-#        Description: Item Sale Value rates based on quality.
+#        Description: 物品销售基于销售价值的价值比率。
 #        Default:     1 - (Rate.SellValue.Item.Poor)
 #                     1 - (Rate.SellValue.Item.Normal)
 #                     1 - (Rate.SellValue.Item.Uncommon)
@@ -2478,7 +2478,7 @@ DurabilityLoss.InPvP = 0
 #
 #    DurabilityLoss.OnDeath
 #        Description: 死亡时耐久性损失百分比。
-#        Note:        On 3.3.5 client always shows log message "Your items have lost 10% durability"
+#        Note:        在 3.3.5 客户端上总是显示日志消息“你的物品已经失去了 10% 的耐久度”
 #        Default:     10
 
 DurabilityLoss.OnDeath = 10
@@ -2486,31 +2486,31 @@ DurabilityLoss.OnDeath = 10
 #
 #    DurabilityLossChance.Damage
 #        Description: 装备的物品有机率因为伤害而失去耐久。
-#        Default:     0.5 - (100/0.5 = 200, Each 200 damage one equipped item will use durability)
+#        Default:     0.5 - （100/0.5 = 200，每 200 伤害一件装备的物品会消耗耐久度）
 
 DurabilityLossChance.Damage = 0.5
 
 #
 #    DurabilityLossChance.Absorb
 #        Description: 在吸收伤害时，装备的护甲有机率失去耐久度。
-#        Default:     0.5 - (100/0.5 = 200, Each 200 absorbed damage one equipped item will lose
-#                           durability)
+#        Default:     0.5 - （100/0.5 = 200，每吸收 200 点伤害，
+#                           一件装备就会失去耐久度）
 
 DurabilityLossChance.Absorb = 0.5
 
 #
 #    DurabilityLossChance.Parry
 #        Description: 格档时主武器有机率失去耐久。
-#        Default:     0.05 - (100/0.05 = 2000, Each 2000 parried damage the main weapon will lose
-#                            durability)
+#        Default:     0.05 - (100/0.05 = 2000，
+#                            每2000招架伤害主武器将失去耐久度)
 
 DurabilityLossChance.Parry = 0.05
 
 #
 #    DurabilityLossChance.Block
 #        Description: 格挡攻击时有机率失去护盾耐久。
-#        Default:     0.05 - (100/0.05 = 2000, Each 2000 blocked damage the shield will lose
-#                            durability)
+#        Default:     0.05 - (100/0.05 = 2000, 
+#                            每2000格挡伤害护盾就会失去耐久度)
 
 DurabilityLossChance.Block = 0.05
 
@@ -2520,9 +2520,9 @@ DurabilityLossChance.Block = 0.05
 #        Example:     11 - (1-10级的角色不会受到影响，
 #                           11-19级的角色将受到1分钟的影响，
 #                           20级-满级的角色将会受到10分钟的影响)
-#         Default:    11               - (Enabled, See Example)
+#         Default:    11               - (已启用，请参见示例)
 #                     MaxPlayerLevel+1 - (Disabled)
-#                     -10              - (Enabled, Level 1+ characters have 10 minute duration)
+#                     -10              - (启用，1 级以上的角色有 10 分钟的持续时间)
 
 Death.SicknessLevel = 11
 
@@ -2562,7 +2562,7 @@ Die.Command.Mode = 1
 #
 #        Description: 当目标比玩家高3级或以上时，
 #                     命中的几率是由公式决定: 94 - (levelDiff - 2) * Rate.MissChanceMultiplier
-#                     The higher the Rate.MissChanceMultiplier constant, the higher is the chance to miss.
+#                     Rate.MissChanceMultiplier 常数越高，未命中的机会就越高。
 #
 #                     注意:当玩家与目标的差距小于3级时，这不会影响，
 #                     这个(线性)公式被用来计算命中几率:96 - levelDiff。
@@ -2682,7 +2682,7 @@ Battleground.QueueAnnouncer.Limit.MinPlayers = 3
 
 #
 #    Battleground.QueueAnnouncer.SpamProtection.Delay
-#        Description: Show announce if player rejoined in queue after sec
+#        Description: 如果玩家在 sec 后重新加入队列，则显示通知
 #        Default:     30
 #
 
@@ -2700,7 +2700,7 @@ Battleground.QueueAnnouncer.PlayerOnly = 1
 #    Battleground.QueueAnnouncer.Timed
 #        Description: 启用基于计时器的战场队列公告
 #        Default:     0 - (Disabled)
-#                     1 - (Enabled - Set Arena.QueueAnnouncer.Timer)
+#                     1 - (启用 - 设置 Arena.QueueAnnouncer.Timer)
 #
 
 Battleground.QueueAnnouncer.Timed = 1
@@ -2834,21 +2834,21 @@ Battleground.PlayerRespawn = 30
 
 #
 #    Battleground.RestorationBuffRespawn
-#        Description: Battleground restoration buff respawn time (in seconds).
+#        Description: 战场恢复buff重生时间（以秒为单位）。
 #        Default:     20 (Recommended 10+)
 
 Battleground.RestorationBuffRespawn = 20
 
 #
 #    Battleground.BerserkingBuffRespawn
-#        Description: Battleground berserking buff respawn time (in seconds).
+#        Description: 战场狂暴buff重生时间（以秒为单位）。
 #        Default:     120 (Recommended 10+)
 
 Battleground.BerserkingBuffRespawn = 120
 
 #
 #    Battleground.SpeedBuffRespawn
-#        Description: Battleground speed buff respawn time (in seconds).
+#        Description: 战场速度buff重生时间（以秒为单位）。
 #        Default:     150 (Recommended 10+)
 
 Battleground.SpeedBuffRespawn = 150
@@ -2933,7 +2933,7 @@ Arena.RatingDiscardTimer = 600000
 
 #
 #    Arena.PreviousOpponentsDiscardTimer
-#        Description: Time (in milliseconds) after which the previous opponents will be ignored.
+#        Description: 忽略之前的对手的时间（以毫秒为单位）。
 #        Default:     120000 - (Enabled, 2 minutes - Blizzlike)
 #                     0      - (Disabled)
 
@@ -3483,7 +3483,7 @@ StrictChannelNames = 0
 
 #
 # Instance.SharedNormalHeroicId
-#  Description:  Forces ICC and RS Normal and Heroic to share lockouts.  ToC is uneffected and Normal and Heroic will be separate.
+#  Description:  强制 ICC 和 RS Normal 和 Heroic 共享锁定。 ToC 不受影响，普通和英雄将是分开的。
 #  Default:  1 - Enable
 #      0 - Disable
 #
@@ -3591,8 +3591,8 @@ Calculate.Gameoject.Zone.Area.Data = 0
 #
 #    Group.Raid.LevelRestriction
 #
-#     The Group members need to the same, or higher level than the specified value.
-#     Minimum level is 10.
+#     Group 成员需要与指定值相同或更高的级别。
+#     最低等级为 10。
 #        Default: 10
 #
 
@@ -3688,7 +3688,7 @@ FFAPvPTimer = 30
 
 #
 #     LootNeedBeforeGreedILvlRestriction
-#        Description: Specify level restriction for items below player's subclass in Need Before Greed loot mode in DF groups
+#        Description: 在 DF 组中的贪婪之前的掠夺模式中指定低于玩家子类的物品的级别限制
 #        Default:     70
 #                     0 - Disabled
 
@@ -3696,9 +3696,9 @@ LootNeedBeforeGreedILvlRestriction = 70
 
 #
 #     LFG.MaxKickCount
-#        Description: Specify the maximum number of kicks allowed in LFG groups (max 3 kicks)
+#        Description: 指定 LFG 组中允许的最大踢数（最多踢掉3个人）
 #        Default:     2
-#                     0 - Disabled (kicks are never allowed)
+#                     0 - 禁用（绝不允许踢出）
 
 LFG.MaxKickCount = 2
 
@@ -3728,8 +3728,8 @@ JoinBGAndLFG.Enable = 1
 
 #
 #   LeaveGroupOnLogout.Enabled
-#        Description: Should the player leave their group when they log out?
-#                     (It does not affect raids or dungeon finder groups)
+#        Description: 玩家退出时是否应该离开他们的组队？
+#                     (它不影响突袭或地下城探索者小组)
 #
 #        Default:     1 - (Enabled)
 
@@ -3737,10 +3737,10 @@ LeaveGroupOnLogout.Enabled = 1
 
 #
 #     ChangeFaction.MaxMoney
-#        Description: Maximum amount of gold allowed on the character to perform a faction change.
-#        Default:     0 - Disabled
-#                     > 0 - Enabled (money in copper)
-#        Example:     If set to 10000, the maximum amount of money allowed on the character would be 1 gold.
+#        Description: 角色允许进行阵营变更的最大金币数量。
+#        Default:     0 - 禁用
+#                     > 0 - 启用（铜钱）
+#        Example:     如果设置为 10000，则角色允许的最大金额为 1 金币。
 
 ChangeFaction.MaxMoney = 0
 
@@ -3927,11 +3927,11 @@ Logger.module=4,Console Server
 
 #
 #    Log.Async.Enable
-#        Description: Enables asynchronous message logging.
+#        Description: 启用异步消息记录。
 #        Default:     0 - (Disabled)
 #                     1 - (Enabled)
 
-Log.Async.Enable = 0
+Log.Async.Enable = 1
 
 #
 ###################################################################################################
