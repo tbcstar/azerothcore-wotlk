@@ -1363,6 +1363,12 @@ void SpellMgr::LoadSpellInfoCorrections()
         spellInfo->Effects[EFFECT_0].Amplitude = 15000;
     });
 
+    // Frightening Shout
+    ApplySpellFix({ 19134 }, [](SpellInfo* spellInfo)
+    {
+        spellInfo->Effects[EFFECT_0].Effect = SPELL_EFFECT_DUMMY;
+    });
+
     // Isle of Conquest
     ApplySpellFix({ 66551 }, [](SpellInfo* spellInfo)
     {
@@ -4281,6 +4287,18 @@ void SpellMgr::LoadSpellInfoCorrections()
     ApplySpellFix({ 56541 }, [](SpellInfo* spellInfo)
     {
         spellInfo->Effects[EFFECT_0].MiscValueB = 844;
+    });
+
+    // Hakkar Cause Insanity
+    ApplySpellFix({ 24327 }, [](SpellInfo* spellInfo)
+    {
+        spellInfo->Dispel = DISPEL_NONE;
+    });
+
+    // Summon Nightmare Illusions
+    ApplySpellFix({ 24681, 24728, 24729 }, [](SpellInfo* spellInfo)
+    {
+        spellInfo->Effects[EFFECT_0].MiscValueB = 64;
     });
 
     for (uint32 i = 0; i < GetSpellInfoStoreSize(); ++i)
