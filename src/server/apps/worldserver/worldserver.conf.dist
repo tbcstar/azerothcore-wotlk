@@ -605,7 +605,7 @@ GameType = 1
 #                     28 - (QA Server     - 任何语言)
 #                     29 - (CN9           - 基本-创建时为拉丁语，登录时为任意语言)
 
-RealmZone = 1
+RealmZone = 16
 
 #
 #    World.RealmAvailability
@@ -977,7 +977,7 @@ InstantFlightPaths = 0
 #        Default:     0 - (Disabled)
 #                     1 - (Enabled)
 
-AlwaysMaxSkillForLevel = 1
+AlwaysMaxSkillForLevel = 0
 
 #
 #    ActivateWeather
