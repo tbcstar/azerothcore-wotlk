@@ -2428,7 +2428,7 @@ Rate.Pet.LevelXP = 0.05
 
 #
 #    WaterBreath.Timer
-#        Description: The timer for player's breath underwater in milliseconds
+#        Description: 玩家在水下呼吸的计时器，以毫秒为单位
 #        Default:     180000 (3 minutes)
 #
 
@@ -3281,7 +3281,7 @@ HonorPointsAfterDuel = 0
 #        Default:     0 - (Disabled)
 #                     1 - (Enabled)
 
-AlwaysMaxWeaponSkill = 1
+AlwaysMaxWeaponSkill = 0
 
 #
 #    PvPToken.Enable
