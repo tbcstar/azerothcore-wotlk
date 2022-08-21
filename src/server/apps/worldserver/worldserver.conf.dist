@@ -124,8 +124,8 @@ Database.Reconnect.Attempts = 20
 #                     1 - (CharacterDatabase.WorkerThreads)
 
 LoginDatabase.WorkerThreads     = 1
-WorldDatabase.WorkerThreads     = 1
-CharacterDatabase.WorkerThreads = 1
+WorldDatabase.WorkerThreads     = 2
+CharacterDatabase.WorkerThreads = 2
 
 #
 #    LoginDatabase.SynchThreads
@@ -137,7 +137,7 @@ CharacterDatabase.WorkerThreads = 1
 #                     2 - (CharacterDatabase.WorkerThreads)
 
 LoginDatabase.SynchThreads     = 1
-WorldDatabase.SynchThreads     = 1
+WorldDatabase.SynchThreads     = 2
 CharacterDatabase.SynchThreads = 2
 
 #
@@ -221,7 +221,7 @@ ThreadPool = 2
 #        Default:     ""  - (Disabled)
 #
 
-IPLocationFile = ""
+IPLocationFile = "/home/server/IP2LOCATION-LITE-DB1.CSV"
 
 #
 #    AllowLoggingIPAddressesInDatabase
@@ -485,7 +485,7 @@ MapUpdate.Threads = 1
 #        Default:     0 - (Disabled)
 #                     1 - (Enable)
 
-CleanCharacterDB = 0
+CleanCharacterDB = 1
 
 #
 #    PersistentCharacterCleanFlags
@@ -529,7 +529,7 @@ PreloadAllNonInstancedMapGrids = 0
 #        Default:     0 - (Disabled)
 #                     1 - (Enabled)
 
-SetAllCreaturesWithWaypointMovementActive = 0
+SetAllCreaturesWithWaypointMovementActive = 1
 
 #
 ###################################################################################################
@@ -605,7 +605,7 @@ GameType = 1
 #                     28 - (QA Server     - 任何语言)
 #                     29 - (CN9           - 基本-创建时为拉丁语，登录时为任意语言)
 
-RealmZone = 16
+RealmZone = 1
 
 #
 #    World.RealmAvailability
@@ -1228,7 +1228,7 @@ FlashAtStart = 1
 #        Example:     "Welcome to John\'s Server@"
 #        Default:     "Welcome to an AzerothCore server."
 
-Motd = ""
+Motd = "聊天群使用DoDo，请通过网站链接加入，祝大家玩得愉快！"
 
 #    请注意: 另一个(硬编码)文本将出现在MOTD下面:
 #
@@ -1882,7 +1882,7 @@ ChatFlood.MessageDelay = 1
 
 #
 #    ChatFlood.AddonMessageCount
-#        Description: Chat flood protection, number of addon messages before player gets muted.
+#        Description: 聊天防洪，玩家静音前的插件消息数量。
 #        Default:     100 - (Enabled)
 #                     0  - (Disabled)
 
@@ -1890,7 +1890,7 @@ ChatFlood.AddonMessageCount = 100
 
 #
 #    ChatFlood.AddonMessageDelay
-#        Description: Time (in seconds) between addon messages to be counted into ChatFlood.AddonMessageCount.
+#        Description: 插件消息之间的时间（以秒为单位）计入 ChatFlood.AddonMessageCount。
 #        Default:     1
 
 ChatFlood.AddonMessageDelay = 1
