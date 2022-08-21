@@ -38,7 +38,7 @@
 #        Example:     "/home/youruser/azerothcore/logs"
 #        Default:     "" - (日志文件将存储在当前路径)
 
-LogsDir = ""
+LogsDir = "/home/server/log"
 
 #
 #    SourceDirectory
