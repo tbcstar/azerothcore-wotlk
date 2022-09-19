@@ -2150,7 +2150,7 @@ Visibility.Notify.Period.InBGArenas   = 1000
 
 #
 #    Visibility.ObjectSparkles
-#        Description: Whether or not to display sparkles on gameobjects related to active quests.
+#        Description: 是否在与活动任务相关的游戏对象上显示闪光。
 #        Default:     1 - (Show Sparkles)
 #                     0 - (Hide Sparkles)
 
