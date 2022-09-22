@@ -870,7 +870,7 @@ StartPlayerMoney = 0
 
 #
 #    StartHeroicPlayerMoney
-#        Description: Amount of money (in Copper) that heroic class characters have after creation.
+#        Description: 英雄职业角色创建后拥有的金钱数量（以铜计）。
 #        Default:     2000
 #                     2000 - (20 Silver)
 
@@ -2166,9 +2166,9 @@ Visibility.ObjectSparkles = 1
 
 #
 #    Visibility.ObjectQuestMarkers
-#        Description: Show quest icons above game objects in the same way as creature quest givers.
-#        Default:     1 - (Show quest markers, post patch 2.3 behavior)
-#                     0 - (Hide quest markers, pre patch 2.3 behavior)
+#        Description: 以与生物任务提供者相同的方式在游戏对象上方显示任务图标。
+#        Default:     1 - (显示任务标记，发布补丁 2.3 行为)
+#                     0 - (隐藏任务标记，补丁 2.3 之前的行为)
 
 Visibility.ObjectQuestMarkers = 1
 
