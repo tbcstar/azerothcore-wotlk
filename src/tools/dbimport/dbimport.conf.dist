@@ -64,13 +64,13 @@ MySQLExecutable = ""
 
 #
 #    TempDir
-#        Description: Temp directory setting.
-#        Important:   TempDir needs to be quoted, as the string might contain space characters.
-#                     TempDir directory must exists, or the server can't work properly
+#        Description: 临时目录设置。
+#        Important:   TempDir 需要被引用，因为字符串可能包含空角色。
+#                     TempDir 目录必须存在，否则服务器无法正常工作
 #        Example:     "/home/youruser/azerothcore/temp"
 #        Default:     "" - (Temp files will be stored in the current path)
 
-TempDir = ""
+TempDir = "/home/server/temp"
 
 ###################################################################################################
 
