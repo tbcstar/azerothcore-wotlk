@@ -2918,9 +2918,10 @@ Battleground.SpeedBuffRespawn = 150
 # BATTLEFIELD CONFIG战场配置
 #
 #     Wintergrasp.Enable
-#         描述：开启冬拥湖战场。
-#         Default:     0 - (Disabled)
-#                      1 - (已启用，实验性功能仍在开发中)
+#         Description: 开启冬拥湖战场。
+#         Default:     1 - (启用，仍处于开发阶段的实验性质)
+#                      0 - (禁用，冬拥湖战场world处理仍在进行)
+#                      2 - (禁用所有 Wintergrasp 处理)
 
 Wintergrasp.Enable = 1
 
