@@ -3161,7 +3161,7 @@ Console.Enable = 1
 #        Default:     0 - (Disabled)
 #                     1 - (Enabled)
 
-Ra.Enable = 1
+Ra.Enable = 0
 
 #
 #    Ra.IP
@@ -3190,14 +3190,14 @@ Ra.MinLevel = 3
 #        Default:     0 - (Disabled)
 #                     1 - (Enabled)
 
-SOAP.Enabled = 0
+SOAP.Enabled = 1
 
 #
 #    SOAP.IP
 #        Description: 将SOAP服务绑定到 IP/hostname
 #        Default:     "127.0.0.1" - (绑定到本地主机)
 
-SOAP.IP = "172.16.0.9"
+SOAP.IP = "172.16.0.8"
 
 #
 #    SOAP.Port
