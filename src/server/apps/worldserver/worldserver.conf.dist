@@ -3306,7 +3306,7 @@ PlayerStart.AllReputation = 0
 #        Default:     0 - (Disabled)
 #                     1 - (Enabled)
 
-PlayerStart.CustomSpells = 0
+PlayerStart.CustomSpells = 1
 
 #
 #    PlayerStart.MapsExplored
