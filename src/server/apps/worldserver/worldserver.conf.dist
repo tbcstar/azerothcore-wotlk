@@ -2485,7 +2485,7 @@ WaterBreath.Timer = 180000
 
 #
 #    EnableLowLevelRegenBoost
-#        Description: Greatly increase Health and Mana regen rates for players under level 15 (Added in patch 3.3)
+#        Description: 大大提高15级以下玩家的生命值和法力回复率(在3.3补丁中添加)
 #        Default:     1 - Enabled
 #                     0 - Disabled
 #
