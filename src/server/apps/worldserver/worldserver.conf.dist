@@ -1690,14 +1690,14 @@ WorldBossLevelDiff = 3
 #    Corpse.Decay.ELITE
 #    Corpse.Decay.RAREELITE
 #    Corpse.Decay.WORLDBOSS
-#        Description: 生物尸体在未被掠夺或剥皮时腐烂的时间(以秒为单位)。
-#        Default:     60   - (1 Minute, Corpse.Decay.NORMAL)
+#        Description: 生物尸体在没有被掠夺或剥皮的情况下腐烂的时间(秒)。
+#        Default:     300  - (5 Minutes, Corpse.Decay.NORMAL)
 #                     300  - (5 Minutes, Corpse.Decay.RARE)
 #                     300  - (5 Minutes, Corpse.Decay.ELITE)
 #                     300  - (5 Minutes, Corpse.Decay.RAREELITE)
 #                     3600 - (1 Hour, Corpse.Decay.WORLDBOSS)
 
-Corpse.Decay.NORMAL    = 60
+Corpse.Decay.NORMAL    = 300
 Corpse.Decay.RARE      = 300
 Corpse.Decay.ELITE     = 300
 Corpse.Decay.RAREELITE = 300
@@ -1705,11 +1705,11 @@ Corpse.Decay.WORLDBOSS = 3600
 
 #
 #    Rate.Corpse.Decay.Looted
-#        Description: Corpse.Decay.* 的倍数，
-#                     用于配置生物尸体在被掠夺后停留的时间。
-#         Default:    0.5
+#        Description: Corpse.Decay.* 的倍数，用于配置生物尸体停留的时间
+#                     after they have been looted.
+#         Default:    1.0
 
-Rate.Corpse.Decay.Looted = 0.5
+Rate.Corpse.Decay.Looted = 1.0
 
 #
 #    Rate.Creature.Normal.Damage
