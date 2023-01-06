@@ -3646,7 +3646,7 @@ Allow.IP.Based.Action.Logging = 0
 #        Default:     0  - (不显示)
 #
 
-Calculate.Creature.Zone.Area.Data = 0
+Calculate.Creature.Zone.Area.Data = 1
 
 #
 #     Calculate.Gameoject.Zone.Area.Data
@@ -3654,7 +3654,7 @@ Calculate.Creature.Zone.Area.Data = 0
 #        Default:     0  - (不显示)
 #
 
-Calculate.Gameoject.Zone.Area.Data = 0
+Calculate.Gameoject.Zone.Area.Data = 1
 
 #
 #    Group.Raid.LevelRestriction
