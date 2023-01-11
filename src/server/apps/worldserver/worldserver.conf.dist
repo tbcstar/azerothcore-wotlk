@@ -3804,6 +3804,14 @@ JoinBGAndLFG.Enable = 1
 LeaveGroupOnLogout.Enabled = 1
 
 #
+#   QuestPOI.Enabled
+#        Description: Show points of interest on the map
+#        Default:     1 - Enabled
+#                     0 - Disabled
+
+QuestPOI.Enabled = 1
+
+#
 #     ChangeFaction.MaxMoney
 #        Description: 角色允许进行阵营变更的最大金币数量。
 #        Default:     0 - 禁用
