@@ -3805,7 +3805,7 @@ LeaveGroupOnLogout.Enabled = 1
 
 #
 #   QuestPOI.Enabled
-#        Description: Show points of interest on the map
+#        Description: 在地图上显示任务点
 #        Default:     1 - Enabled
 #                     0 - Disabled
 
