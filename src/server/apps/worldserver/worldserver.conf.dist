@@ -580,7 +580,7 @@ PacketLogFile = ""
 #                     16 - (FFA_PVP, Free for all PvP mode like arena PvP in all zones except rest
 #                          activated places and sanctuaries)
 
-GameType = 1
+GameType = 16
 
 #
 #    RealmZone
@@ -615,7 +615,7 @@ GameType = 1
 #                     28 - (QA Server     - 任何语言)
 #                     29 - (CN9           - 基本-创建时为拉丁语，登录时为任意语言)
 
-RealmZone = 1
+RealmZone = 16
 
 #
 #    World.RealmAvailability
@@ -638,21 +638,21 @@ World.RealmAvailability = 1
 #                         自定义字体需要放置在clientdir/Fonts.
 #                     3 - (Enabled, 基本拉丁字符 + 服务器时区特定)
 
-StrictPlayerNames = 0
+StrictPlayerNames = 2
 
 #
 #    StrictCharterNames
 #        Description: 限制公会/竞技场团队名称为语言特定的符号集。
 #                     如果使用不允许的符号，则阻止创建。
-#        Default:     0 - (Disable, Limited server timezone dependent client check)
-#                     1 - (Enabled, Strictly basic Latin characters)
-#                     2 - (Enabled, Strictly realm zone specific, See RealmZone setting,
-#                         Note: Client needs to have the appropriate fonts installed which support
-#                         the charset. For non-official localization, custom fonts need to be
-#                         placed in clientdir/Fonts.
+#        Default:     0 - (Disable, 有限的服务器时区相关客户端检查)
+#                     1 - (Enabled, 严格的基本拉丁字符)
+#                     2 - (Enabled, 严格特定于领域区域，请参见realm zone设置，
+#                         注意:客户端需要安装适当的字体来支持
+#                         对于非官方本地化，
+#                         自定义字体需要放在clientdir/Fonts中。
 #                     3 - (已启用，基本拉丁字符 + 服务器时区特定)
 
-StrictCharterNames = 3
+StrictCharterNames = 2
 
 #
 #    StrictPetNames
@@ -666,7 +666,7 @@ StrictCharterNames = 3
 #                         placed in clientdir/Fonts.
 #                     3 - (已启用，基本拉丁字符 + 服务器时区特定)
 
-StrictPetNames = 3
+StrictPetNames = 2
 
 #
 #    DBC.Locale
