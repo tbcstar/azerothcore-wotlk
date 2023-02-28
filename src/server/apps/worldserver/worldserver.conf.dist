@@ -627,6 +627,24 @@ RealmZone = 16
 World.RealmAvailability = 1
 
 #
+#   StrictNames.Reserved
+#       Description: Use the Reserved Filter from DBC.
+#                    Prevents Player, Pet & Charter names from containing reserved names.
+#       Default:     1 - Enabled
+#                    0 - Disabled
+
+StrictNames.Reserved = 1
+
+#
+#   StrictNames.Profanity
+#       Description: Use the Profanity Filter from DBC.
+#                    Prevents Player, Pet & Charter names from containing profanity.
+#       Default:     1 - Enabled
+#                    0 - Disabled
+
+StrictNames.Profanity = 1
+
+#
 #    StrictPlayerNames
 #        Description: 将玩家名限制为特定语言的符号集。
 #                     如果使用了不允许的符号，则防止创建字符并强制重命名请求
@@ -1238,30 +1256,6 @@ BeepAtStart = 1
 #                     0 - (Disabled)
 
 FlashAtStart = 1
-
-#
-#    Motd
-#        Description: 在登录时显示每日消息。
-#                     使用'@'作为换行符， be sure to escape special characters.
-#        Example:     "Welcome to John\'s Server@"
-#        Default:     "Welcome to an AzerothCore server."
-
-Motd = "聊天群使用DoDo，请通过网站链接加入，祝大家玩得愉快！"
-
-#    请注意: 另一个(硬编码)文本将出现在MOTD下面:
-#
-#        "此服务器运行在AzerothCore上 www.azerothcore.org"
-#
-#    所有的AzerothCore贡献者，以及它的前身项目(MaNGOS, TrinityCore等)
-#    免费为您提供了这个软件。请不要删除贡献学分。
-#
-#    更改或删除这样的硬编码文本被认为是违反我们的许可证
-#    这是不允许的。如有违反，我们保留采取法律行动的权利。
-#    此外，任何形式的支持都会被拒绝。
-#
-#    AzerothCore的所有贡献者及其前身项目都在
-#    我们的官方库。开源贡献的学分应该总是显示出来。
-#
 
 #
 #    Server.LoginInfo
@@ -3821,6 +3815,14 @@ QuestPOI.Enabled = 1
 ChangeFaction.MaxMoney = 0
 
 #
+#     Pet.RankMod.Health
+#        Description: Allows pet health to be modified by rank health rates (set in config)
+#        Default:     1 - Enabled
+#                     0 - Disabled
+
+Pet.RankMod.Health = 1
+
+#
 ###################################################################################################
 
 ###################################################################################################
@@ -3929,6 +3931,7 @@ Logger.module=4,Console Server
 #Logger.addon=4,Console Server
 #Logger.ahbot=4,Console Server
 #Logger.auctionHouse=4,Console Server
+#Logger.autobroadcast=4, Console Server
 #Logger.bg.arena=4,Console Server
 #Logger.bg.battlefield=4,Console Server
 #Logger.bg.battleground=4,Console Server
