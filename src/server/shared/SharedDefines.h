@@ -78,32 +78,59 @@ enum Races
     RACE_GOBLIN             = 9,  // TITLE 地精
     RACE_BLOODELF           = 10, // TITLE 血精灵
     RACE_DRAENEI            = 11, // TITLE 德莱尼
-    RACE_FEL_ORC      	  	= 12, // TITLE 狼人
-    RACE_NAGA           	= 13, // TITLE 熊猫人-BL
-    RACE_BROKEN         	= 14, // TITLE 熊猫人-LM
-    //RACE_SKELETON       = 15,
-    //RACE_VRYKUL         = 16,
-    //RACE_TUSKARR        = 17,
-    //RACE_FOREST_TROLL   = 18,
-    //RACE_TAUNKA         = 19,
+	RACE_WORGEN             = 12, // TITLE 狼人
+    RACE_LIGHTFORGED        = 13, // TITLE 光铸德莱尼
+    RACE_PANDAREN_H         = 14, // TITLE 熊猫人（部落）
+    RACE_NIGHTBORN          = 15, // TITLE 夜之子
+    RACE_PANDAREN_A         = 16, // TITLE 熊猫人（联盟）
+    RACE_VULPERA_A          = 17, // TITLE 狐人（联盟）
+    RACE_VULPERA_H          = 18, // TITLE 狐人（部落）
+    RACE_VOIDELF            = 19, // TITLE 虚空精灵
+    RACE_TROLL_ZANDALARI    = 20, // TITLE 巨魔赞达拉
+    RACE_NIGHTELF_ILLIDARI  = 21, // TITLE 暗夜精灵 恶魔猎手
+    RACE_BLOODELF_ILLIDARI  = 22, // TITLE 血精灵 恶魔猎手
+    RACE_EREDAR             = 23, // TITLE 艾瑞达（部落）
+    RACE_DWARF_DARK_IRON    = 24 // TITLE 黑铁矮人
+    //RACE_FEL_ORC      	  = 12, // TITLE 狼人
+    //RACE_NAGA           	  = 13, // TITLE 熊猫人-BL
+    //RACE_BROKEN         	  = 14, // TITLE 熊猫人-LM
+    //RACE_SKELETON           = 15,
+    //RACE_VRYKUL             = 16,
+    //RACE_TUSKARR            = 17,
+    //RACE_FOREST_TROLL       = 18,
+    //RACE_TAUNKA             = 19,
     //RACE_NORTHREND_SKELETON = 20,
-    //RACE_ICE_TROLL      = 21
+    //RACE_ICE_TROLL          = 21
+	//RACE_WORGEN             = 24,
+    //RACE_NIGHTBORN          = 25,
+	//RACE_DRAENEI_LIGHTFORGED = 26,
+	//RACE_ILLIDARI_NIGHTELF  = 27,
+	//RACE_ILLIDARI_BLOODELF  = 28
 };
 
 // max+1 for player race
-#define MAX_RACES         15
+#define MAX_RACES         24
 
 #define RACEMASK_ALL_PLAYABLE \
-    ((1<<(RACE_HUMAN-1))  |(1<<(RACE_ORC-1))          |(1<<(RACE_DWARF-1))   | \
-    (1<<(RACE_NIGHTELF-1))|(1<<(RACE_UNDEAD_PLAYER-1))|(1<<(RACE_TAUREN-1))  | \
-    (1<<(RACE_GNOME-1))   |(1<<(RACE_TROLL-1))        |(1<<(RACE_BLOODELF-1))| \
-    (1<<(RACE_DRAENEI-1)) |(1<<(RACE_GOBLIN-1))		  |(1<<(RACE_FEL_ORC-1)) | \
-	(1<<(RACE_NAGA-1)) 	  |(1<<(RACE_BROKEN-1)))
+  ((1<<(RACE_HUMAN-1))             |     (1<<(RACE_ORC-1))                |   (1<<(RACE_DWARF-1))             | \
+   (1<<(RACE_NIGHTELF-1))          |     (1<<(RACE_UNDEAD_PLAYER-1))      |   (1<<(RACE_TAUREN-1))            | \
+   (1<<(RACE_GNOME-1))             |     (1<<(RACE_TROLL-1))              |   (1<<(RACE_GOBLIN-1))            | \
+   (1<<(RACE_BLOODELF-1))          |     (1<<(RACE_DRAENEI-1))            |   (1<<(RACE_WORGEN-1))            | \
+   (1<<(RACE_LIGHTFORGED-1))       |     (1<<(RACE_PANDAREN_H-1))         |   (1<<(RACE_NIGHTBORN-1))         | \
+   (1<<(RACE_PANDAREN_A-1))        |     (1<<(RACE_VULPERA_A-1))          |   (1<<(RACE_VULPERA_H-1))         | \
+   (1<<(RACE_VOIDELF-1))           |     (1<<(RACE_TROLL_ZANDALARI-1))    |   (1<<(RACE_NIGHTELF_ILLIDARI-1)) | \
+   (1<<(RACE_BLOODELF_ILLIDARI-1)) |     (1<<(RACE_EREDAR-1))             |   (1<<(RACE_DWARF_DARK_IRON-1)))
+	  
+	  /*(1<<(RACE_WORGEN-1))       |(1<<(RACE_NIGHTBORN-1))| \
+	  (1<<(RACE_VOIDELF-1))|(1<<(RACE_VULPERA-1)))      /*|(1<<(RACE_DRAENEI_LIGHTFORGED-1))| \
+	  (1<<(RACE_ILLIDARI_NIGHTELF-1))|(1<<(RACE_ILLIDARI_BLOODELF-1)))*/
+	 
 
 #define RACEMASK_ALLIANCE \
-    ((1<<(RACE_HUMAN-1)) | (1<<(RACE_DWARF-1))  | (1<<(RACE_NIGHTELF-1)) | \
-    (1<<(RACE_GNOME-1))  | (1<<(RACE_DRAENEI-1))| (1<<(RACE_FEL_ORC-1))  | \
-	(1<<(RACE_BROKEN-1)))
+    ((1<<(RACE_HUMAN-1))             | (1<<(RACE_DWARF-1))           | (1<<(RACE_NIGHTELF-1)) | \
+     (1<<(RACE_GNOME-1))             | (1<<(RACE_DRAENEI-1))         | (1<<(RACE_WORGEN-1))   | \
+     (1<<(RACE_LIGHTFORGED-1))       | (1<<(RACE_PANDAREN_A-1))      | (1<<(RACE_VULPERA_A-1)) | \
+     (1<<(RACE_NIGHTELF_ILLIDARI-1)) | (1<<(RACE_DWARF_DARK_IRON-1)))
 
 #define RACEMASK_HORDE RACEMASK_ALL_PLAYABLE & ~RACEMASK_ALLIANCE
 
@@ -3280,6 +3307,21 @@ enum SummonType
     SUMMON_TYPE_JEEVES      = 12
 };
 
+enum SummonSlot
+{
+    SUMMON_SLOT_PET                 = 0,
+    SUMMON_SLOT_TOTEM_FIRE          = 1,
+    SUMMON_SLOT_TOTEM_EARTH         = 2,
+    SUMMON_SLOT_TOTEM_WATER         = 3,
+    SUMMON_SLOT_TOTEM_AIR           = 4,
+    SUMMON_SLOT_MINIPET             = 5,
+    SUMMON_SLOT_QUEST               = 6,
+
+    MAX_SUMMON_SLOT
+};
+
+#define MAX_TOTEM_SLOT      5
+#define MAX_GAMEOBJECT_SLOT 4
 enum EventId
 {
     EVENT_CHARGE            = 1003,
