@@ -340,11 +340,18 @@ SocketTimeOutTimeActive = 60000
 SessionAddDelay = 10000
 
 #
-#    MapUpdateInterval
-#        Description:地图更新间隔的时间(毫秒)。
-#        Default:     100 - (0.1 秒)
+#    MinWorldUpdateTime
+#        Description: Minimum time (milliseconds) between world update ticks (for mostly idle servers).
+#        Default:     1 - (0.001 second)
 
-MapUpdateInterval = 100
+MinWorldUpdateTime = 1
+
+#
+#    MapUpdateInterval
+#        Description: 地图更新间隔时间（毫秒）
+#        Default:     10 - (0.01 second)
+
+MapUpdateInterval = 10
 
 #
 #    ChangeWeatherInterval
@@ -466,7 +473,8 @@ LogDB.Opt.ClearTime = 1209600
 
 #
 #    MaxCoreStuckTime
-#        Description: 如果服务器被冻结，它被迫崩溃之前的时间(以秒为单位)。
+#        Description: 服务器卡顿后强制崩溃前的时间（秒）
+#                     FreezeDetector（卡顿检测器）
 #        Default:     0   - (Disabled)
 #                     10+ - (Enabled, 推荐 30+)
 # 注意：如果启用并且设置太低，则可能导致意外崩溃。
