@@ -1311,9 +1311,9 @@ DungeonFinder.OptionsMask = 5
 
 #
 #   DBC.EnforceItemAttributes
-#        Disallow overriding item attributes stored in DBC files with values from the database
-#        Default: 0 - Off, Use DB values
-#                 1 - On, Enforce DBC Values (default)
+#        不允许用数据库中的值改写存储在DBC文件中的物品属性
+#        Default: 0 - 关闭，使用DB值
+#                 1 - 开启，强制DBC值(默认)
 
 DBC.EnforceItemAttributes = 1
 
