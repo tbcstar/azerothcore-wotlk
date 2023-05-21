@@ -2267,10 +2267,23 @@ Rate.Drop.Item.Artifact         = 1
 Rate.Drop.Item.Referenced       = 1
 Rate.Drop.Money                 = 1
 
-#    RewardBonusMoney
-#        Description: 当玩家处于MaxPlayerLevel时，允许进一步调整额外的金钱奖励
-#                     (这个金额在quest_template.RewardBonusMoney中指定)。 
-#                     NOTE:最终金额也会受到Rate.Drop.Money的影响
+#    Rate.Drop.Item.ReferencedAmount
+#        Description:用于参考战利品数量的倍数。使许多团队副本的首领（以及其他BOSS）掉落额外的战利品。
+#        Default:     1
+
+Rate.Drop.Item.ReferencedAmount = 1
+
+#
+#    Rate.Drop.Item.GroupAmount
+#        Description: 用于组队掉落物品的倍数。使许多地下城的首领（以及其他BOSS）掉落额外的战利品。
+#        Default:     1
+
+Rate.Drop.Item.GroupAmount = 1
+
+#    Rate.RewardBonusMoney
+#        Description: 允许进一步调整玩家在达到最高玩家等级时通过任务获得的额外金钱奖励数量
+#                     该数量在quest_template.RewardBonusMoney中指定）。
+#                     注意：最终的金额也会受到Rate.Drop.Money的影响。
 #        Default:     1
 
 Rate.RewardBonusMoney = 1
@@ -2330,13 +2343,6 @@ Rate.BuyValue.Item.Epic             = 1
 Rate.BuyValue.Item.Legendary        = 1
 Rate.BuyValue.Item.Artifact         = 1
 Rate.BuyValue.Item.Heirloom         = 1
-
-#
-#    Rate.Drop.Item.ReferencedAmount
-#        Description: 引用战利品数量的倍数。
-#        Default:     1
-
-Rate.Drop.Item.ReferencedAmount = 1
 
 #
 #    Rate.XP.Kill
