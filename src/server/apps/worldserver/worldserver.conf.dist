@@ -3222,7 +3222,7 @@ SOAP.Enabled = 1
 #        Description: 将SOAP服务绑定到 IP/hostname
 #        Default:     "127.0.0.1" - (绑定到本地主机)
 
-SOAP.IP = "127.0.0.1"
+SOAP.IP = "172.16.0.9"
 
 #
 #    SOAP.Port
