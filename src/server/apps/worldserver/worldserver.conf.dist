@@ -1298,18 +1298,6 @@ AllowTickets = 1
 DeletedCharacterTicketTrace = 0
 
 #
-#     DungeonFinder.OptionsMask
-#        Description: 地下城和raid查找系统。
-#        Value is a bitmask consisting of:
-#           LFG_OPTION_ENABLE_DUNGEON_FINDER    = 1,     启用地下城查找
-#           LFG_OPTION_ENABLE_RAID_BROWSER      = 2,     启用raid查找
-#           LFG_OPTION_ENABLE_SEASONAL_BOSSES   = 4,     启用季节性的BOSS
-
-#        Default:     5
-
-DungeonFinder.OptionsMask = 5
-
-#
 #   DBC.EnforceItemAttributes
 #        不允许用数据库中的值改写存储在DBC文件中的物品属性
 #        Default: 0 - 关闭，使用DB值
@@ -3683,6 +3671,17 @@ Calculate.Gameoject.Zone.Area.Data = 1
 Group.Raid.LevelRestriction = 10
 
 #
+#     DungeonFinder.OptionsMask
+#        Description: 地牢和raid搜索系统。
+#        值是由以下内容组成的位掩码:
+#           LFG_OPTION_ENABLE_DUNGEON_FINDER    = 1,     启用地下城搜索浏览器
+#           LFG_OPTION_ENABLE_RAID_BROWSER      = 2,     启用raid浏览器
+#           LFG_OPTION_ENABLE_SEASONAL_BOSSES   = 4,     启用季节性BOSS
+#        Default:     5
+
+DungeonFinder.OptionsMask = 5
+
+#
 #    LFG.Location.All
 #
 #        Description:可以在任意位置加入LFG-随机副本
@@ -3843,6 +3842,13 @@ ChangeFaction.MaxMoney = 0
 #                     0 - Disabled
 
 Pet.RankMod.Health = 1
+
+#
+#     AuctionHouse.SearchTimeout
+#        Description: Time (in milliseconds) after which an auction house search is discarded.
+#        Default:     1000 - (1 second)
+
+AuctionHouse.SearchTimeout = 1000
 
 #
 ###################################################################################################
