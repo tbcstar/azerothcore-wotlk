@@ -61,6 +61,10 @@ void WaypointMovementGenerator<Creature>::DoFinalize(Creature* creature)
 
 void WaypointMovementGenerator<Creature>::DoReset(Creature* creature)
 {
+    if (stalled)
+    {
+        return;
+    }
     creature->AddUnitState(UNIT_STATE_ROAMING | UNIT_STATE_ROAMING_MOVE);
     StartMoveNow(creature);
 }
@@ -200,7 +204,7 @@ bool WaypointMovementGenerator<Creature>::StartMove(Creature* creature)
 
     //Call for creature group update
     if (creature->GetFormation() && creature->GetFormation()->GetLeader() == creature)
-        creature->GetFormation()->LeaderMoveTo(formationDest.x, formationDest.y, formationDest.z, node->move_type == WAYPOINT_MOVE_TYPE_RUN);
+        creature->GetFormation()->LeaderMoveTo(formationDest.x, formationDest.y, formationDest.z, node->move_type);
 
     return true;
 }
@@ -209,6 +213,11 @@ bool WaypointMovementGenerator<Creature>::DoUpdate(Creature* creature, uint32 di
 {
     // Waypoint movement can be switched on/off
     // This is quite handy for escort quests and other stuff
+    if (stalled)
+    {
+        Stop(1000);
+        return true;
+    }
     if (creature->HasUnitState(UNIT_STATE_NOT_MOVE) || creature->IsMovementPreventedByCasting())
     {
         creature->StopMoving();
@@ -231,21 +240,16 @@ bool WaypointMovementGenerator<Creature>::DoUpdate(Creature* creature, uint32 di
     }
     else
     {
-        if (creature->IsStopped())
-            Stop(sWorld->getIntConfig(CONFIG_WAYPOINT_MOVEMENT_STOP_TIME_FOR_PLAYER) * IN_MILLISECONDS);
-        else
-        {
-            bool finished = creature->movespline->Finalized();
-            // xinef: code to detect pre-empetively if we should start movement to next waypoint
-            // xinef: do not start pre-empetive movement if current node has delay or we are ending waypoint movement
-            //if (!finished && !i_path->at(i_currentNode)->delay && ((i_currentNode != i_path->size() - 1) || repeating))
-            //    finished = (creature->movespline->_Spline().length(creature->movespline->_currentSplineIdx() + 1) - creature->movespline->timePassed()) < 200;
+        bool finished = creature->movespline->Finalized();
+        // xinef: code to detect pre-empetively if we should start movement to next waypoint
+        // xinef: do not start pre-empetive movement if current node has delay or we are ending waypoint movement
+        //if (!finished && !i_path->at(i_currentNode)->delay && ((i_currentNode != i_path->size() - 1) || repeating))
+        //    finished = (creature->movespline->_Spline().length(creature->movespline->_currentSplineIdx() + 1) - creature->movespline->timePassed()) < 200;
 
-            if (finished)
-            {
-                OnArrived(creature);
-                return StartMove(creature);
-            }
+        if (finished)
+        {
+            OnArrived(creature);
+            return StartMove(creature);
         }
     }
     return true;
@@ -263,6 +267,36 @@ void WaypointMovementGenerator<Creature>::MovementInform(Creature* creature)
             AI->SummonMovementInform(creature, WAYPOINT_MOTION_TYPE, i_currentNode);
         }
     }
+    else
+    {
+        if (TempSummon* tempSummon = creature->ToTempSummon())
+        {
+            if (Unit* owner = tempSummon->GetSummonerUnit())
+            {
+                if (UnitAI* AI = owner->GetAI())
+                {
+                    AI->SummonMovementInform(creature, WAYPOINT_MOTION_TYPE, i_currentNode);
+                }
+            }
+        }
+    }
+}
+
+void WaypointMovementGenerator<Creature>::Pause(uint32 timer)
+{
+    if (timer)
+        i_nextMoveTime.Reset(timer);
+    else
+    {
+        // No timer? Will be paused forever until ::Resume is called
+        stalled = true;
+        i_nextMoveTime.Reset(1);
+    }
+}
+
+void WaypointMovementGenerator<Creature>::Resume(uint32 /*overrideTimer/*/)
+{
+    stalled = false;
 }
 
 //----------------------------------------------------//
@@ -333,6 +367,27 @@ void FlightPathMovementGenerator::LoadPath(Player* player)
         }
 
         _pointsForPathSwitch.push_back({ uint32(i_path.size() - 1), int32(ceil(cost * discount)) });
+    }
+
+    // TODO: fixes crash, but can be handled in a better way once we will know how to reproduce it.
+    if (GetCurrentNode() >= i_path.size())
+    {
+        std::string paths;
+        std::deque<uint32> const& taxi = player->m_taxi.GetPath();
+        for (uint32 src = 0, dst = 1; dst < taxi.size(); src = dst++)
+        {
+            uint32 path, cost;
+            sObjectMgr->GetTaxiPath(taxi[src], taxi[dst], path, cost);
+            paths += std::to_string(path) + " ";
+        }
+
+        LOG_ERROR("movement.flightpath", "Failed to build correct path for player: {}. Current node: {}, max nodes: {}. Paths: {}. Player pos: {}.", player->GetGUID().ToString(), GetCurrentNode(), i_path.size(), paths, player->GetPosition().ToString());
+
+        // Lets choose the second last element so that a player would still have some flight.
+        if (int(i_path.size()) - 2 >= 0)
+            i_currentNode = uint32(i_path.size() - 2);
+        else
+            i_currentNode = uint32(i_path.size() - 1);
     }
 }
 
@@ -446,7 +501,7 @@ void FlightPathMovementGenerator::SetCurrentNodeAfterTeleport()
     }
 
     uint32 map0 = i_path[i_currentNode]->mapid;
-    for (size_t i = i_currentNode + 1; i < i_path.size(); ++i)
+    for (std::size_t i = i_currentNode + 1; i < i_path.size(); ++i)
     {
         if (i_path[i]->mapid != map0)
         {

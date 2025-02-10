@@ -15,13 +15,15 @@
  * with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include "CreatureScript.h"
 #include "GameObject.h"
 #include "GameObjectAI.h"
+#include "GameObjectScript.h"
 #include "InstanceScript.h"
-#include "ScriptMgr.h"
 #include "ScriptedCreature.h"
-#include "blackwing_lair.h"
 #include "SpellScript.h"
+#include "SpellScriptLoader.h"
+#include "blackwing_lair.h"
 
 enum Say
 {
@@ -257,7 +259,7 @@ class spell_suppression_aura : public SpellScript
         targets.remove_if([&](WorldObject* target) -> bool
         {
             Unit* unit = target->ToUnit();
-            return !unit || unit->HasAuraType(SPELL_AURA_MOD_STEALTH);
+            return !unit || unit->HasStealthAura();
         });
     }
 

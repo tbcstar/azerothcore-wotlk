@@ -15,8 +15,8 @@
  * with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include "CreatureScript.h"
 #include "Player.h"
-#include "ScriptMgr.h"
 #include "ScriptedCreature.h"
 #include "halls_of_stone.h"
 
@@ -145,17 +145,15 @@ public:
                 if (pInstance->GetData(BOSS_TRIBUNAL_OF_AGES) == DONE)
                 {
                     me->RemoveUnitFlag(UNIT_FLAG_NOT_SELECTABLE);
-                    if (GameObject* doors = me->GetMap()->GetGameObject(pInstance->GetGuidData(GO_SJONNIR_DOOR)))
-                        doors->SetGoState(GO_STATE_ACTIVE);
 
                     if (GameObject* console = me->GetMap()->GetGameObject( pInstance->GetGuidData(GO_SJONNIR_CONSOLE)))
                         console->SetGoState(GO_STATE_READY);
 
                     if (Creature* brann = ObjectAccessor::GetCreature(*me, pInstance->GetGuidData(NPC_BRANN)))
                     {
-                        brann->setDeathState(JUST_DIED);
+                        brann->setDeathState(DeathState::JustDied);
                         brann->Respawn();
-                        brann->AI()->DoAction(5);
+                        brann->AI()->DoAction(ACTION_SJONNIR_WIPE_START);
                     }
                 }
             }
@@ -183,7 +181,7 @@ public:
 
                 if (pInstance->GetData(BOSS_TRIBUNAL_OF_AGES) == DONE)
                     if (Creature* brann = ObjectAccessor::GetCreature(*me, pInstance->GetGuidData(NPC_BRANN)))
-                        brann->AI()->DoAction(3);
+                        brann->AI()->DoAction(ACTION_START_SJONNIR_FIGHT);
             }
         }
 
@@ -220,8 +218,7 @@ public:
                             if (pInstance)
                                 if (Creature* brann = ObjectAccessor::GetCreature(*me, pInstance->GetGuidData(NPC_BRANN)))
                                 {
-                                    brann->Yell("What in the name o' Madoran did THAT do? Oh! Wait: I just about got it...", LANG_UNIVERSAL);
-                                    brann->PlayDirectSound(14276);
+                                    brann->AI()->Talk(SAY_BRANN_SPAWN_OOZE);
                                 }
                         }
 
@@ -229,8 +226,7 @@ public:
                         {
                             if (Creature* brann = ObjectAccessor::GetCreature(*me, pInstance->GetGuidData(NPC_BRANN)))
                             {
-                                brann->Yell("Ha, that did it! Help's a-comin'! Take this, ya glowin' iron brute!", LANG_UNIVERSAL);
-                                brann->PlayDirectSound(14277);
+                                brann->AI()->Talk(SAY_BRANN_SPAWN_EARTHEN);
                             }
                             SummonPhase = PHASE_SUMMON_FRIENDLY_DWARFES;
                             me->CastSpell(me, SPELL_FRENZY, false);
@@ -276,8 +272,7 @@ public:
                     {
                         if (Creature* brann = ObjectAccessor::GetCreature(*me, pInstance->GetGuidData(NPC_BRANN)))
                         {
-                            brann->Yell("This is a wee bit trickier that before... Oh, bloody--incomin'!", LANG_UNIVERSAL);
-                            brann->PlayDirectSound(14275);
+                            brann->AI()->Talk(SAY_BRANN_SPAWN_TROGG);
                         }
 
                         break;
@@ -331,7 +326,7 @@ public:
                     sd->SetGoState(GO_STATE_ACTIVE);
 
                 if (Creature* brann = ObjectAccessor::GetCreature(*me, pInstance->GetGuidData(NPC_BRANN)))
-                    brann->AI()->DoAction(4);
+                    brann->AI()->DoAction(ACTION_SJONNIR_DEAD);
             }
         }
 

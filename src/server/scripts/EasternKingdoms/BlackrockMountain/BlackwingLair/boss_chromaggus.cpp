@@ -15,14 +15,16 @@
  * with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include "CreatureScript.h"
 #include "GameObject.h"
 #include "GameObjectAI.h"
+#include "GameObjectScript.h"
 #include "InstanceScript.h"
 #include "Map.h"
 #include "Player.h"
-#include "ScriptMgr.h"
 #include "ScriptedCreature.h"
 #include "SpellScript.h"
+#include "SpellScriptLoader.h"
 #include "blackwing_lair.h"
 
 enum Emotes
@@ -186,11 +188,8 @@ public:
                             {
                                 DoCast(player, afflictionSpellID, true);
 
-                                if (player->HasAura(SPELL_BROODAF_BLUE) && player->HasAura(SPELL_BROODAF_BLACK) && player->HasAura(SPELL_BROODAF_RED) &&
-                                    player->HasAura(SPELL_BROODAF_BRONZE) && player->HasAura(SPELL_BROODAF_GREEN))
-                                {
+                                if (player->HasAllAuras(SPELL_BROODAF_BLUE, SPELL_BROODAF_BLACK, SPELL_BROODAF_RED, SPELL_BROODAF_BRONZE, SPELL_BROODAF_GREEN))
                                     DoCast(player, SPELL_CHROMATIC_MUT_1);
-                                }
                             }
                         }
                         events.ScheduleEvent(EVENT_AFFLICTION, 10s);

@@ -15,11 +15,14 @@
  * with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "ScriptMgr.h"
+#include "CreatureScript.h"
+#include "GameObjectScript.h"
 #include "ScriptedCreature.h"
 #include "SpellAuraEffects.h"
 #include "SpellScript.h"
+#include "SpellScriptLoader.h"
 #include "blood_furnace.h"
+#include "SpellMgr.h"
 
 enum Say
 {
@@ -98,15 +101,10 @@ public:
     bool OnGossipHello(Player* /*player*/, GameObject* go) override
     {
         if (InstanceScript* instance = go->GetInstanceScript())
-        {
             if (instance->GetBossState(DATA_BROGGOK) == NOT_STARTED)
-            {
                 if (Creature* broggok = instance->GetCreature(DATA_BROGGOK))
-                {
                     broggok->AI()->DoAction(ACTION_PREPARE_BROGGOK);
-                }
-            }
-        }
+
         go->UseDoorOrButton();
         return false;
     }

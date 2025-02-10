@@ -25,7 +25,6 @@
 #include "AccountMgr.h"
 #include "AddonMgr.h"
 #include "AuthDefines.h"
-#include "BanMgr.h"
 #include "CircularBuffer.h"
 #include "Common.h"
 #include "DatabaseEnv.h"
@@ -34,6 +33,7 @@
 #include "SharedDefines.h"
 #include "World.h"
 #include <map>
+#include <memory>
 #include <utility>
 
 class Creature;
@@ -332,6 +332,8 @@ public:
     WorldSession(uint32 id, std::string&& name, std::shared_ptr<WorldSocket> sock, AccountTypes sec, uint8 expansion, time_t mute_time, LocaleConstant locale, uint32 recruiter, bool isARecruiter, bool skipQueue, uint32 TotalTime);
     ~WorldSession();
 
+    bool IsGMAccount() const;
+
     bool PlayerLoading() const { return m_playerLoading; }
     bool PlayerLogout() const { return m_playerLogout; }
     bool PlayerRecentlyLoggedOut() const { return m_playerRecentlyLogout; }
@@ -344,12 +346,24 @@ public:
     void WriteMovementInfo(WorldPacket* data, MovementInfo* mi);
 
     void SendPacket(WorldPacket const* packet);
-    void SendNotification(const char* format, ...) ATTR_PRINTF(2, 3);
-    void SendNotification(uint32 string_id, ...);
     void SendPetNameInvalid(uint32 error, std::string const& name, DeclinedName* declinedName);
     void SendPartyResult(PartyOperation operation, std::string const& member, PartyResult res, uint32 val = 0);
-    void SendAreaTriggerMessage(const char* Text, ...) ATTR_PRINTF(2, 3);
-    void SendAreaTriggerMessage(uint32 entry, ...);
+
+    void SendAreaTriggerMessage(std::string_view str);
+
+    template<typename... Args>
+    void SendAreaTriggerMessage(char const* fmt, Args&&... args)
+    {
+        if (!m_playerLoading)
+            SendAreaTriggerMessage(Acore::StringFormat(fmt, std::forward<Args>(args)...));
+    }
+    template<typename... Args>
+    void SendAreaTriggerMessage(uint32 strId, Args&&... args)
+    {
+        if (!m_playerLoading)
+            SendAreaTriggerMessage(Acore::StringFormat(GetAcoreString(strId), std::forward<Args>(args)...));
+    }
+
     void SendSetPhaseShift(uint32 phaseShift);
     void SendQueryTimeResponse();
 
@@ -496,7 +510,8 @@ public:
     // Locales
     LocaleConstant GetSessionDbcLocale() const { return m_sessionDbcLocale; }
     LocaleConstant GetSessionDbLocaleIndex() const { return m_sessionDbLocaleIndex; }
-    char const* GetAcoreString(uint32 entry) const;
+    std::string GetAcoreString(uint32 entry) const;
+    std::string const* GetModuleString(std::string module, uint32 id) const;
 
     uint32 GetLatency() const { return m_latency; }
     void SetLatency(uint32 latency) { m_latency = latency; }
@@ -761,7 +776,6 @@ public:                                                 // opcodes handlers
     void HandleAuctionSellItem(WorldPacket& recvData);
     void HandleAuctionRemoveItem(WorldPacket& recvData);
     void HandleAuctionListOwnerItems(WorldPacket& recvData);
-    void HandleAuctionListOwnerItemsEvent(ObjectGuid creatureGuid);
     void HandleAuctionPlaceBid(WorldPacket& recvData);
     void HandleAuctionListPendingSales(WorldPacket& recvData);
 
@@ -1057,9 +1071,6 @@ public:                                                 // opcodes handlers
     void HandleEjectPassenger(WorldPacket& data);
     void HandleEnterPlayerVehicle(WorldPacket& data);
     void HandleUpdateProjectilePosition(WorldPacket& recvPacket);
-
-    Milliseconds _lastAuctionListItemsMSTime;
-    Milliseconds _lastAuctionListOwnerItemsMSTime;
 
     void HandleTeleportTimeout(bool updateInSessions);
     bool HandleSocketClosed();

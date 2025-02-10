@@ -15,22 +15,21 @@
  * with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include "CellImpl.h"
+#include "CreatureScript.h"
+#include "CreatureTextMgr.h"
+#include "GridNotifiers.h"
+#include "MapMgr.h"
+#include "ScriptedCreature.h"
+#include "SpellAuraEffects.h"
+#include "SpellScript.h"
+#include "SpellScriptLoader.h"
+#include "Vehicle.h"
 /*
  * Scripts for spells with SPELLFAMILY_GENERIC spells used for quests.
  * Ordered alphabetically using questId and scriptname.
  * Scriptnames of files in this file should be prefixed with "spell_q#questID_".
  */
-
-#include "CellImpl.h"
-#include "CreatureTextMgr.h"
-#include "GridNotifiers.h"
-#include "MapMgr.h"
-#include "ScriptMgr.h"
-#include "ScriptedCreature.h"
-#include "SpellAuraEffects.h"
-#include "SpellAuras.h"
-#include "SpellScript.h"
-#include "Vehicle.h"
 
 class spell_q11065_wrangle_some_aether_rays : public SpellScript
 {
@@ -38,12 +37,11 @@ class spell_q11065_wrangle_some_aether_rays : public SpellScript
 
     SpellCastResult CheckCast()
     {
-        // if thane is present and not in combat - allow cast
         if (Unit* target = GetExplTargetUnit())
             if (target->GetHealthPct() < 40.0f)
                 return SPELL_CAST_OK;
 
-        return SPELL_FAILED_CASTER_AURASTATE;
+        return SPELL_FAILED_BAD_TARGETS;
     }
 
     void Register() override
@@ -78,6 +76,13 @@ class spell_q11065_wrangle_some_aether_rays_aura : public AuraScript
     void HandleEffectApply(AuraEffect const* /*aurEff*/, AuraEffectHandleModes /*mode*/)
     {
         SetDuration(5000);
+
+        if (GetTarget() && GetTarget()->ToCreature())
+            if (Creature* ar = GetTarget()->ToCreature())
+            {
+                ar->AttackStop();
+                ar->SetReactState(REACT_PASSIVE);
+            }
     }
 
     void Register() override
@@ -202,7 +207,7 @@ class spell_q11026_a11051_banish_the_demons : public SpellScript
     {
         if (Unit* target = GetHitUnit())
             if (Unit* owner = target->ToTempSummon()->GetSummonerUnit())
-                if (owner->GetTypeId() == TYPEID_PLAYER)
+                if (owner->IsPlayer())
                     owner->ToPlayer()->KilledMonsterCredit(23327); // Some trigger, just count
     }
 
@@ -437,68 +442,24 @@ enum q11520Roots
     SPELL_SUMMON_RAZORTHORN_ROOT        = 44941,
 };
 
-    class spell_q11520_discovering_your_roots : public SpellScript
-    {
-        PrepareSpellScript(spell_q11520_discovering_your_roots);
-
-        void HandleDummy(SpellEffIndex /*effIndex*/)
-        {
-            if (GameObject* go = GetCaster()->FindNearestGameObject(GO_RAZORTHORN_DIRT_MOUNT, 20.0f))
-            {
-                GetCaster()->GetMotionMaster()->MovePoint(0, *go);
-                go->SetLootState(GO_JUST_DEACTIVATED);
-                GetCaster()->CastSpell(GetCaster(), SPELL_SUMMON_RAZORTHORN_ROOT, true);
-            }
-        }
-
-        void Register() override
-        {
-            OnEffectHitTarget += SpellEffectFn(spell_q11520_discovering_your_roots::HandleDummy, EFFECT_0, SPELL_EFFECT_DUMMY);
-        }
-    };
-
-class spell_quest_dragonmaw_race_generic : public SpellScript
+class spell_q11520_discovering_your_roots : public SpellScript
 {
-    PrepareSpellScript(spell_quest_dragonmaw_race_generic);
+    PrepareSpellScript(spell_q11520_discovering_your_roots);
 
-    bool Load() override
+    void HandleDummy(SpellEffIndex /*effIndex*/)
     {
-        _x = _y = _z = 0.0f;
-        return true;
-    }
-
-    SpellCastResult RelocateDest()
-    {
-        Unit* caster = GetCaster();
-        float o = Position::NormalizeOrientation(caster->GetOrientation() + frand(0.0f, 2 * M_PI));
-        float dist = frand(5.0f, 30.0f);
-        _x = caster->GetPositionX() + dist * cos(o);
-        _y = caster->GetPositionY() + dist * std::sin(o);
-        _z = caster->GetPositionZ() + frand(-10.0f, 15.0f);
-        GetSpell()->m_targets.SetDst(_x, _y, _z, 0.0f, caster->GetMapId());
-        return SPELL_CAST_OK;
-    }
-
-    void ChangeDest(SpellEffIndex effIndex)
-    {
-        PreventHitDefaultEffect(effIndex);
-        Unit* caster = GetCaster();
-        if (Creature* trigger = caster->SummonCreature(23356, _x, _y, _z, 0.0f, TEMPSUMMON_TIMED_DESPAWN, 1500))
+        if (GameObject* go = GetCaster()->FindNearestGameObject(GO_RAZORTHORN_DIRT_MOUNT, 20.0f))
         {
-            trigger->CastSpell(trigger, GetSpellInfo()->Effects[effIndex].TriggerSpell, true);
-            if (GetSpellInfo()->Effects[effIndex].TriggerSpell == 41064)
-                trigger->CastSpell(trigger, 41284, true);
+            GetCaster()->GetMotionMaster()->MovePoint(0, *go);
+            go->SetLootState(GO_JUST_DEACTIVATED);
+            GetCaster()->CastSpell(GetCaster(), SPELL_SUMMON_RAZORTHORN_ROOT, true);
         }
     }
 
     void Register() override
     {
-        OnCheckCast += SpellCheckCastFn(spell_quest_dragonmaw_race_generic::RelocateDest);
-        OnEffectHit += SpellEffectFn(spell_quest_dragonmaw_race_generic::ChangeDest, EFFECT_0, SPELL_EFFECT_TRIGGER_MISSILE);
+        OnEffectHitTarget += SpellEffectFn(spell_q11520_discovering_your_roots::HandleDummy, EFFECT_0, SPELL_EFFECT_DUMMY);
     }
-
-private:
-    float _x, _y, _z;
 };
 
 class spell_q11670_it_was_the_orcs_honest : public SpellScript
@@ -661,16 +622,16 @@ class spell_q12274_a_fall_from_grace_costume : public SpellScript
 {
     PrepareSpellScript(spell_q12274_a_fall_from_grace_costume)
 
-    bool Validate(SpellInfo const* /*SpellEntry*/) override
+    bool Validate(SpellInfo const* /*spellInfo*/) override
     {
         return ValidateSpellInfo({ SPELL_SCARLET_RAVEN_PRIEST_IMAGE_MALE, SPELL_SCARLET_RAVEN_PRIEST_IMAGE_FEMALE });
     }
 
     void HandleScript(SpellEffIndex  /*effIndex*/)
     {
-        if(Unit* target = GetHitUnit())
+        if (Unit* target = GetHitUnit())
         {
-            if(Player* p = target->ToPlayer())
+            if (Player* p = target->ToPlayer())
             {
                 p->CastSpell(p, p->getGender() == GENDER_FEMALE ? SPELL_SCARLET_RAVEN_PRIEST_IMAGE_FEMALE : SPELL_SCARLET_RAVEN_PRIEST_IMAGE_MALE, false);
             }
@@ -697,7 +658,7 @@ class spell_q13369_fate_up_against_your_will : public SpellScript
     {
         // Fate, Up Against Your Will (13369)
         if (Unit* caster = GetCaster())
-            if (caster->GetTypeId() == TYPEID_PLAYER && caster->ToPlayer()->GetQuestStatus(13369) >= QUEST_STATUS_COMPLETE)
+            if (caster->IsPlayer() && caster->ToPlayer()->GetQuestStatus(13369) >= QUEST_STATUS_COMPLETE)
                 return SPELL_CAST_OK;
         return SPELL_FAILED_DONT_REPORT;
     }
@@ -736,7 +697,7 @@ class spell_q11653_youre_not_so_big_now : public SpellScript
     {
         PreventHitDefaultEffect(effIndex);
         Unit* target = GetHitUnit();
-        if (!target || target->GetTypeId() != TYPEID_UNIT)
+        if (!target || !target->IsCreature())
             return;
 
         static uint32 const spellPlayer[5] =
@@ -854,7 +815,7 @@ class spell_q1846_bending_shinbone : public SpellScript
     {
         Item* target = GetHitItem();
         Unit* caster = GetCaster();
-        if (!target && caster->GetTypeId() != TYPEID_PLAYER)
+        if (!target && !caster->IsPlayer())
             return;
 
         uint32 const spellId = roll_chance_i(20) ? SPELL_BENDING_SHINBONE1 : SPELL_BENDING_SHINBONE2;
@@ -909,10 +870,10 @@ class spell_q5206_test_fetid_skull : public SpellScript
 
     bool Load() override
     {
-        return GetCaster()->GetTypeId() == TYPEID_PLAYER;
+        return GetCaster()->IsPlayer();
     }
 
-    bool Validate(SpellInfo const* /*spellEntry*/) override
+    bool Validate(SpellInfo const* /*spellInfo*/) override
     {
         return ValidateSpellInfo({ SPELL_CREATE_RESONATING_SKULL, SPELL_CREATE_BONE_DUST });
     }
@@ -948,7 +909,7 @@ class spell_q6124_6129_apply_salve : public SpellScript
 
     bool Load() override
     {
-        return GetCaster()->GetTypeId() == TYPEID_PLAYER;
+        return GetCaster()->IsPlayer();
     }
 
     void HandleDummy(SpellEffIndex /*effIndex*/)
@@ -1026,7 +987,7 @@ class spell_q11396_11399_scourging_crystal_controller : public SpellScript
 {
     PrepareSpellScript(spell_q11396_11399_scourging_crystal_controller);
 
-    bool Validate(SpellInfo const* /*spellEntry*/) override
+    bool Validate(SpellInfo const* /*spellInfo*/) override
     {
         return ValidateSpellInfo({ SPELL_FORCE_SHIELD_ARCANE_PURPLE_X3, SPELL_SCOURGING_CRYSTAL_CONTROLLER });
     }
@@ -1051,7 +1012,7 @@ class spell_q11396_11399_scourging_crystal_controller_dummy : public SpellScript
 {
     PrepareSpellScript(spell_q11396_11399_scourging_crystal_controller_dummy);
 
-    bool Validate(SpellInfo const* /*spellEntry*/) override
+    bool Validate(SpellInfo const* /*spellInfo*/) override
     {
         return ValidateSpellInfo({ SPELL_FORCE_SHIELD_ARCANE_PURPLE_X3 });
     }
@@ -1059,7 +1020,7 @@ class spell_q11396_11399_scourging_crystal_controller_dummy : public SpellScript
     void HandleDummy(SpellEffIndex /*effIndex*/)
     {
         if (Unit* target = GetHitUnit())
-            if (target->GetTypeId() == TYPEID_UNIT)
+            if (target->IsCreature())
                 target->RemoveAurasDueToSpell(SPELL_FORCE_SHIELD_ARCANE_PURPLE_X3);
     }
 
@@ -1101,7 +1062,7 @@ class spell_q11587_arcane_prisoner_rescue : public SpellScript
 {
     PrepareSpellScript(spell_q11587_arcane_prisoner_rescue);
 
-    bool Validate(SpellInfo const* /*spellEntry*/) override
+    bool Validate(SpellInfo const* /*spellInfo*/) override
     {
         return ValidateSpellInfo(
             {
@@ -1153,10 +1114,10 @@ class spell_q11730_ultrasonic_screwdriver : public SpellScript
 
     bool Load() override
     {
-        return GetCaster()->GetTypeId() == TYPEID_PLAYER && GetCastItem();
+        return GetCaster()->IsPlayer() && GetCastItem();
     }
 
-    bool Validate(SpellInfo const* /*spellEntry*/) override
+    bool Validate(SpellInfo const* /*spellInfo*/) override
     {
         return ValidateSpellInfo(
             {
@@ -1268,7 +1229,7 @@ class spell_q12634_despawn_fruit_tosser : public SpellScript
 {
     PrepareSpellScript(spell_q12634_despawn_fruit_tosser);
 
-    bool Validate(SpellInfo const* /*spellEntry*/) override
+    bool Validate(SpellInfo const* /*spellInfo*/) override
     {
         return ValidateSpellInfo(
             {
@@ -1391,10 +1352,10 @@ class spell_q12937_relief_for_the_fallen : public SpellScript
 
     bool Load() override
     {
-        return GetCaster()->GetTypeId() == TYPEID_PLAYER;
+        return GetCaster()->IsPlayer();
     }
 
-    bool Validate(SpellInfo const* /*spellEntry*/) override
+    bool Validate(SpellInfo const* /*spellInfo*/) override
     {
         return ValidateSpellInfo({ SPELL_TRIGGER_AID_OF_THE_EARTHEN });
     }
@@ -1427,7 +1388,7 @@ class spell_q10041_q10040_who_are_they : public SpellScript
 {
     PrepareSpellScript(spell_q10041_q10040_who_are_they);
 
-    bool Validate(SpellInfo const* /*spellEntry*/) override
+    bool Validate(SpellInfo const* /*spellInfo*/) override
     {
         return ValidateSpellInfo(
             {
@@ -1497,7 +1458,7 @@ class spell_q12659_ahunaes_knife : public SpellScript
 
     bool Load() override
     {
-        return GetCaster()->GetTypeId() == TYPEID_PLAYER;
+        return GetCaster()->IsPlayer();
     }
 
     void HandleDummy(SpellEffIndex /*effIndex*/)
@@ -1528,7 +1489,7 @@ class spell_q9874_liquid_fire : public SpellScript
 
     bool Load() override
     {
-        return GetCaster()->GetTypeId() == TYPEID_PLAYER;
+        return GetCaster()->IsPlayer();
     }
 
     void HandleDummy(SpellEffIndex /*effIndex*/)
@@ -1560,7 +1521,7 @@ class spell_q12805_lifeblood_dummy : public SpellScript
 
     bool Load() override
     {
-        return GetCaster()->GetTypeId() == TYPEID_PLAYER;
+        return GetCaster()->IsPlayer();
     }
 
     void HandleScript(SpellEffIndex /*effIndex*/)
@@ -1621,7 +1582,7 @@ class spell_q14112_14145_chum_the_water : public SpellScript
 {
     PrepareSpellScript(spell_q14112_14145_chum_the_water);
 
-    bool Validate(SpellInfo const* /*spellEntry*/) override
+    bool Validate(SpellInfo const* /*spellInfo*/) override
     {
         return ValidateSpellInfo(
             {
@@ -1661,7 +1622,7 @@ class spell_q9452_cast_net : public SpellScript
 
     bool Load() override
     {
-        return GetCaster()->GetTypeId() == TYPEID_PLAYER;
+        return GetCaster()->IsPlayer();
     }
 
     SpellCastResult CheckCast()
@@ -1749,7 +1710,7 @@ class spell_q12277_wintergarde_mine_explosion : public SpellScript
         {
             if (Unit* caster = GetCaster())
             {
-                if (caster->GetTypeId() == TYPEID_UNIT)
+                if (caster->IsCreature())
                 {
                     if (Unit* owner = caster->GetOwner())
                     {
@@ -1875,7 +1836,7 @@ class spell_q11010_q11102_q11023_aggro_check : public SpellScript
     {
         if (Player* playerTarget = GetHitPlayer())
             // Check if found player target is on fly mount or using flying form
-            if (playerTarget->HasAuraType(SPELL_AURA_FLY) || playerTarget->HasAuraType(SPELL_AURA_MOD_INCREASE_MOUNTED_FLIGHT_SPEED))
+            if (playerTarget->HasFlyAura() || playerTarget->HasIncreaseMountedFlightSpeedAura())
                 playerTarget->CastSpell(playerTarget, SPELL_FLAK_CANNON_TRIGGER, TRIGGERED_FULL_MASK);
     }
 
@@ -1918,7 +1879,7 @@ class spell_q11010_q11102_q11023_choose_loc : public SpellScript
         Cell::VisitWorldObjects(caster, searcher, 65.0f);
         for (std::list<Player*>::const_iterator itr = playerList.begin(); itr != playerList.end(); ++itr)
             // Check if found player target is on fly mount or using flying form
-            if ((*itr)->HasAuraType(SPELL_AURA_FLY) || (*itr)->HasAuraType(SPELL_AURA_MOD_INCREASE_MOUNTED_FLIGHT_SPEED))
+            if ((*itr)->HasFlyAura() || (*itr)->HasIncreaseMountedFlightSpeedAura())
                 // Summom Fel Cannon (bunny version) at found player
                 caster->SummonCreature(NPC_FEL_CANNON2, (*itr)->GetPositionX(), (*itr)->GetPositionY(), (*itr)->GetPositionZ());
     }
@@ -1939,7 +1900,7 @@ class spell_q11010_q11102_q11023_q11008_check_fly_mount : public SpellScript
     {
         Unit* caster = GetCaster();
         // This spell will be cast only if caster has one of these auras
-        if (!(caster->HasAuraType(SPELL_AURA_FLY) || caster->HasAuraType(SPELL_AURA_MOD_INCREASE_MOUNTED_FLIGHT_SPEED)))
+        if (!(caster->HasFlyAura() || caster->HasIncreaseMountedFlightSpeedAura()))
             return SPELL_FAILED_CANT_DO_THAT_RIGHT_NOW;
         return SPELL_CAST_OK;
     }
@@ -2063,7 +2024,7 @@ enum BearFlankMaster
 
         bool Load() override
         {
-            return GetCaster()->GetTypeId() == TYPEID_UNIT;
+            return GetCaster()->IsCreature();
         }
 
         void HandleScript(SpellEffIndex /*effIndex*/)
@@ -2124,7 +2085,7 @@ class spell_q12690_burst_at_the_seams : public SpellScript
 
     bool Load() override
     {
-        return GetCaster()->GetTypeId() == TYPEID_UNIT;
+        return GetCaster()->IsCreature();
     }
 
     void HandleKnockBack(SpellEffIndex /*effIndex*/)
@@ -2370,8 +2331,8 @@ class spell_q12919_gymers_throw : public SpellScript
 
         void HandleEffectRemove(AuraEffect const* /*aurEff*/, AuraEffectHandleModes /*mode*/)
         {
-            if(GetOwner())
-                if(Player* player = GetOwner()->ToPlayer())
+            if (GetOwner())
+                if (Player* player = GetOwner()->ToPlayer())
                     player->CompleteQuest(QUEST_CROW_TRANSFORM);
         }
 
@@ -2472,6 +2433,29 @@ class spell_q10651_q10692_book_of_fel_names : public SpellScript
     }
 };
 
+enum Feralfen
+{
+    NPC_FERALFEN_TOTEM    = 18186
+};
+
+class spell_q9847_a_spirit_ally : public SpellScript
+{
+    PrepareSpellScript(spell_q9847_a_spirit_ally);
+
+    void HandleSendEvent(SpellEffIndex /*effIndex*/)
+    {
+        float dist = 5.0f;
+        float angle = GetCaster()->GetOrientation() - 1.25f;
+        Position pos = GetCaster()->GetNearPosition(dist, angle);
+        GetCaster()->SummonCreature(NPC_FERALFEN_TOTEM, pos, TEMPSUMMON_TIMED_DESPAWN, 1 * MINUTE * IN_MILLISECONDS);
+    }
+
+    void Register() override
+    {
+        OnEffectHit += SpellEffectFn(spell_q9847_a_spirit_ally::HandleSendEvent, EFFECT_0, SPELL_EFFECT_SEND_EVENT);
+    }
+};
+
 void AddSC_quest_spell_scripts()
 {
     RegisterSpellAndAuraScriptPair(spell_q11065_wrangle_some_aether_rays, spell_q11065_wrangle_some_aether_rays_aura);
@@ -2486,7 +2470,6 @@ void AddSC_quest_spell_scripts()
     RegisterSpellScript(spell_q12943_shadow_vault_decree);
     RegisterSpellAndAuraScriptPair(spell_q10769_dissension_amongst_the_ranks, spell_q10769_dissension_amongst_the_ranks_aura);
     RegisterSpellScript(spell_q11520_discovering_your_roots);
-    RegisterSpellScript(spell_quest_dragonmaw_race_generic);
     RegisterSpellScript(spell_q11670_it_was_the_orcs_honest);
     RegisterSpellScript(spell_quest_test_flight_charging);
     RegisterSpellScript(spell_q12274_a_fall_from_grace_costume);
@@ -2544,4 +2527,5 @@ void AddSC_quest_spell_scripts()
     RegisterSpellScript(spell_q5056_summon_shy_rotam);
     RegisterSpellScript(spell_q4735_collect_rookery_egg);
     RegisterSpellScript(spell_q10651_q10692_book_of_fel_names);
+    RegisterSpellScript(spell_q9847_a_spirit_ally);
 }

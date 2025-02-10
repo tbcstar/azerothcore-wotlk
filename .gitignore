@@ -24,9 +24,13 @@
 /src/server/scripts/Custom/*
 !/src/server/scripts/Custom/README.md
 
-/docker-compose.override.yml
+/*.override.yml
+/*.override.yaml
 
 !.gitkeep
+
+# default build directory if not specified by CMAKE configuration
+/out/*
 
 #
 #Generic
@@ -62,6 +66,7 @@ nbproject/
 .idea
 cmake-build-*/*
 coverage-report/
+.vs
 
 #
 # Eclipse

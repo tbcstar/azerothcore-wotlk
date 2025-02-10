@@ -17,12 +17,13 @@
 
 #include "RealmList.h"
 #include "DatabaseEnv.h"
-#include "DeadlineTimer.h"
-#include "IoContext.h"
 #include "Log.h"
+#include "QueryResult.h"
 #include "Resolver.h"
+#include "SteadyTimer.h"
 #include "Util.h"
 #include <boost/asio/ip/tcp.hpp>
+#include <memory>
 
 RealmList::RealmList() : _updateInterval(0) { }
 
@@ -36,7 +37,7 @@ RealmList* RealmList::Instance()
 void RealmList::Initialize(Acore::Asio::IoContext& ioContext, uint32 updateInterval)
 {
     _updateInterval = updateInterval;
-    _updateTimer = std::make_unique<Acore::Asio::DeadlineTimer>(ioContext);
+    _updateTimer = std::make_unique<boost::asio::steady_timer>(ioContext);
     _resolver = std::make_unique<Acore::Asio::Resolver>(ioContext);
 
     LoadBuildInfo();
@@ -92,7 +93,7 @@ void RealmList::LoadBuildInfo()
 
 void RealmList::UpdateRealm(RealmHandle const& id, uint32 build, std::string const& name,
     boost::asio::ip::address&& address, boost::asio::ip::address&& localAddr, boost::asio::ip::address&& localSubmask,
-    uint16 port, uint8 icon, RealmFlags flag, uint8 timezone, AccountTypes allowedSecurityLevel, float population)
+    uint16 port, uint8 icon, RealmFlags flag, uint8 realmTimezone, AccountTypes allowedSecurityLevel, float population)
 {
     // Create new if not exist or update existed
     Realm& realm = _realms[id];
@@ -102,7 +103,7 @@ void RealmList::UpdateRealm(RealmHandle const& id, uint32 build, std::string con
     realm.Name = name;
     realm.Type = icon;
     realm.Flags = flag;
-    realm.Timezone = timezone;
+    realm.Timezone = realmTimezone;
     realm.AllowedSecurityLevel = allowedSecurityLevel;
     realm.PopulationLevel = population;
 
@@ -192,8 +193,8 @@ void RealmList::UpdateRealms(boost::system::error_code const& error)
                     icon = REALM_TYPE_NORMAL;
                 }
 
-                RealmFlags flag = RealmFlags(fields[7].Get<uint8>());
-                uint8 timezone = fields[8].Get<uint8>();
+                auto flag = RealmFlags(fields[7].Get<uint8>());
+                uint8 realmTimezone = fields[8].Get<uint8>();
                 uint8 allowedSecurityLevel = fields[9].Get<uint8>();
                 float pop = fields[10].Get<float>();
                 uint32 build = fields[11].Get<uint32>();
@@ -201,7 +202,7 @@ void RealmList::UpdateRealms(boost::system::error_code const& error)
                 RealmHandle id{ realmId };
 
                 UpdateRealm(id, build, name, externalAddress->address(), localAddress->address(), localSubmask->address(), port, icon, flag,
-                    timezone, (allowedSecurityLevel <= SEC_ADMINISTRATOR ? AccountTypes(allowedSecurityLevel) : SEC_ADMINISTRATOR), pop);
+                    realmTimezone, (allowedSecurityLevel <= SEC_ADMINISTRATOR ? AccountTypes(allowedSecurityLevel) : SEC_ADMINISTRATOR), pop);
 
                 if (!existingRealms.count(id))
                 {
@@ -227,8 +228,8 @@ void RealmList::UpdateRealms(boost::system::error_code const& error)
 
     if (_updateInterval)
     {
-        _updateTimer->expires_from_now(boost::posix_time::seconds(_updateInterval));
-        _updateTimer->async_wait(std::bind(&RealmList::UpdateRealms, this, std::placeholders::_1));
+        _updateTimer->expires_at(Acore::Asio::SteadyTimer::GetExpirationTime(_updateInterval));
+        _updateTimer->async_wait([this](boost::system::error_code const& errorCode){ UpdateRealms(errorCode); });
     }
 }
 

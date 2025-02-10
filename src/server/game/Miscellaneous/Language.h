@@ -111,7 +111,8 @@ enum AcoreStrings
     LANG_RBAC_PERM_REVOKED_NOT_IN_LIST  = 79,
     LANG_PVPSTATS                       = 80,
     LANG_PVPSTATS_DISABLED              = 81,
-    // Free 82 - 86
+    LANG_GENERIC_TWO_CURLIES_WITH_COLON = 82,
+    // Free 83 - 86
 
     LANG_UNKNOWN_ERROR                  = 87,
     LANG_2FA_COMMANDS_NOT_SETUP         = 88,
@@ -403,7 +404,24 @@ enum AcoreStrings
     LANG_COMMAND_CHEAT_WW               = 362,
     LANG_COMMAND_WHISPEROFFPLAYER       = 363,
     LANG_COMMAND_CHEAT_TAXINODES        = 364,
-    // Room for more level 2              365-399 not used
+
+    // [START] .reset items command strings:
+    LANG_COMMAND_RESET_ITEMS_EQUIPPED   = 365,
+    LANG_COMMAND_RESET_ITEMS_BAGS       = 366,
+    LANG_COMMAND_RESET_ITEMS_BANK       = 367,
+    LANG_COMMAND_RESET_ITEMS_KEYRING    = 368,
+    LANG_COMMAND_RESET_ITEMS_CURRENCY   = 369,
+    LANG_COMMAND_RESET_ITEMS_BUYBACK    = 370,
+    LANG_COMMAND_RESET_ITEMS_ALL        = 371,
+    LANG_COMMAND_RESET_ITEMS_ALL_BAGS   = 372,
+    // [END] reset items command strings
+
+    // .aura stack
+    LANG_COMMAND_AURASTACK_NO_AURA      = 373,
+    LANG_COMMAND_AURASTACK_NO_STACK     = 374,
+    LANG_COMMAND_AURASTACK_CANT_STACK   = 375,
+
+    // Room for more level 2              376-399 not used
 
     // level 3 chat
     LANG_SCRIPTS_RELOADED               = 400,
@@ -643,12 +661,12 @@ enum AcoreStrings
     LANG_GMLIST_HEADER                  = 598,
     LANG_GMLIST_EMPTY                   = 599,
 
-    // End Level 3 list, continued at 1100
-
     LANG_EVENT_STARTED                  = 600,
     LANG_EVENT_STOPPED                  = 601,
 
-    // 602-704 - free
+    LANG_REWARDED                       = 602,
+
+    // 603-704 - free
 
     LANG_WAIT_BEFORE_SPEAKING           = 705,
     LANG_NOT_EQUIPPED_ITEM              = 706,
@@ -721,7 +739,7 @@ enum AcoreStrings
     LANG_NOT_ENOUGH_GOLD                = 801,
     LANG_NOT_FREE_TRADE_SLOTS           = 802,
     LANG_NOT_PARTNER_FREE_TRADE_SLOTS   = 803,
-    LANG_YOU_NOT_HAVE_PERMISSION        = 804,
+    LANG_PERMISSION_DENIED              = 804,  //  You do not have permission to perform this function.
     LANG_UNKNOWN_LANGUAGE               = 805,
     LANG_NOT_LEARNED_LANGUAGE           = 806,
     LANG_NEED_CHARACTER_NAME            = 807,
@@ -832,6 +850,7 @@ enum AcoreStrings
     LANG_ACCESS_REQUIREMENT_LEADER_COMPLETE_QUESTS = 889,
     LANG_ACCESS_REQUIREMENT_LEADER_COMPLETE_ACHIEVEMENTS = 890,
     LANG_ACCESS_REQUIREMENT_LEADER_OBTAIN_ITEMS = 891,
+    // End Level 3 list, continued at 1100
 
     // Level 4 (CLI only commands)
     LANG_COMMAND_EXIT                   = 1000,
@@ -962,43 +981,7 @@ enum AcoreStrings
     LANG_DEBUG_AREATRIGGER_OFF          = 1203,
     LANG_DEBUG_AREATRIGGER_REACHED      = 1204,
 
-    // 1205-1299 - free
-
-    //                                    1300-1333
-    // AV
-    LANG_BG_AV_ALLY                     = 1300,
-    LANG_BG_AV_HORDE                    = 1301,
-    LANG_BG_AV_TOWER_TAKEN              = 1302,
-    LANG_BG_AV_TOWER_ASSAULTED          = 1303,
-    LANG_BG_AV_TOWER_DEFENDED           = 1304,
-    LANG_BG_AV_GRAVE_TAKEN              = 1305,
-    LANG_BG_AV_GRAVE_DEFENDED           = 1306,
-    LANG_BG_AV_GRAVE_ASSAULTED          = 1307,
-
-    LANG_BG_AV_MINE_TAKEN               = 1308,
-    LANG_BG_AV_MINE_NORTH               = 1309,
-    LANG_BG_AV_MINE_SOUTH               = 1310,
-
-    LANG_BG_AV_NODE_GRAVE_STORM_AID     = 1311,
-    LANG_BG_AV_NODE_TOWER_DUN_S         = 1312,
-    LANG_BG_AV_NODE_TOWER_DUN_N         = 1313,
-    LANG_BG_AV_NODE_GRAVE_STORMPIKE     = 1314,
-    LANG_BG_AV_NODE_TOWER_ICEWING       = 1315,
-    LANG_BG_AV_NODE_GRAVE_STONE         = 1316,
-    LANG_BG_AV_NODE_TOWER_STONE         = 1317,
-    LANG_BG_AV_NODE_GRAVE_SNOW          = 1318,
-    LANG_BG_AV_NODE_TOWER_ICE           = 1319,
-    LANG_BG_AV_NODE_GRAVE_ICE           = 1320,
-    LANG_BG_AV_NODE_TOWER_POINT         = 1321,
-    LANG_BG_AV_NODE_GRAVE_FROST         = 1322,
-    LANG_BG_AV_NODE_TOWER_FROST_E       = 1323,
-    LANG_BG_AV_NODE_TOWER_FROST_W       = 1324,
-    LANG_BG_AV_NODE_GRAVE_FROST_HUT     = 1325,
-
-    // 1326-1330 - free
-
-    LANG_BG_AV_H_CAPTAIN_DEAD           = 1331,
-    LANG_BG_AV_A_CAPTAIN_DEAD           = 1332,
+    // 1205-1333 - free
 
     //Player Ticket Strings
     LANG_TICKET_CLOSED                  = 1334,
@@ -1057,6 +1040,8 @@ enum AcoreStrings
     LANG_COMMAND_TICKETRESET            = 2028,
     LANG_COMMAND_TICKETLISTRESPONSE     = 2029,
     LANG_COMMAND_TICKETCOMPLETED        = 2030,
+    LANG_COMMAND_TICKETRESPONSEAPPENDED = 2031,
+    LANG_COMMAND_TICKETRESPONSEDELETED  = 2032,
 
     // acore strings                    5000-9999
     LANG_COMMAND_FREEZE                 = 5000,
@@ -1159,7 +1144,12 @@ enum AcoreStrings
 
     LANG_CMD_CAST_ERROR_CODE            = 5084,
 
-    // Room for more strings    5084-9999
+    LANG_CMD_GO_RESPAWN                 = 5085,
+
+    LANG_CMD_NO_DOOR_FOUND              = 5086,
+    LANG_CMD_DOOR_OPENED                = 5087,
+
+    // Room for more strings    5088-9999
 
     // Level requirement notifications
     LANG_SAY_REQ                        = 6604,
@@ -1179,8 +1169,7 @@ enum AcoreStrings
 
     LANG_GM_SILENCE                      = 6616,              // "Silence is ON for %s" - Spell 1852
 
-    // Used for .string command
-    LANG_NO_ACORE_STRING_FOUND           = 6617,
+    // Free strings 6617-7522
 
     LANG_WORLD_CLOSED                    = 7523,
     LANG_WORLD_OPENED                    = 7524,
@@ -1239,6 +1228,7 @@ enum AcoreStrings
     LANG_OPVP_NA_CAPTURE_A              = 10026,
     LANG_OPVP_NA_LOSE_H                = 10027,
     LANG_OPVP_NA_LOSE_A                = 10028,
+    LANG_OPVP_NA_DEFENSELESS           = 10074,
     // opvp tf
     LANG_OPVP_TF_CAPTURE_H              = 10029,
     LANG_OPVP_TF_CAPTURE_A              = 10030,
